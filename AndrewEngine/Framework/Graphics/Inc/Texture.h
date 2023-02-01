@@ -32,7 +32,7 @@ namespace AndrewEngine::Graphics
 
         void* GetRawData() const { return mShaderResourceView; }
 
-    private:
+    protected:
         DXGI_FORMAT GetDXGIFormat(Format format);
         ID3D11ShaderResourceView* mShaderResourceView = nullptr;
 

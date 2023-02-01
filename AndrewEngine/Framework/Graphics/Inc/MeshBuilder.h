@@ -15,6 +15,8 @@ namespace AndrewEngine::Graphics
         static MeshPX CreateCubePX(float size);
         static MeshPX CreateSpherePX(int slices, int rings, float radius);
         static Mesh CreateSphere(int slices, int rings, float radius);
+
+        static MeshPX CreateScreenQuad();
     };
 
 }

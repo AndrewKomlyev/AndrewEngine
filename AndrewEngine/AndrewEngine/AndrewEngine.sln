@@ -64,6 +64,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImGui", "..\External\ImGui\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09_HelloLighting", "..\VGP330\09_HelloLighting\09_HelloLighting.vcxproj", "{7C932E41-098D-4849-925D-6D41B8CA1010}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10_HelloPostProcessing", "..\VGP330\10_HelloPostProcessing\10_HelloPostProcessing.vcxproj", "{F401B738-334D-4C0C-B125-467300733EE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -208,6 +210,14 @@ Global
 		{7C932E41-098D-4849-925D-6D41B8CA1010}.Release|x64.Build.0 = Release|x64
 		{7C932E41-098D-4849-925D-6D41B8CA1010}.Release|x86.ActiveCfg = Release|Win32
 		{7C932E41-098D-4849-925D-6D41B8CA1010}.Release|x86.Build.0 = Release|Win32
+		{F401B738-334D-4C0C-B125-467300733EE8}.Debug|x64.ActiveCfg = Debug|x64
+		{F401B738-334D-4C0C-B125-467300733EE8}.Debug|x64.Build.0 = Debug|x64
+		{F401B738-334D-4C0C-B125-467300733EE8}.Debug|x86.ActiveCfg = Debug|Win32
+		{F401B738-334D-4C0C-B125-467300733EE8}.Debug|x86.Build.0 = Debug|Win32
+		{F401B738-334D-4C0C-B125-467300733EE8}.Release|x64.ActiveCfg = Release|x64
+		{F401B738-334D-4C0C-B125-467300733EE8}.Release|x64.Build.0 = Release|x64
+		{F401B738-334D-4C0C-B125-467300733EE8}.Release|x86.ActiveCfg = Release|Win32
+		{F401B738-334D-4C0C-B125-467300733EE8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -232,6 +242,7 @@ Global
 		{E7B37822-0CED-468E-A16B-B7D280119CBD} = {5BFDE44A-BD6E-467F-A0BB-5333F22A2D0B}
 		{200CAB31-10ED-419A-BE5D-B96CA2D4AFA4} = {34D28FF4-3BEC-41DE-9BAA-0743E62E7F66}
 		{7C932E41-098D-4849-925D-6D41B8CA1010} = {5BFDE44A-BD6E-467F-A0BB-5333F22A2D0B}
+		{F401B738-334D-4C0C-B125-467300733EE8} = {5BFDE44A-BD6E-467F-A0BB-5333F22A2D0B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CD4003E1-A166-410F-9CB2-7443B726D9DE}

@@ -78,6 +78,12 @@
     <ClInclude Include="Inc\StandardEffect.h">
       <Filter>Inc</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\PostProcessingEffect.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\RenderTarget.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Precompiles.cpp">
@@ -129,6 +135,12 @@
       <Filter>Src</Filter>
     </ClCompile>
     <ClCompile Include="Src\StandardEffect.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PostProcessingEffect.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\RenderTarget.cpp">
       <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>

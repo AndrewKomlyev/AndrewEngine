@@ -308,7 +308,7 @@ MeshPX MeshBuilder::CreateSpherePX(int slices, int rings, float radius)
     return mesh;
 }
 
-Mesh AndrewEngine::Graphics::MeshBuilder::CreateSphere(int slices, int rings, float radius)
+Mesh MeshBuilder::CreateSphere(int slices, int rings, float radius)
 {
     Mesh mesh;
     float uStep = 1.0f / static_cast<float>(slices);
@@ -341,5 +341,16 @@ Mesh AndrewEngine::Graphics::MeshBuilder::CreateSphere(int slices, int rings, fl
 
     CreatePlaneIndicies(mesh.indicies, rings, slices);
 
+    return mesh;
+}
+
+MeshPX MeshBuilder::CreateScreenQuad()
+{
+    MeshPX mesh;
+    mesh.verticies.push_back({ {-1.0f, -1.0f, 0.0f}, {0.0f, 1.0f} });
+    mesh.verticies.push_back({ {-1.0f,  1.0f, 0.0f}, {0.0f, 0.0f} });
+    mesh.verticies.push_back({ { 1.0f,  1.0f, 0.0f}, {1.0f, 1.0f} });
+    mesh.verticies.push_back({ { 1.0f, -1.0f, 0.0f}, {1.0f, 1.0f} });
+    mesh.indicies = { 0,1,2,0,2,3 };
     return mesh;
 }

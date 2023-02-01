@@ -1,0 +1,12 @@
+﻿C:\Users\Andrey\source\Workspaces\AndrewEngine\VSProps\EngineLib.props(4,5): warning MSB4011: "C:\Users\Andrey\source\Workspaces\AndrewEngine\VSProps\Common\Common.props" cannot be imported again. It was already imported at "C:\Users\Andrey\source\Workspaces\AndrewEngine\VSProps\AndrewEngine.props (4,5)". This is most likely a build authoring error. This subsequent import will be ignored. [C:\Users\Andrey\source\Workspaces\AndrewEngine\VGP242\HelloShapes\HelloShapes.vcxproj]
+  GameState.cpp
+  WinMain.cpp
+C:\Users\Andrey\source\Workspaces\AndrewEngine\Engine\AndrewEngine\Inc\App.h(28,21): warning C4477: 'snprintf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type '_Ty1'
+          with
+          [
+              _Ty1=const size_t
+          ]
+C:\Users\Andrey\source\Workspaces\AndrewEngine\Engine\AndrewEngine\Inc\App.h(28,21): message : consider using '%zd' in the format string
+C:\Users\Andrey\source\Workspaces\AndrewEngine\VGP242\HelloShapes\WinMain.cpp(16): message : see reference to function template instantiation 'void AndrewEngine::App::AddState<GameState>(size_t)' being compiled
+  Generating Code...
+  HelloShapes.vcxproj -> C:\Users\Andrey\source\Workspaces\AndrewEngine\AndrewEngine\x64\Debug\HelloShapes.exe

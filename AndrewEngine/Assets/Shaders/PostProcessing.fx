@@ -67,10 +67,10 @@ float4 PS(VS_OUTPUT input) : SV_Target
         textureMap0.Sample(textureSampler, float2(u - param0, v)) +
         textureMap0.Sample(textureSampler, float2(u, v + param0)) +
         textureMap0.Sample(textureSampler, float2(u, v - param0)) +
-        textureMap0.Sample(textureSampler, float2(u + param0, v + param0)) +
-        textureMap0.Sample(textureSampler, float2(u + param0, v - param0)) +
-        textureMap0.Sample(textureSampler, float2(u - param0, v + param0)) +
-        textureMap0.Sample(textureSampler, float2(u - param0, v - param0));
+        textureMap0.Sample(textureSampler, float2(u + param0, v + param1)) +
+        textureMap0.Sample(textureSampler, float2(u + param0, v - param1)) +
+        textureMap0.Sample(textureSampler, float2(u - param0, v + param1)) +
+        textureMap0.Sample(textureSampler, float2(u - param0, v - param1));
         finalColor *= 0.12f;
     }
     else if (mode == 5)

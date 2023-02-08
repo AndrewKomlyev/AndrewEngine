@@ -26,7 +26,7 @@ protected:
 
     Mesh mSphere;
     RenderObject mEarthObject;
-    StandardEffect mStandartEffect;
+    StandardEffect mStandardEffect;
  
 
 

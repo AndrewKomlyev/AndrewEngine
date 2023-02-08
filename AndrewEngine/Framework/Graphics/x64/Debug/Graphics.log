@@ -1,3 +1,6 @@
-﻿  SimpleDraw.cpp
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\SimpleDraw.cpp(13,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+﻿  MeshBuilder.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\MeshBuilder.cpp(94,50): warning C4267: 'initializing': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\MeshBuilder.cpp(234,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\MeshBuilder.cpp(293,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\MeshBuilder.cpp(328,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   Graphics.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\Graphics.lib

@@ -349,7 +349,7 @@ MeshPX MeshBuilder::CreateScreenQuad()
     MeshPX mesh;
     mesh.verticies.push_back({ {-1.0f, -1.0f, 0.0f}, {0.0f, 1.0f} });
     mesh.verticies.push_back({ {-1.0f,  1.0f, 0.0f}, {0.0f, 0.0f} });
-    mesh.verticies.push_back({ { 1.0f,  1.0f, 0.0f}, {1.0f, 1.0f} });
+    mesh.verticies.push_back({ { 1.0f,  1.0f, 0.0f}, {1.0f, 0.0f} });
     mesh.verticies.push_back({ { 1.0f, -1.0f, 0.0f}, {1.0f, 1.0f} });
     mesh.indicies = { 0,1,2,0,2,3 };
     return mesh;

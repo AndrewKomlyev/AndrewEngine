@@ -25,14 +25,14 @@ void GameState::Initialize()
     mEarthObject.displacementMapId = TextureManager::Get()->LoadTexture(L"Textures/earth_bump.jpg");
     mEarthObject.specularMapId = TextureManager::Get()->LoadTexture(L"Textures/earth_spec.jpg");
 
-    mStandartEffect.Initialize(L"../../Assets/Shaders/Standard.fx");
-    mStandartEffect.SetCamera(mCamera);
-    mStandartEffect.SetDireectionalLight(mDirectionalLight);
+    mStandardEffect.Initialize(L"../../Assets/Shaders/Standard.fx");
+    mStandardEffect.SetCamera(mCamera);
+    mStandardEffect.SetDireectionalLight(mDirectionalLight);
 }
 
 void GameState::Terminate()
 {
-    mStandartEffect.Terminate();
+    mStandardEffect.Terminate();
     mEarthObject.Terminate();
 }
 
@@ -77,9 +77,9 @@ void GameState::Update(float deltaTime)
 
 void GameState::Render()
 {
-    mStandartEffect.Begin();
-    mStandartEffect.Render(mEarthObject);
-    mStandartEffect.End();
+    mStandardEffect.Begin();
+    mStandardEffect.Render(mEarthObject);
+    mStandardEffect.End();
 
     ShowNormals();
 

@@ -71,7 +71,6 @@ void App::Run(const AppConfig& config)
         {
             mCurrentState->Update(deltaTime);
         }
-        mCurrentState->Update(deltaTime);
         auto graphicsSystem = GraphicsSystem::Get();
         graphicsSystem->BeginRender();
         mCurrentState->Render();

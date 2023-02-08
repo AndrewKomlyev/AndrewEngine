@@ -156,9 +156,12 @@
     <ClInclude Include="Inc\Graphics.h" />
     <ClInclude Include="Inc\GraphicsSystem.h" />
     <ClInclude Include="Inc\LightTypes.h" />
+    <ClInclude Include="Inc\Material.h" />
     <ClInclude Include="Inc\MeshTypes.h" />
     <ClInclude Include="Inc\MeshBuffer.h" />
     <ClInclude Include="Inc\MeshBuilder.h" />
+    <ClInclude Include="Inc\Model.h" />
+    <ClInclude Include="Inc\ModelIO.h" />
     <ClInclude Include="Inc\PixelShader.h" />
     <ClInclude Include="Inc\PostProcessingEffect.h" />
     <ClInclude Include="Inc\RenderObject.h" />
@@ -182,6 +185,7 @@
     <ClCompile Include="Src\LightTypes.cpp" />
     <ClCompile Include="Src\MeshBuffer.cpp" />
     <ClCompile Include="Src\MeshBuilder.cpp" />
+    <ClCompile Include="Src\ModelIO.cpp" />
     <ClCompile Include="Src\PixelShader.cpp" />
     <ClCompile Include="Src\PostProcessingEffect.cpp" />
     <ClCompile Include="Src\Precompiles.cpp">

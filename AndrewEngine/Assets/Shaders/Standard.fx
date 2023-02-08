@@ -8,7 +8,7 @@ cbuffer TransformBuffer : register(b0)
     float displacementWeight;
 }
 
-cbuffer TransformBuffer : register(b1)
+cbuffer LightBuffer : register(b1)
 {
 	float3 lightDirection;
 	float4 lightAmbient;
@@ -67,7 +67,7 @@ VS_OUTPUT VS(VS_INPUT input)
 	
     float displacementMapColor = displacementMap.SampleLevel(textureSampler, input.texCoord, 0.0f).r;
     float3 localPosition = input.position;
-    localPosition += (input.normal * displacementMapColor* displacementWeight);
+    //localPosition += (input.normal * displacementMapColor* displacementWeight);
 
     output.position = mul(float4(localPosition, 1.0f), wvp);
 	output.worldNormal = mul(input.normal, (float3x3)toWorld);

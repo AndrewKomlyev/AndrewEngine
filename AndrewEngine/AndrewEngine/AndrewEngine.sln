@@ -41,11 +41,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DirectXTK_Desktop_2019", ".
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shaders", "Shaders", "{AE8A666E-F424-491C-96F1-B0B58A884D14}"
 	ProjectSection(SolutionItems) = preProject
+		..\Assets\Shaders\CelShading.fx = ..\Assets\Shaders\CelShading.fx
 		..\Assets\Shaders\DoLighting.fx = ..\Assets\Shaders\DoLighting.fx
 		..\Assets\Shaders\DoNothing.fx = ..\Assets\Shaders\DoNothing.fx
 		..\Assets\Shaders\DoSomething.fx = ..\Assets\Shaders\DoSomething.fx
 		..\Assets\Shaders\DoTexturing.fx = ..\Assets\Shaders\DoTexturing.fx
 		..\Assets\Shaders\DoTransform.fx = ..\Assets\Shaders\DoTransform.fx
+		..\Assets\Shaders\PostProcessing.fx = ..\Assets\Shaders\PostProcessing.fx
 		..\Assets\Shaders\SimpleDraw.fx = ..\Assets\Shaders\SimpleDraw.fx
 		..\Assets\Shaders\Standard.fx = ..\Assets\Shaders\Standard.fx
 	EndProjectSection

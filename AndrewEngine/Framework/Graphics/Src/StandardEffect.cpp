@@ -11,7 +11,7 @@ void StandardEffect::Initialize(const std::filesystem::path& filePath)
 {
     mTransformBuffer.Initialize();
     mLightBuffer.Initialize();
-
+    mSettingsBuffer.Initialize();
     mVertexShader.Initialize<Vertex>(L"../../Assets/Shaders/Standard.fx");
     mPixelShader.Initialize(L"../../Assets/Shaders/Standard.fx");
     mSampler.Initialize(Sampler::Filter::Liner, Sampler::AddressMode::Wrap);
@@ -22,6 +22,7 @@ void StandardEffect::Terminate()
     mSampler.Terminate();
     mPixelShader.Terminate();
     mVertexShader.Terminate();
+    mSettingsBuffer.Terminate();
     mLightBuffer.Terminate();
     mTransformBuffer.Terminate();
 }

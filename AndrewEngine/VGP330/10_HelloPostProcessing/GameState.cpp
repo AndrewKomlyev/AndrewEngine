@@ -31,7 +31,7 @@ void GameState::Initialize()
     mStandartEffect.SetCamera(mCamera);
     mStandartEffect.SetDireectionalLight(mDirectionalLight);
 
-    mPostProcessingEffect.Initialize(L"../../Assets/Shaders/PostProcess.fx");
+    mPostProcessingEffect.Initialize(L"../../Assets/Shaders/PostProcessing.fx");
     mPostProcessingEffect.SetTexture(&mRenderTarget);
     mPostProcessingEffect.SetMode(PostProcessingEffect::Mode::None);
 

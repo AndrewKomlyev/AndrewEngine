@@ -92,7 +92,7 @@ void PostProcessingEffect::Render(const RenderObject& renderObject)
     renderObject.meshBuffer.Render();
 }
 
-void PostProcessingEffect::SetTexture(const Texture* texture, uint32_t slot = 0)
+void PostProcessingEffect::SetTexture(const Texture* texture, uint32_t slot)
 {
     ASSERT(slot < mTextures.size(), "PostProcessingEffect -- invalid slot index");
     mTextures[slot] = texture;

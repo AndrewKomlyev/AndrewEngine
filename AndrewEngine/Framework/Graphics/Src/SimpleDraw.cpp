@@ -56,8 +56,8 @@ namespace
 
         mLineVerticies = std::make_unique<VertexPC[]>(maxVertexCount);
         mFaceVerticies = std::make_unique<VertexPC[]>(maxVertexCount);
-        mLineVerticies = 0;
-        mFaceVerticies = 0;
+        mLineVertexCount = 0;
+        mFaceVertexCount = 0;
     }
 
     void SimpleDrawImpl::Terminate()

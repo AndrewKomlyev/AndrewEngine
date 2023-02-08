@@ -101,7 +101,7 @@ float4 PS(VS_OUTPUT input) : SV_Target
 	float d = saturate(dot(light, n));
 	float4 diffuse = d * lightDiffuse;
 
-	float r = reflect(-light, n);
+	float3 r = reflect(-light, n);
 	float base = saturate(dot(r, view));
 
 	float s = pow(base, 12.0f);

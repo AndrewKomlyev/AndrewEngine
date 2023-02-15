@@ -55,6 +55,107 @@ Vector3 ToVector3(const aiVector3D& v)
     };
 }
 
+Color ToColor(const aiColor3D& c)
+{
+    return
+    {
+        static_cast<float>(c.r),
+        static_cast<float>(c.g),
+        static_cast<float>(c.b),
+        1.0f
+    };
+}
+
+void ExportEmbeddedTexture(const aiTexture* texture, const Arguments& args, const std::filesystem::path& fileName)
+{
+    printf("Extracting embedded texture %s\n", fileName.u8string().c_str());
+
+    std::string fullFileName = args.outputFileName.u8string();
+    fullFileName = fullFileName.substr(0, fullFileName.rfind('/') + 1);
+    fullFileName += fileName.filename().u8string().c_str();
+
+    FILE* file = nullptr;
+    auto err = fopen_s(&file, fullFileName.c_str(), "wb");
+    if (err != 0 || file == nullptr)
+    {
+        printf("Error: failed to open file %s for savei \n", fullFileName.c_str());
+        return;
+    }
+
+    size_t written = fwrite(texture->pcData, 1, texture->mWidth, file);
+    ASSERT(written == texture->mWidth, "Error: failed to extract embedded texture");
+    fclose(file);
+}
+std::string FindTexture(const aiScene* scene, const aiMaterial* aiMaterial, aiTextureType textureType, const Arguments& args, const std::string& suffix, uint32_t materialIndex)
+{
+    std::filesystem::path textureName;
+    const uint32_t textureCount = aiMaterial->GetTextureCount(textureType);
+    if (textureCount > 0)
+    {
+        aiString texturePath;
+        if (aiMaterial->GetTexture(textureType, 0, &texturePath) == aiReturn_SUCCESS)
+        {
+            if (texturePath.C_Str()[0] == '*')
+            {
+                std::string fileName = args.inputFileName.u8string();
+                fileName.erase(fileName.length() - 4);
+                fileName += suffix;
+                fileName += texturePath.C_Str()[1];
+
+                ASSERT(scene->HasTextures(), "Errpr, no embedded texture found!");
+
+                int textureIndex = atoi(texturePath.C_Str() + 1);
+                ASSERT(textureIndex < (int)scene->mNumTextures, "error: Invalid texture index");
+
+                const aiTexture* embeddedTexture = scene->mTextures[textureIndex];
+                ASSERT(embeddedTexture->mHeight == 0, "Error: Uncompresse texture found");
+
+                if (embeddedTexture->CheckFormat("jpg"))
+                {
+                    fileName += ".jpg";
+                }
+                else if (embeddedTexture->CheckFormat("png"))
+                {
+                    fileName += ".png";
+                }
+                else
+                {
+                    ASSERT(false, "Error: unrecognised tezture format");
+                }
+
+                ExportEmbeddedTexture(embeddedTexture, args, fileName);
+
+                printf("Adding texture %s\n", fileName.c_str());
+                textureName = fileName;
+            }
+            else if (auto embeddedTexture = scene->GetEmbeddedTexture(texturePath.C_Str()); embeddedTexture)
+            {
+                std::filesystem::path embeddedFilePath = texturePath.C_Str();
+                std::string fileName = args.inputFileName.u8string();
+                fileName.erase(fileName.length() - 4);
+                fileName += suffix;
+                fileName += "_" + std::to_string(materialIndex);
+                fileName += embeddedFilePath.extension().u8string();
+
+                ExportEmbeddedTexture(embeddedTexture, args, fileName);
+
+                printf("Adding texture %s\n", fileName.c_str());
+                textureName = fileName;
+            }
+            else
+            {
+                std::filesystem::path filePath = texturePath.C_Str();
+                std::string fileName = filePath.filename().u8string();
+
+                printf("Adding Texture %s\n", fileName.c_str());
+                textureName = fileName;
+            }
+        }
+    }
+
+    return textureName.filename().u8string().c_str();
+}
+
 int main(int argc, char* argv[])
 {
     const auto argOpt = ParseArgs(argc, argv);
@@ -132,10 +233,44 @@ int main(int argc, char* argv[])
             for (uint32_t i = 0; i < numFaces; ++i)
             {
                 const auto& aiFace = aiFaces[i];
+                mesh.indicies.push_back(aiFace.mIndices[0]);
                 mesh.indicies.push_back(aiFace.mIndices[1]);
                 mesh.indicies.push_back(aiFace.mIndices[2]);
-                mesh.indicies.push_back(aiFace.mIndices[3]);
             }
+        }
+    }
+
+
+    if (scene->HasMaterials())
+    {
+        printf("Reading Materials...\n");
+
+        const uint32_t numMaterials = scene->mNumMaterials;
+        model.materialData.reserve(numMaterials);
+        for (uint32_t materialIndex = 0; materialIndex < numMaterials; ++materialIndex)
+        {
+            const auto aiMaterial = scene->mMaterials[materialIndex];
+
+            aiColor3D ambient, diffuse, emissive, specular;
+            ai_real specularPower = 1.0f;
+
+            aiMaterial->Get(AI_MATKEY_COLOR_AMBIENT, ambient);
+            aiMaterial->Get(AI_MATKEY_COLOR_DIFFUSE, diffuse);
+            aiMaterial->Get(AI_MATKEY_COLOR_EMISSIVE, emissive);
+            aiMaterial->Get(AI_MATKEY_COLOR_SPECULAR, specular);
+            aiMaterial->Get(AI_MATKEY_SHININESS, specularPower);
+
+            auto& materialData = model.materialData.emplace_back();
+            materialData.material.ambient = ToColor(ambient);
+            materialData.material.diffuse = ToColor(diffuse);
+            materialData.material.emissive = ToColor(emissive);
+            materialData.material.specular = ToColor(specular);
+            materialData.material.power = static_cast<float>(specularPower);
+
+            materialData.diffuseMapName = FindTexture(scene, aiMaterial, aiTextureType_DIFFUSE, arguments, "_diffuse", materialIndex);
+            materialData.normalMapName = FindTexture(scene, aiMaterial, aiTextureType_NORMALS, arguments, "_normal", materialIndex);
+            materialData.displacementMapName = FindTexture(scene, aiMaterial, aiTextureType_DISPLACEMENT, arguments, "_displacement", materialIndex);
+            materialData.specularMapName = FindTexture(scene, aiMaterial, aiTextureType_SPECULAR, arguments, "_specular", materialIndex);
         }
     }
 

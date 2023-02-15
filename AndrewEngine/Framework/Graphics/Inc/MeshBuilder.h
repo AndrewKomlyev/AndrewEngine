@@ -6,6 +6,8 @@ namespace AndrewEngine::Graphics
     class MeshBuilder
     {
     public:
+        static Mesh CreatePlane(int numRows, int numColumns, float spacing);
+
         static MeshPC CreateCubePC(float size, Color colour);
         static MeshPC CreateRectanglePC(float width, float height, float depth);
         static MeshPC CreatePlanePC(int numRows, int numColumns, float spacing);

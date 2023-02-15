@@ -49,6 +49,7 @@ namespace
 
 
 
+
     void CreatePlaneIndicies(std::vector<uint32_t>& indicies, int rows, int collums)
     {
         for (int r = 0; r < rows; ++r)
@@ -100,6 +101,46 @@ namespace
         mesh.verticies.push_back({ {0.0f, -halfHeight, 0.0f}, GetNextColor(index) });
         CreateCapsIndicies(mesh.indicies, slices, topIndex);
     }
+}
+
+Mesh MeshBuilder::CreatePlane(int numRows, int numColumns, float spacing)
+{
+    Mesh mesh;
+    int index = rand() % 100;
+
+    const float halfPlaneWidth = static_cast<float>(numColumns) * spacing * 0.5f;
+    const float halfPlaneHeight = static_cast<float>(numRows) * spacing * 0.5f;
+
+    float x = -halfPlaneWidth;
+    float z = -halfPlaneHeight;
+
+    const float uStep = 1.0f / static_cast<float>(numColumns);
+    const float vStep = 1.0f / static_cast<float>(numRows);
+
+    const AEMath::Vector3 n = AEMath::Vector3::YAxis;
+    const AEMath::Vector3 t = AEMath::Vector3::XAxis;
+    for (int r = 0; r <= numRows; ++r)
+    {
+        float rf = static_cast<float>(r);
+        for (int c = 0; c <= numColumns; ++c)
+        {
+            float cf = static_cast<float>(c);
+
+            float u = 1.0f - (uStep * cf);
+            float v = (vStep * rf);
+
+            mesh.verticies.push_back({ {x, 0.0f , z  }, n, t, AEMath::Vector2(u,v) });
+            x += spacing;
+        }
+        x = -halfPlaneWidth;
+        z += spacing;
+    }
+
+    CreatePlaneIndicies(mesh.indicies, numRows, numColumns);
+
+
+
+    return mesh;
 }
 
 

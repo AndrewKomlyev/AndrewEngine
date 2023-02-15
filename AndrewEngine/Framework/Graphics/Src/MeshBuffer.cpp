@@ -110,5 +110,5 @@ void AndrewEngine::Graphics::MeshBuffer::CreateIndexBuffer(const uint32_t* indic
     D3D11_SUBRESOURCE_DATA initData{};
     initData.pSysMem = indicies;
     HRESULT hr = device->CreateBuffer(&bufferDesc, &initData, &mIndexBuffer);
-    ASSERT(SUCCEEDED(hr), "Failed to create vertex buffeer");
+    ASSERT(SUCCEEDED(hr), "Failed to create vertex buffer");
 }

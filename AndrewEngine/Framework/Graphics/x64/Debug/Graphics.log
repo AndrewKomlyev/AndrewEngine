@@ -1,2 +1,3 @@
-﻿  ModelIO.cpp
+﻿  RenderTarget.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\RenderTarget.cpp(83,80): warning C4244: 'argument': conversion from 'float' to 'UINT8', possible loss of data
   Graphics.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\Graphics.lib

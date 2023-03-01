@@ -20,6 +20,10 @@ void GameState::Initialize()
     Mesh ground = MeshBuilder::CreatePlane(20, 20, 1.0f);
     mGround.meshBuffer.Initialize(ground);
     mGround.diffuseMapId = TextureManager::Get()->LoadTexture(L"Textures/earth.jpg");
+    mGround.material.ambient = { 0.8f, 0.8f, 0.8f, 1.0f };
+    mGround.material.diffuse = { 0.8f, 0.8f, 0.8f, 1.0f };
+    mGround.material.specular = { 0.8f, 0.8f, 0.8f, 1.0f };
+    mGround.material.power =  0.8f;
 
     Model character;
     ModelIO::LoadModel("../../Assets/Models/Vanguard/VanguardByTChoonyung.model", character);

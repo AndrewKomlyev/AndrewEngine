@@ -18,6 +18,7 @@
 #include "RenderObject.h"
 #include "RenderTarget.h"
 #include "Transform.h"
+#include "ShadowEffect.h"
 #include "SimpleDraw.h"
 #include "StandardEffect.h"
 #include "VertexShader.h"

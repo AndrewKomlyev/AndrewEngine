@@ -93,6 +93,9 @@
     <ClInclude Include="Inc\ModelIO.h">
       <Filter>Inc</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\ShadowEffect.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Precompiles.cpp">
@@ -153,6 +156,9 @@
       <Filter>Src</Filter>
     </ClCompile>
     <ClCompile Include="Src\ModelIO.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ShadowEffect.cpp">
       <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>

@@ -5,11 +5,13 @@
 #include "PixelShader.h"
 #include "Sampler.h"
 #include "VertexShader.h"
+#include "Material.h"
 
 namespace AndrewEngine::Graphics
 {
     class Camera;
     class RenderObject;
+    class Texture; 
 
     class StandardEffect
     {
@@ -24,6 +26,8 @@ namespace AndrewEngine::Graphics
 
         void SetCamera(const Camera& camera);
         void SetDireectionalLight(const DirectionalLight& directionalLight);
+        void SetLightCamera(const Camera& camera);
+        void SetShadowMap(const Texture* shadowMap);
 
         void DebugUI();
 
@@ -32,7 +36,7 @@ namespace AndrewEngine::Graphics
         struct TransformData
         {
             AEMath::Matrix4 world;
-            AEMath::Matrix4 wvp;
+            AEMath::Matrix4 wvp[2];
             AEMath::Vector3 viewPosition;
             float displacementWeight;
         };
@@ -43,14 +47,19 @@ namespace AndrewEngine::Graphics
             int useSpecularMap = 1;
             int useDisplacementMap = 1;
             int useNormalMap = 1;
+            int useShadowMap = 1;
+            float depthBias = 0.0f;
+            float padding[2] = { 0.0f };
         };
 
         using TransformBuffer = TypeConstantBuffer<TransformData>;
         using LightBuffer = TypeConstantBuffer<DirectionalLight>;
+        using MaterialBuffer = TypeConstantBuffer<Material>;
         using SettingsBuffer = TypeConstantBuffer<SettingsData>;
 
         TransformBuffer mTransformBuffer;
         LightBuffer mLightBuffer;
+        MaterialBuffer mMaterialBuffer;
         SettingsBuffer mSettingsBuffer;
         Sampler mSampler;
 
@@ -60,7 +69,12 @@ namespace AndrewEngine::Graphics
 
         SettingsData mSettingsData;
         float mDisplacementWeight = 0.0f;
+        float mDepthBias = 0.0f;
         const Camera* mCamera = nullptr;
+        const Camera* mLightCamera = nullptr;
         const DirectionalLight* mDirectionalLight = nullptr;
+        const Texture* mShadowMap = nullptr;
+
+
     };
 }

@@ -128,6 +128,7 @@ void GameState::DebugUI()
 
     }
     ImGui::Separator();
+    mPostProcessingEffect.DebugUI();
     ImGui::End();
 }
 

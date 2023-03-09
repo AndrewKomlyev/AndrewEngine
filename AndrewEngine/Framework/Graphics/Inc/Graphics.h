@@ -6,6 +6,7 @@
 #include "ConstantBuffer.h"
 #include "DebugUI.h"
 #include "GraphicsSystem.h"
+#include "GrainEffect.h"
 #include "LightTypes.h"
 #include "Material.h"
 #include "MeshBuffer.h"

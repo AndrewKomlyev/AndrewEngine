@@ -4,7 +4,7 @@
 enum class States : size_t
 {
     GameState = 0,
-    Cube =1,
+    Cube = 1,
     Rectangle=2,
     Plane=3,
     Cylinder=4,

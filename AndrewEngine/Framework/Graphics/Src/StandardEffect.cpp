@@ -85,6 +85,7 @@ void StandardEffect::Render(const RenderObject& renderObject)
         const auto& matLightView = mLightCamera->GetViewMatrix();
         const auto& matLightProj = mLightCamera->GetProjectionMatrix();
         transformData.wvp[1] = Transpose(matWorld * matLightView * matLightProj);
+        mShadowMap->BindPS(4);
     }
 
     mTransformBuffer.Update(transformData);

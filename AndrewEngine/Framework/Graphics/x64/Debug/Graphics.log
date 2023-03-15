@@ -1,2 +1,4 @@
-﻿  ConstantBuffer.cpp
+﻿  GrainEffect.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\GrainEffect.cpp(64,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\GrainEffect.cpp(66,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Graphics.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\Graphics.lib

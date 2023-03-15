@@ -17,6 +17,7 @@ namespace AndrewEngine::Graphics
         void Initialize(const std::filesystem::path& filePath);
         void Terminate();
 
+        void Update(float deltaTime);
         void Begin();
         void End();
 
@@ -25,7 +26,6 @@ namespace AndrewEngine::Graphics
         Texture CreateTexture();
 
         void DebugUI();
-
     private:
 
         struct GrainEffectData
@@ -38,15 +38,21 @@ namespace AndrewEngine::Graphics
 
         using GrainEffectBuffer = TypeConstantBuffer<GrainEffectData>;
 
+        float updateRate = 24.0f;
+        float time = 0.0f;
+
+        float var = 0;
+        float var2 = 0;
 
         Sampler mSampler;
 
+        int imageIndex;
         VertexShader mVertexShader;
         PixelShader mPixelShader;
 
         GrainEffectBuffer mGrainEffectBuffer;
         const Texture* mTextureImage =nullptr;
-
+        GrainEffectData data;
         std::array<TextureId, 12> mTextures;
     };
 }

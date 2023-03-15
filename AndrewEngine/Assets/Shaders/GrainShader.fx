@@ -4,7 +4,6 @@ cbuffer GrainEffectData : register(b0)
     float param1;
     float param2;
     float param3;
-
 }
 
 Texture2D textureMap0 : register(t0);
@@ -35,8 +34,10 @@ float4 PS(VS_OUTPUT input) : SV_Target
 {
     float4 finalColor;
     
-    float4 color0 = textureMapImage.Sample(textureSampler, input.texCoord);
-    float4 color1 = textureMap0.Sample(textureSampler, input.texCoord);
+    
+    
+    float4 color0 = textureMapImage.Sample(textureSampler, input.texCoord) * param0;
+    float4 color1 = textureMap0.Sample(textureSampler, input.texCoord) * param1;
     finalColor = color0 + color1;
     
     

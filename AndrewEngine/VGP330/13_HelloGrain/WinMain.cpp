@@ -18,7 +18,7 @@ int WINAPI  WinMain(HINSTANCE instance, HINSTANCE, LPSTR, int)
     AndrewEngine::AppConfig config;
     config.appName = L"Hello Grain";
     config.winWidth = 1200;
-    config.winHeigth =720;
+    config.winHeigth =900;
 
     mainApp.Run(config);
 

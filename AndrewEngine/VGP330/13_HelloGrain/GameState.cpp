@@ -53,6 +53,7 @@ void GameState::Initialize()
 
 void GameState::Terminate()
 {
+    mRenderTarget.Terminate();
     mShadowEffect.Terminate();
     mGrainEffect.Terminate();
     mStandartEffect.Terminate();
@@ -64,6 +65,9 @@ void GameState::Terminate()
 void GameState::Update(float deltaTime) 
 {
     //movement
+    mGrainEffect.Update(deltaTime);
+
+
     auto input = InputSystem::Get();
     const float moveSpeed = input->IsKeyDown(KeyCode::LSHIFT) ? 10.0f : 1.0f;
     const float turnspeed = 0.01f;
@@ -99,6 +103,7 @@ void GameState::Update(float deltaTime)
         mCamera.Yaw(input->GetMouseMoveX() * turnspeed * deltaTime);
         mCamera.Pitch(input->GetMouseMoveY() * turnspeed * deltaTime);
     }
+
 }
 
 void GameState::Render()
@@ -126,6 +131,8 @@ void GameState::Render()
 
 void GameState::DebugUI()
 {
+    //mGrainEffect.DebugUI();
+
     ImGui::Begin("Debug Control", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
     ImGui::Separator();
 

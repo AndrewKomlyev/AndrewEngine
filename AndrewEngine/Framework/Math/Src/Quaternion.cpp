@@ -20,21 +20,26 @@ namespace AndrewEngine::AEMath
 
     inline void Quaternion::Conjugate() noexcept
     {
+        x = -x;
+        y = -y;
+        z = -z;
     }
 
     inline void Quaternion::Conjugate(Quaternion& result) const noexcept
     {
-
+        result.Conjugate();
     }
 
     inline void Quaternion::Inverse(Quaternion& result) const noexcept
     {
-
+        float magnitude = result.Magnitude(result);
+        result.Conjugate();
+        result = result / (magnitude * magnitude);
     }
 
     inline float Quaternion::Dot(const Quaternion& q) const noexcept
     {
-        return 0.0f;
+        return (x * q.x) + (y * q.y) + (z * q.z) + (w * q.w);
     }
 
     float Quaternion::Magnitude(const Quaternion& q)
@@ -59,14 +64,33 @@ namespace AndrewEngine::AEMath
         return Quaternion(a.x * s, a.y * s, a.z * s, c);
     }
 
-    inline Quaternion Quaternion::CreateFromYawPitchRoll(float yaw, float pitch, float roll) noexcept
+    Quaternion Quaternion::CreateFromYawPitchRoll(float yaw, float pitch, float roll) noexcept
     {
-        return Quaternion();
+        float cosYaw = cos(yaw * 0.5f);
+        float sinYaw = sin(yaw * 0.5f);
+        float cosPitch = cos(pitch * 0.5f);
+        float sinPitch = sin(pitch * 0.5f);
+        float cosRoll = cos(roll * 0.5f);
+        float sinRoll = sin(roll * 0.5f);
+        Quaternion q;
+        q.x = cosRoll * sinPitch * cosYaw + sinRoll * cosPitch * sinYaw;
+        q.y = cosRoll * cosPitch * sinYaw - sinRoll * sinPitch * cosYaw;
+        q.z = sinRoll * cosPitch * cosYaw - cosRoll * sinPitch * sinYaw;
+        q.w = cosRoll * cosPitch * cosYaw + sinRoll * sinPitch * sinYaw;
+
+        return q;
     }
 
     inline Quaternion Quaternion::CreateFromRotationMatrix(const Matrix4& M) noexcept
     {
-        return Quaternion();
+        Quaternion q;
+
+        q.w = sqrt(1.0f + M._11 + M._22 + M._33);
+        float w4 = q.w * 4;
+        q.x = (M._32 - M._23)/(w4);
+        q.y = (M._13 - M._31)/(w4);
+        q.z = (M._21 - M._12)/(w4);
+        return q;
     }
 
     Quaternion Quaternion::Lerp(Quaternion q0, Quaternion q1, float t)

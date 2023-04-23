@@ -26,5 +26,11 @@ protected:
     RenderObject mSphere;
     RenderObject mGround;
     StandardEffect mStandartEffect;
+
+    float mYawTurnspeed = 0.01f;
+    float mPitchTurnspeed = 0.01f;
+    float mRollTurnspeed = 0.01f;
+    float scale[5] = {0.05, 0.1, 0.25, 0.5, 1};
+    int scaleIndex = 0;
 };
 

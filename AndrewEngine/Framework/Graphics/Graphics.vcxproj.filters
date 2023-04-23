@@ -99,6 +99,21 @@
     <ClInclude Include="Inc\GrainEffect.h">
       <Filter>Inc</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\Keyframe.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\Animation.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\AnimationBuilder.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\Bone.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\Skeleton.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Precompiles.cpp">
@@ -165,6 +180,12 @@
       <Filter>Src</Filter>
     </ClCompile>
     <ClCompile Include="Src\GrainEffect.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Animation.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\AnimationBuilder.cpp">
       <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>

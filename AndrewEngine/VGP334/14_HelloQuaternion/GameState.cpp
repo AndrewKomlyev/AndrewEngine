@@ -37,6 +37,7 @@ void GameState::Initialize()
     mStandartEffect.Initialize(L"../../Assets/Shaders/Standard.fx");
     mStandartEffect.SetCamera(mCamera);
     mStandartEffect.SetDireectionalLight(mDirectionalLight);
+    
 }
 
 void GameState::Terminate()
@@ -51,6 +52,7 @@ void GameState::Update(float deltaTime)
     auto input = InputSystem::Get();
     const float moveSpeed = input->IsKeyDown(KeyCode::LSHIFT) ? 10.0f : 1.0f;
     const float turnspeed = 0.01f;
+
 
     if (input->IsKeyDown(KeyCode::W))
     {
@@ -84,9 +86,9 @@ void GameState::Update(float deltaTime)
         mCamera.Pitch(input->GetMouseMoveY() * turnspeed * deltaTime);
     }
 
-    mYaw += turnspeed * deltaTime;
-    mPitch += turnspeed * deltaTime;
-    mRoll += turnspeed * deltaTime;
+    mYaw += mYawTurnspeed * deltaTime;
+    mPitch += mPitchTurnspeed * deltaTime;
+    mRoll += mRollTurnspeed * deltaTime;
     mSphere.transform.rotation = Quaternion::CreateFromYawPitchRoll(mYaw, mPitch, mRoll);
 
 }
@@ -118,8 +120,15 @@ void GameState::DebugUI()
         ImGui::ColorEdit4("Diffuse##Light", &mDirectionalLight.diffuse.r);
         ImGui::ColorEdit4("Specular##Light", &mDirectionalLight.specular.r);
     }
+    
+    ImGui::Separator();
+    ImGui::DragInt("Scale", &scaleIndex, 0.1, 1, 5);
+    ImGui::Text("Acceleration Scale: %.2f", scale[scaleIndex - 1]);
 
-
+    ImGui::Separator();
+    ImGui::DragFloat("Yaw", &mYawTurnspeed, scale[scaleIndex-1], -5.0f, 5.0f);
+    ImGui::DragFloat("Pitch", &mPitchTurnspeed, scale[scaleIndex - 1], -5.0f, 5.0f);
+    ImGui::DragFloat("Roll", &mRollTurnspeed, scale[scaleIndex - 1], -5.0f, 5.0f);
 
 
 

@@ -30,7 +30,7 @@ namespace AndrewEngine::AEMath
     {
         return Max(min, Min(max, v));
     }
-    template <typename T> inline T Lert(T a, T b, float t)
+    template <typename T> inline T Lerp(T a, T b, float t)
     {
         return a + ((b - a) * t);
     }
@@ -55,7 +55,7 @@ namespace AndrewEngine::AEMath
     }
     inline Vector3 Cross(const Vector3& a, const Vector3& b)
     {
-        return Vector3((a.y * b.y) - (a.z * b.y), (a.z * b.x) - (a.x * b.z), (a.x * b.y) - (a.y * b.x));
+        return Vector3((a.y * b.z) - (a.z * b.y), (a.z * b.x) - (a.x * b.z), (a.x * b.y) - (a.y * b.x));
     }
     inline float DistanceSqr(const Vector3& a, const Vector3& b)
     {

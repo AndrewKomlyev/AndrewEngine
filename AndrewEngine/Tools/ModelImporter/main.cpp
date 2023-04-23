@@ -10,6 +10,8 @@ using namespace AndrewEngine;
 using namespace AndrewEngine::Graphics;
 using namespace AndrewEngine::AEMath;
 
+using BoneIndexLook = std::map<std::string, uint32_t>;
+
 struct Arguments
 {
     std::filesystem::path inputFileName;
@@ -63,6 +65,17 @@ Color ToColor(const aiColor3D& c)
         static_cast<float>(c.g),
         static_cast<float>(c.b),
         1.0f
+    };
+}
+
+Matrix4 ToMatrix4(const aiMatrix4x4& m)
+{
+    return
+    {
+        static_cast<float>(m.a1),  static_cast<float>(m.b1),   static_cast<float>(m.c1), static_cast<float>(m.d1),
+        static_cast<float>(m.a2),  static_cast<float>(m.b2),   static_cast<float>(m.c2), static_cast<float>(m.d2),
+        static_cast<float>(m.a3),  static_cast<float>(m.b3),   static_cast<float>(m.c3), static_cast<float>(m.d3),
+        static_cast<float>(m.a4),  static_cast<float>(m.b4),   static_cast<float>(m.c4), static_cast<float>(m.d4)
     };
 }
 
@@ -156,6 +169,82 @@ std::string FindTexture(const aiScene* scene, const aiMaterial* aiMaterial, aiTe
     return textureName.filename().u8string().c_str();
 }
 
+uint32_t TryAddBone(const aiBone* bone, Skeleton& skeleton, BoneIndexLook& boneIndexMap)
+{
+    const std::string boneName = bone->mName.C_Str();
+
+    ASSERT(!boneName.empty(), "ERROR: aiBone does not have a name");
+    auto iter = boneIndexMap.find(boneName);
+    if (iter != boneIndexMap.end())
+    {
+        return iter->second;
+    }
+
+    auto& newBone = skeleton.bones.emplace_back(std::make_unique<Bone>());
+    newBone->name = boneName;
+    newBone->index = static_cast<int>(skeleton.bones.size()) - 1;
+    newBone->offsetTransform = ToMatrix4(bone->mOffsetMatrix);
+
+    boneIndexMap.emplace(newBone->name, newBone->index);
+
+    return newBone->index;
+
+}
+
+//void TryBuildSkeleton(const aiNode* node, Skeleton& skeleton, BoneIndexLook& boneIndexLookup)
+//{
+//    (void)TryAddBone(node, )
+//}
+
+Bone* BuildSkeleton(const aiNode& sceneNode, Bone* parent, Skeleton& skeleton, BoneIndexLook& boneIndexLookup)
+{
+    Bone* bone = nullptr;
+
+    std::string boneName = sceneNode.mName.C_Str();
+    auto iter = boneIndexLookup.find(boneName);
+    if (iter != boneIndexLookup.end())
+    {
+        bone = skeleton.bones[iter->second].get();
+    }
+    else
+    {
+        bone = skeleton.bones.emplace_back(std::make_unique<Bone>()).get();
+
+        bone->index = static_cast<int>(skeleton.bones.size()) - 1;
+        bone->offsetTransform = Matrix4::Identity;
+        if (boneName.empty())
+        {
+            bone->name = "NoName" + std::to_string(bone->index);
+        }
+        else
+        {
+            bone->name = std::move(boneName);
+        }
+        boneIndexLookup.emplace(bone->name, bone->index);
+    }
+
+    if (skeleton.root == nullptr && parent == nullptr)
+    {
+        skeleton.root = bone;
+    }
+
+    bone->parent = parent;
+    bone->parentIndex = parent ? parent->index : -1;
+    bone->toParentTransform = ToMatrix4(sceneNode.mTransformation);
+
+    bone->children.reserve(sceneNode.mNumChildren);
+
+    for (uint32_t i = 0; i < sceneNode.mNumChildren; ++i)
+    {
+        Bone* child = BuildSkeleton(*(sceneNode.mChildren[i]), bone, skeleton, boneIndexLookup);
+        bone->children.push_back(child);
+        bone->childrenIndices.push_back(child->index);
+
+    }
+
+    return bone;
+}
+
 int main(int argc, char* argv[])
 {
     const auto argOpt = ParseArgs(argc, argv);
@@ -182,6 +271,7 @@ int main(int argc, char* argv[])
     printf("Importing %s...", arguments.inputFileName.u8string().c_str());
 
     Model model;
+    BoneIndexLook boneIndexLookup;
 
     if (scene->HasMeshes())
     {
@@ -237,9 +327,42 @@ int main(int argc, char* argv[])
                 mesh.indicies.push_back(aiFace.mIndices[1]);
                 mesh.indicies.push_back(aiFace.mIndices[2]);
             }
+
+            if (aiMesh->HasBones())
+            {
+                printf("Reading Bones...\n");
+                if (model.skeleton = nullptr)
+                {
+                    model.skeleton = std::make_unique<Skeleton>();
+                }
+
+                std::vector<int> numWeightAdded(mesh.verticies.size(), 0);
+                for (uint32_t b = 0; b < aiMesh->mNumBones; ++b)
+                {
+                    aiBone* bone = aiMesh->mBones[b];
+                    uint32_t boneIndex = TryAddBone(bone, *(model.skeleton), boneIndexLookup);
+
+                    for (uint32_t w = 0; w < bone->mNumWeights; ++w)
+                    {
+                        const aiVertexWeight& weight = bone->mWeights[w];
+                        auto& vertex = mesh.verticies[weight.mVertexId];
+                        auto& count = numWeightAdded[weight.mVertexId];
+                        if (count < Vertex::MaxBoneWeights)
+                        {
+                            vertex.boneIndices[count] = boneIndex;
+                            vertex.boneWeights[count] = weight.mWeight;
+                            ++count;
+                        }
+                    }
+                }
+            }
         }
     }
 
+  /*  if (scene->mRootNode != nullptr)
+    {
+        if(model.skeleton)
+    }*/
 
     if (scene->HasMaterials())
     {
@@ -274,12 +397,32 @@ int main(int argc, char* argv[])
         }
     }
 
+
+    if (!boneIndexLookup.empty())
+    {
+        printf("Building Skeleton...\n");
+
+        BuildSkeleton(*scene->mRootNode, nullptr, *(model.skeleton), boneIndexLookup);
+
+        for (auto& bone : model.skeleton->bones)
+        {
+            bone->offsetTransform._41 *= arguments.scale;
+            bone->offsetTransform._42 *= arguments.scale;
+            bone->offsetTransform._43 *= arguments.scale;
+            bone->toParentTransform._41 *= arguments.scale;
+            bone->toParentTransform._42 *= arguments.scale;
+            bone->toParentTransform._43 *= arguments.scale;
+        }
+    }
     printf("Saving Model...\n");
     ModelIO::SaveModel(arguments.outputFileName, model);
 
 
     printf("Saving Material...\n");
     ModelIO::SaveMaterial(arguments.outputFileName, model);
+
+    printf("Saving Skeleton...\n");
+    ModelIO::SaveSkeleton(arguments.outputFileName, model);
 
     printf("All Done\n");
     return 0;

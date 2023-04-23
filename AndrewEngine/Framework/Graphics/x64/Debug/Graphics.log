@@ -1,4 +1,36 @@
-﻿  GrainEffect.cpp
+﻿  Precompiles.cpp
+  Animation.cpp
+  AnimationBuilder.cpp
+  BlendState.cpp
+  Camera.cpp
+  ConstantBuffer.cpp
+  DebugUI.cpp
+  GrainEffect.cpp
 C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\GrainEffect.cpp(64,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\GrainEffect.cpp(66,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  GraphicsSystem.cpp
+  LightTypes.cpp
+  MeshBuffer.cpp
+  MeshBuilder.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\MeshBuilder.cpp(95,50): warning C4267: 'initializing': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\MeshBuilder.cpp(275,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\MeshBuilder.cpp(334,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\MeshBuilder.cpp(369,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  ModelIO.cpp
+  PixelShader.cpp
+  PostProcessingEffect.cpp
+  RenderObject.cpp
+  RenderTarget.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\RenderTarget.cpp(83,80): warning C4244: 'argument': conversion from 'float' to 'UINT8', possible loss of data
+  Sampler.cpp
+  ShadowEffect.cpp
+  SimpleDraw.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\SimpleDraw.cpp(13,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  StandardEffect.cpp
+  Generating Code...
+  Compiling...
+  Texture.cpp
+  TextureManager.cpp
+  VertexShader.cpp
+  Generating Code...
   Graphics.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\Graphics.lib

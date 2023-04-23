@@ -164,3 +164,130 @@ void ModelIO::LoadMaterial(std::filesystem::path filePath, Model& model)
 
     fclose(file);
 }
+
+void ModelIO::SaveSkeleton(std::filesystem::path filePath, const Model& model)
+{
+    if (model.skeleton == nullptr)
+    {
+        return;
+    }
+
+    filePath.replace_extension("skeleton");
+    FILE* file = nullptr;
+
+    fopen_s(&file, filePath.u8string().c_str(), "w");
+
+    if (file == nullptr)
+    {
+        return;
+    }
+
+    auto WriteMatrix = [&](auto& m)
+    {
+        fprintf_s(file, "%f %f %f %f\n", m._11, m._12, m._13, m._14);
+        fprintf_s(file, "%f %f %f %f\n", m._21, m._22, m._23, m._24);
+        fprintf_s(file, "%f %f %f %f\n", m._31, m._32, m._33, m._34);
+        fprintf_s(file, "%f %f %f %f\n", m._41, m._42, m._43, m._44);
+    };
+
+    uint32_t boneCount = model.skeleton->bones.size();
+    fprintf_s(file, "RootBone: %d\n", model.skeleton->root->index);
+    fprintf_s(file, "BoneCount: %d\n", boneCount);
+    for (uint32_t i = 0; i < boneCount; i++)
+    {
+        auto& boneData = model.skeleton->bones[i];
+        fprintf_s(file, "BoneName: %s\n", boneData->name.c_str());
+        fprintf_s(file, "BoneIndex: %d\n", boneData->index);
+        fprintf_s(file, "BoneParentIndex: %d\n", boneData->parentIndex);
+
+        uint32_t childCount = boneData->childrenIndices.size();
+        fprintf_s(file, "BoneChildrenCount: %d\n", childCount);
+        for (uint32_t c = 0; c < childCount; c++)
+        {
+            fprintf_s(file, "%d\n", boneData->childrenIndices[c]);
+        }
+
+        WriteMatrix(boneData->toParentTransform);
+        WriteMatrix(boneData->offsetTransform);
+    }
+    fclose(file);
+}
+
+void ModelIO::LoadSkeleton(std::filesystem::path filePath, Model& model)
+{
+    filePath.replace_extension("skeleton");
+    FILE* file = nullptr;
+
+    fopen_s(&file, filePath.u8string().c_str(), "r");
+
+    if (file == nullptr)
+    {
+        return;
+    }
+
+    auto ReadMatrix = [&](auto& m)
+    {
+        fscanf_s(file, "%f %f %f %f\n", &m._11, &m._12, &m._13, &m._14);
+        fscanf_s(file, "%f %f %f %f\n", &m._21, &m._22, &m._23, &m._24);
+        fscanf_s(file, "%f %f %f %f\n", &m._31, &m._32, &m._33, &m._34);
+        fscanf_s(file, "%f %f %f %f\n", &m._41, &m._42, &m._43, &m._44);
+    };
+
+    model.skeleton = std::make_unique<Skeleton>();
+
+    int boneCount = 0;
+    int rootIndex = 0;
+
+    fscanf_s(file, "RootBone: %d\n", &rootIndex);
+    fscanf_s(file, "BoneCount: %d\n", &boneCount);
+    model.skeleton->bones.resize(boneCount);
+
+    for (uint32_t i = 0; i < boneCount; ++i)
+    {
+        model.skeleton->bones[i] = std::make_unique<Bone>();
+    }
+
+    model.skeleton->root = model.skeleton->bones[rootIndex].get();
+
+    for (uint32_t i = 0; i < boneCount; i++)
+    {
+
+        uint32_t boneIndex = 0;
+        char boneName[MAX_PATH]{};
+
+        fscanf_s(file, "BoneName: %s\n", &boneName);
+        fscanf_s(file, "BoneIndex: %d\n", &boneIndex);
+
+        auto& boneData = model.skeleton->bones[i];
+        boneData->name = std::move(boneName);
+        boneData->index = boneIndex;
+
+        fscanf_s(file, "BoneParentIndex: %d\n", &boneData->parentIndex);
+
+        if (boneData->parentIndex >= 0)
+        {
+            boneData->parent = model.skeleton->bones[boneData->parentIndex].get();
+        }
+
+
+        uint32_t childCount = 0;
+        fscanf_s(file, "BoneChildrenCount: %d\n", &childCount);
+
+        if (childCount > 0)
+        {
+            boneData->children.resize(childCount);
+            boneData->childrenIndices.resize(childCount);
+            for (uint32_t c = 0; c < childCount; c++)
+            {
+                uint32_t childIndex = 0;
+                fscanf_s(file, "%d\n", &childIndex);
+                boneData->childrenIndices[c] = childIndex;
+                boneData->children[c] = model.skeleton->bones[childIndex].get();
+            }
+        }
+
+        ReadMatrix(boneData->toParentTransform);
+        ReadMatrix(boneData->offsetTransform);
+    }
+    fclose(file);
+}

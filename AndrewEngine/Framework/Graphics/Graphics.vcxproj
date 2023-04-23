@@ -147,7 +147,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Inc\Animation.h" />
+    <ClInclude Include="Inc\AnimationBuilder.h" />
     <ClInclude Include="Inc\BlendState.h" />
+    <ClInclude Include="Inc\Bone.h" />
     <ClInclude Include="Inc\Camera.h" />
     <ClInclude Include="Inc\Colours.h" />
     <ClInclude Include="Inc\Common.h" />
@@ -156,6 +159,7 @@
     <ClInclude Include="Inc\GrainEffect.h" />
     <ClInclude Include="Inc\Graphics.h" />
     <ClInclude Include="Inc\GraphicsSystem.h" />
+    <ClInclude Include="Inc\Keyframe.h" />
     <ClInclude Include="Inc\LightTypes.h" />
     <ClInclude Include="Inc\Material.h" />
     <ClInclude Include="Inc\MeshTypes.h" />
@@ -170,6 +174,7 @@
     <ClInclude Include="Inc\Sampler.h" />
     <ClInclude Include="Inc\ShadowEffect.h" />
     <ClInclude Include="Inc\SimpleDraw.h" />
+    <ClInclude Include="Inc\Skeleton.h" />
     <ClInclude Include="Inc\StandardEffect.h" />
     <ClInclude Include="Inc\Texture.h" />
     <ClInclude Include="Inc\TextureManager.h" />
@@ -179,6 +184,8 @@
     <ClInclude Include="Src\Precompiled.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Animation.cpp" />
+    <ClCompile Include="Src\AnimationBuilder.cpp" />
     <ClCompile Include="Src\BlendState.cpp" />
     <ClCompile Include="Src\Camera.cpp" />
     <ClCompile Include="Src\ConstantBuffer.cpp" />

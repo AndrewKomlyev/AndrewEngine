@@ -131,4 +131,10 @@ namespace AndrewEngine::AEMath
             m._14, m._24, m._34, m._44
         );
     }
+
+
+    inline Vector3 GetTranslation(const Matrix4& m)
+    {
+        return{ m._41, m._42, m._43, };
+    }
 }

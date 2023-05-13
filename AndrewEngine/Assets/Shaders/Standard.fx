@@ -8,7 +8,12 @@ cbuffer TransformBuffer : register(b0)
     float displacementWeight;
 }
 
-cbuffer LightBuffer : register(b1)
+cbuffer BoneTransformBuffer : register(b1)
+{
+    matrix boneTransform[256];
+}
+
+cbuffer LightBuffer : register(b2)
 {
 	float3 lightDirection;
 	float4 lightAmbient;
@@ -17,7 +22,7 @@ cbuffer LightBuffer : register(b1)
 
 }
 
-cbuffer MaterialBuffer : register(b2)
+cbuffer MaterialBuffer : register(b3)
 {
     float4 materialAmbient;
     float4 materialDiffuse;
@@ -26,7 +31,7 @@ cbuffer MaterialBuffer : register(b2)
     float materialPpower;
 }
 
-cbuffer SettingsBuffer : register(b3)
+cbuffer SettingsBuffer : register(b4)
 {
     bool useDiffuseMap;
     bool useSpecularMap;

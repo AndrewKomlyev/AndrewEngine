@@ -3,6 +3,7 @@
 
 #include "Animation.h"
 #include "AnimationBuilder.h"
+#include "AnimationUtil.h"
 #include "BlendState.h"
 #include "Bone.h"
 #include "Camera.h"
@@ -18,6 +19,7 @@
 #include "MeshTypes.h"
 #include "Model.h"
 #include "ModelIO.h"
+#include "ModelManager.h"
 #include "PixelShader.h"
 #include "PostProcessingEffect.h"
 #include "RenderObject.h"

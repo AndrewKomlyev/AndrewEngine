@@ -15,5 +15,8 @@ namespace AndrewEngine::Graphics
 
         void SaveSkeleton(std::filesystem::path filePath, const Model& model);
         void LoadSkeleton(std::filesystem::path filePath, Model& model);
+
+        void SaveAnimation(std::filesystem::path filePath, const Model& model);
+        void LoadAnimation(std::filesystem::path filePath, Model& model);
     }
 }

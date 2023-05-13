@@ -10,9 +10,22 @@ void RenderObject::Terminate()
     specularMapId = 0;
     displacementMapId = 0;
     normalMapId = 0;
+    modelId = 0;
     meshBuffer.Terminate();
 }
 
+
+RenderGroup Graphics::CreateRenderGroup(ModelId modelId)
+{
+    auto model = ModelManager::Get()->GetModel(modelId);
+    RenderGroup renderGroup = CreateRenderGroup(*model);
+    for (auto renderObject : renderGroup)
+    {
+        renderObject.modelId = modelId;
+    }
+
+    return renderGroup;
+}
 
 RenderGroup Graphics::CreateRenderGroup(const Model& model)
 {
@@ -39,6 +52,8 @@ RenderGroup Graphics::CreateRenderGroup(const Model& model)
         renderObject.specularMapId = TryLoadTexture(materialData.specularMapName);
         renderObject.displacementMapId = TryLoadTexture(materialData.displacementMapName);
         renderObject.normalMapId = TryLoadTexture(materialData.normalMapName);
+
+        renderObject.skeleton = model.skeleton.get();
 
         renderObject.meshBuffer.Initialize(meshData.mesh);
     }

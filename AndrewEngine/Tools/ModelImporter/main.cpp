@@ -331,7 +331,7 @@ int main(int argc, char* argv[])
             if (aiMesh->HasBones())
             {
                 printf("Reading Bones...\n");
-                if (model.skeleton = nullptr)
+                if (model.skeleton == nullptr)
                 {
                     model.skeleton = std::make_unique<Skeleton>();
                 }
@@ -359,10 +359,6 @@ int main(int argc, char* argv[])
         }
     }
 
-  /*  if (scene->mRootNode != nullptr)
-    {
-        if(model.skeleton)
-    }*/
 
     if (scene->HasMaterials())
     {

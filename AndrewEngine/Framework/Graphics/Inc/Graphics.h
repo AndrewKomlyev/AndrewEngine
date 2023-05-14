@@ -2,6 +2,7 @@
 #include "Common.h"
 
 #include "Animation.h"
+#include "AnimationClip.h"
 #include "AnimationBuilder.h"
 #include "AnimationUtil.h"
 #include "BlendState.h"

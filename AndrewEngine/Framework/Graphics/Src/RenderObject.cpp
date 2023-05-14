@@ -19,7 +19,7 @@ RenderGroup Graphics::CreateRenderGroup(ModelId modelId)
 {
     auto model = ModelManager::Get()->GetModel(modelId);
     RenderGroup renderGroup = CreateRenderGroup(*model);
-    for (auto renderObject : renderGroup)
+    for (auto& renderObject : renderGroup)
     {
         renderObject.modelId = modelId;
     }

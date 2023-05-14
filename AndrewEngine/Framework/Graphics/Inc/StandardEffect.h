@@ -41,6 +41,13 @@ namespace AndrewEngine::Graphics
             float displacementWeight;
         };
 
+        struct BoneTransformData
+        {
+            static constexpr size_t MaxBoneCount = 256;
+            AEMath::Matrix4 boneTransforms[MaxBoneCount];
+
+        };
+
         struct SettingsData
         {
             int useDiffuseMap = 1;
@@ -48,16 +55,19 @@ namespace AndrewEngine::Graphics
             int useDisplacementMap = 1;
             int useNormalMap = 1;
             int useShadowMap = 1;
+            int useSkinning = 1;
             float depthBias = 0.0f;
-            float padding[2] = { 0.0f };
+            float padding[1] = { 0.0f };
         };
 
         using TransformBuffer = TypeConstantBuffer<TransformData>;
+        using BoneTransformBuffer = ConstantBuffer;
         using LightBuffer = TypeConstantBuffer<DirectionalLight>;
         using MaterialBuffer = TypeConstantBuffer<Material>;
         using SettingsBuffer = TypeConstantBuffer<SettingsData>;
 
         TransformBuffer mTransformBuffer;
+        BoneTransformBuffer mBoneTransformBuffer;
         LightBuffer mLightBuffer;
         MaterialBuffer mMaterialBuffer;
         SettingsBuffer mSettingsBuffer;
@@ -66,6 +76,7 @@ namespace AndrewEngine::Graphics
         VertexShader mVertexShader;
         PixelShader mPixelShader;
 
+        //BoneTransformData mBoneTransformData;
 
         SettingsData mSettingsData;
         float mDisplacementWeight = 0.0f;

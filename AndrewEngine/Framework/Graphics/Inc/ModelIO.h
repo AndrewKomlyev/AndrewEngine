@@ -3,6 +3,15 @@
 namespace AndrewEngine::Graphics
 {
     struct Model;
+    class Animation;
+    
+
+    class AnimationIO
+    {
+    public:
+        static void Write(FILE* file, const Animation& animation);
+        static void Read(FILE* file, Animation& animation);
+    };
     
     namespace ModelIO
     {

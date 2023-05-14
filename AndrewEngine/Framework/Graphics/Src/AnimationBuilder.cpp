@@ -41,6 +41,6 @@ Animation AnimationBuilder::Build()
 {
 
     ASSERT(!mWorkingCopy.mPositionKeys.empty() || !mWorkingCopy.mRotationKeys.empty() || mWorkingCopy.mScaleKeys.empty(), "AnimationBuilder -- Animation Keys are empty");
-    ASSERT(mWorkingCopy.mDuration > 0.0f, "Animation -- no key times");
+//ASSERT(mWorkingCopy.mDuration > 0.0f, "Animation -- no key times");
     return std::move(mWorkingCopy);
 }

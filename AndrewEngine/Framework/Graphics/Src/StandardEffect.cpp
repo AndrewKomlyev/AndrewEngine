@@ -3,13 +3,17 @@
 #include "Camera.h"
 #include "RenderObject.h"
 #include "VertexTypes.h"
+#include "AnimationUtil.h"
 
 using namespace AndrewEngine;
 using namespace AndrewEngine::Graphics;
 
+static constexpr size_t MaxBoneCount = 256;
+
 void StandardEffect::Initialize(const std::filesystem::path& filePath)
 {
     mTransformBuffer.Initialize();
+    mBoneTransformBuffer.Initialize(MaxBoneCount* sizeof(AEMath::Matrix4));
     mLightBuffer.Initialize();
     mMaterialBuffer.Initialize();
     mSettingsBuffer.Initialize();
@@ -26,6 +30,7 @@ void StandardEffect::Terminate()
     mSettingsBuffer.Terminate();
     mMaterialBuffer.Terminate();
     mLightBuffer.Terminate();
+    mBoneTransformBuffer.Terminate();
     mTransformBuffer.Terminate();
 }
 
@@ -38,14 +43,16 @@ void StandardEffect::Begin()
 
     mTransformBuffer.BindVS(0);
 
-    mLightBuffer.BindVS(1);
-    mLightBuffer.BindPS(1);
+    mBoneTransformBuffer.BindVS(1);
 
-    mMaterialBuffer.BindVS(2);
-    mMaterialBuffer.BindPS(2);
+    mLightBuffer.BindVS(2);
+    mLightBuffer.BindPS(2);
 
-    mSettingsBuffer.BindVS(3);
-    mSettingsBuffer.BindPS(3);
+    mMaterialBuffer.BindVS(3);
+    mMaterialBuffer.BindPS(3);
+
+    mSettingsBuffer.BindVS(4);
+    mSettingsBuffer.BindPS(4);
 
     mSampler.BindVS(0);
     mSampler.BindPS(0);
@@ -72,6 +79,7 @@ void StandardEffect::Render(const RenderObject& renderObject)
     settingData.useDisplacementMap = mSettingsData.useDisplacementMap > 0 && renderObject.displacementMapId > 0;
     settingData.useNormalMap = mSettingsData.useNormalMap > 0 && renderObject.normalMapId > 0;
     settingData.useShadowMap = mSettingsData.useShadowMap > 0 && mShadowMap != nullptr;
+    settingData.useSkinning = mSettingsData.useSkinning > 0 && renderObject.skeleton != nullptr;
     settingData.depthBias = mDepthBias;
 
     TransformData transformData;
@@ -86,6 +94,21 @@ void StandardEffect::Render(const RenderObject& renderObject)
         const auto& matLightProj = mLightCamera->GetProjectionMatrix();
         transformData.wvp[1] = Transpose(matWorld * matLightView * matLightProj);
         mShadowMap->BindPS(4);
+    }
+
+    if (settingData.useSkinning)
+    {
+        AnimationUtil::BoneTransforms boneTransforms; 
+        AnimationUtil::ComputeBoneTransform(renderObject.modelId, boneTransforms);
+        AnimationUtil::ApplyBoneOffset(renderObject.modelId, boneTransforms);
+
+        for (auto& transform : boneTransforms)
+        {
+            transform = AEMath::Transpose(transform);
+        }
+
+        boneTransforms.resize(MaxBoneCount);
+        mBoneTransformBuffer.Update(boneTransforms.data());
     }
 
     mTransformBuffer.Update(transformData);

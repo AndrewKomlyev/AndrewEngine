@@ -21,6 +21,7 @@ namespace AndrewEngine::Graphics
 
     private:
         friend class AnimationBuilder;
+        friend class AnimationIO;
 
         PositionKeys mPositionKeys;
         RotationKeys mRotationKeys;

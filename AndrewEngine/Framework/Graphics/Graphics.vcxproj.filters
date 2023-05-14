@@ -120,6 +120,9 @@
     <ClInclude Include="Inc\ModelManager.h">
       <Filter>Inc</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\AnimationClip.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Precompiles.cpp">

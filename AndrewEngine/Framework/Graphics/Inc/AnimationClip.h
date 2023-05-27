@@ -1,7 +1,5 @@
 #pragma once
-
 #include "Animation.h"
-
 
 namespace AndrewEngine::Graphics
 {
@@ -13,7 +11,5 @@ namespace AndrewEngine::Graphics
         float tickPerSecond = 0.0f;
 
         std::vector < std::unique_ptr<Animation>> boneAnimations;
-
-
     };
 }

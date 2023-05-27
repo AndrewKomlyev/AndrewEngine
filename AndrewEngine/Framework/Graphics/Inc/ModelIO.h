@@ -4,7 +4,6 @@ namespace AndrewEngine::Graphics
 {
     struct Model;
     class Animation;
-    
 
     class AnimationIO
     {
@@ -12,7 +11,7 @@ namespace AndrewEngine::Graphics
         static void Write(FILE* file, const Animation& animation);
         static void Read(FILE* file, Animation& animation);
     };
-    
+
     namespace ModelIO
     {
         void SaveModel(std::filesystem::path filePath, const Model& model);
@@ -20,7 +19,6 @@ namespace AndrewEngine::Graphics
 
         void SaveMaterial(std::filesystem::path filePath, const Model& model);
         void LoadMaterial(std::filesystem::path filePath, Model& model);
-
 
         void SaveSkeleton(std::filesystem::path filePath, const Model& model);
         void LoadSkeleton(std::filesystem::path filePath, Model& model);

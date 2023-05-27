@@ -16,7 +16,7 @@ public:
     virtual void Update(float deltaTime) override;
     virtual void Render() override;
     virtual void DebugUI() override;
-protected:    
+protected:
     Camera mCamera;
     DirectionalLight mDirectionalLight;
     Animator mCharacterAnimator;
@@ -25,8 +25,5 @@ protected:
     RenderGroup mCharacter;
     ModelId mCharacterModelId;
     bool mDrawSkeleton;
-
-
-
 };
 

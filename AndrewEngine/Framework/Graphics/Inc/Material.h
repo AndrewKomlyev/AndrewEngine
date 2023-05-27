@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Colours.h"
 
 namespace AndrewEngine::Graphics
@@ -11,6 +10,6 @@ namespace AndrewEngine::Graphics
         Color specular = Colors::Black;
         Color emissive = Colors::Black;
         float power = 0.0f;
-        float padding[3] = {0.0f};
+        float padding[3] = { 0.0f };
     };
 }

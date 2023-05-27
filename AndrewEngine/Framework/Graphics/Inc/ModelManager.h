@@ -30,6 +30,4 @@ namespace AndrewEngine::Graphics
         using ModelCache = std::map<ModelId, std::unique_ptr<Model>>;
         ModelCache mInventory;
     };
-
-
 }

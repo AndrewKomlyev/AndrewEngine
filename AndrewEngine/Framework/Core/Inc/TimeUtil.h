@@ -2,6 +2,6 @@
 
 namespace AndrewEngine::Core::TimeUtil
 {
-	float GetTime();
-	float GetDeltaTime();
+    float GetTime();
+    float GetDeltaTime();
 }

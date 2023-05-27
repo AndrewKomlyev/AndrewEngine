@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Colours.h"
 
 using namespace AndrewEngine::AEMath;
@@ -10,7 +9,6 @@ namespace AndrewEngine::Graphics
 
     namespace SimpleDraw
     {
-
         void StaticInitialize(uint32_t msxVertexCount);
         void StaticTerminate();
 

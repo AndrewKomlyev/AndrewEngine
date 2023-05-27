@@ -1,13 +1,10 @@
 #pragma once
 
-
 #include "Keyframe.h"
 #include "Transform.h"
 
 namespace AndrewEngine::Graphics
 {
-
-
     class Animation
     {
     public:

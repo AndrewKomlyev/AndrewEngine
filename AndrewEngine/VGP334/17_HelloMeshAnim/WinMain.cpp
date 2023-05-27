@@ -5,10 +5,10 @@ enum class States : size_t
 {
     GameState = 0,
     Cube = 1,
-    Rectangle=2,
-    Plane=3,
-    Cylinder=4,
-    Sphere=5
+    Rectangle = 2,
+    Plane = 3,
+    Cylinder = 4,
+    Sphere = 5
 };
 
 int WINAPI  WinMain(HINSTANCE instance, HINSTANCE, LPSTR, int)

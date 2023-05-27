@@ -26,14 +26,13 @@ namespace AndrewEngine
                 ptr = std::make_unique<StateType>();
                 if (mCurrentState == nullptr)
                 {
-                    LOG("APP -- CurrentState: %d", iter->first );
+                    LOG("APP -- CurrentState: %d", iter->first);
                     mCurrentState = ptr.get();
                 }
             }
         }
         void ChangeState(size_t stateID);
 
-        //[Depricated] use of Run() function
         void Run();
         void Run(const AppConfig& config);
         void Quit();
@@ -47,6 +46,4 @@ namespace AndrewEngine
 
         bool mRunning = false;
     };
-
-
 }

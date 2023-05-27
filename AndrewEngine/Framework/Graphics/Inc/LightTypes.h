@@ -10,7 +10,5 @@ namespace AndrewEngine::Graphics
         Color ambient = Colors::White;
         Color diffuse = Colors::White;
         Color specular = Colors::White;
-
-
     };
 }

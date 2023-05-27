@@ -20,5 +20,4 @@ namespace AndrewEngine::Graphics
 
         static MeshPX CreateScreenQuad();
     };
-
 }

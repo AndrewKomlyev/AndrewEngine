@@ -1,16 +1,13 @@
 #include "GameState.h"
 #include "Input/Inc/InputSystem.h"
 
-
-
 using namespace AndrewEngine::AEMath;
 using namespace AndrewEngine::Input;
 
-
-void GameState::Initialize() 
+void GameState::Initialize()
 {
-    mCamera.SetPosition({0.0f, 1.0f, -4.0f});
-    mCamera.SetLookAt({0.0f, 0.0f, 0.0f});
+    mCamera.SetPosition({ 0.0f, 1.0f, -4.0f });
+    mCamera.SetLookAt({ 0.0f, 0.0f, 0.0f });
 
     mDirectionalLight.direction = AEMath::Normalize({ 1.0f, -1.0f, 1.0f });
     mDirectionalLight.ambient = { 0.8f, 0.8f, 0.8f, 1.0f };
@@ -23,7 +20,7 @@ void GameState::Initialize()
     mGround.material.ambient = { 0.8f, 0.8f, 0.8f, 1.0f };
     mGround.material.diffuse = { 0.8f, 0.8f, 0.8f, 1.0f };
     mGround.material.specular = { 0.8f, 0.8f, 0.8f, 1.0f };
-    mGround.material.power =  10.0f;
+    mGround.material.power = 10.0f;
 
     mCharacterModelId = ModelManager::Get()->LoadModel("../../Assets/Models/FishGuy/character.model");
     mCharacter = CreateRenderGroup(mCharacterModelId);
@@ -31,7 +28,6 @@ void GameState::Initialize()
     mStandartEffect.Initialize(L"../../Assets/Shaders/Standard.fx");
     mStandartEffect.SetCamera(mCamera);
     mStandartEffect.SetDireectionalLight(mDirectionalLight);
-
 
     mDrawSkeleton = false;
 }
@@ -42,12 +38,11 @@ void GameState::Terminate()
     mGround.Terminate();
 }
 
-void GameState::Update(float deltaTime) 
+void GameState::Update(float deltaTime)
 {
     auto input = InputSystem::Get();
     const float moveSpeed = input->IsKeyDown(KeyCode::LSHIFT) ? 10.0f : 1.0f;
     const float turnspeed = 0.01f;
-
 
     if (input->IsKeyDown(KeyCode::W))
     {
@@ -95,15 +90,13 @@ void GameState::Render()
     {
         DrawRenderGroup(mStandartEffect, mCharacter);
     }
-        mStandartEffect.Render(mGround);
+    mStandartEffect.Render(mGround);
     mStandartEffect.End();
-        SimpleDraw::Render(mCamera);
+    SimpleDraw::Render(mCamera);
 }
 
 void GameState::DebugUI()
 {
-    //mGrainEffect.DebugUI();
-
     ImGui::Begin("Debug Control", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
     ImGui::Separator();
 
@@ -119,14 +112,7 @@ void GameState::DebugUI()
     }
 
     ImGui::Checkbox("Draw##Skeleton", &mDrawSkeleton);
-    
+
     ImGui::Separator();
     ImGui::End();
 }
-
-
-
-
-
-
-

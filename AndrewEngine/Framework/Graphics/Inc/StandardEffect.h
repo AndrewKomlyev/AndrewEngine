@@ -1,5 +1,4 @@
 #pragma once
-
 #include "ConstantBuffer.h"
 #include "LightTypes.h"
 #include "PixelShader.h"
@@ -11,7 +10,7 @@ namespace AndrewEngine::Graphics
 {
     class Camera;
     class RenderObject;
-    class Texture; 
+    class Texture;
 
     class StandardEffect
     {
@@ -85,7 +84,5 @@ namespace AndrewEngine::Graphics
         const Camera* mLightCamera = nullptr;
         const DirectionalLight* mDirectionalLight = nullptr;
         const Texture* mShadowMap = nullptr;
-
-
     };
 }

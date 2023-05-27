@@ -1,7 +1,7 @@
 #pragma once
 
 namespace AndrewEngine::Graphics
-{ 
+{
     class MeshBuffer final
     {
     public:
@@ -26,7 +26,6 @@ namespace AndrewEngine::Graphics
         void Initialize(const void* verticies, uint32_t vertexSize, uint32_t vertexCount, const uint32_t* indicies, uint32_t indexCount);
         void Terminate();
 
-
         void Update(const void* vertices, uint32_t vertexCount);
         void SetTopology(Topology topology);
         void Render() const;
@@ -37,12 +36,11 @@ namespace AndrewEngine::Graphics
         void CreateIndexBuffer(const uint32_t* indicies, uint32_t indexCount);
         ID3D11Buffer* mVertexBuffer = nullptr;
         ID3D11Buffer* mIndexBuffer = nullptr;
-        
+
         D3D11_PRIMITIVE_TOPOLOGY mTopology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
 
         uint32_t mVertexSize;
         uint32_t mVertexCount;
         uint32_t mIndexCount;
-
     };
 }

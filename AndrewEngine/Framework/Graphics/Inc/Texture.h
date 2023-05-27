@@ -10,7 +10,7 @@ namespace AndrewEngine::Graphics
     public:
         enum class Format
         {
-            RGBA_U8, 
+            RGBA_U8,
             RGBA_U32,
         };
 
@@ -35,6 +35,5 @@ namespace AndrewEngine::Graphics
     protected:
         DXGI_FORMAT GetDXGIFormat(Format format);
         ID3D11ShaderResourceView* mShaderResourceView = nullptr;
-
     };
 }

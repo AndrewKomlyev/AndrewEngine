@@ -1,5 +1,5 @@
 #pragma once
-using std::wstring; 
+using std::wstring;
 namespace AndrewEngine::Core
 {
     class Window

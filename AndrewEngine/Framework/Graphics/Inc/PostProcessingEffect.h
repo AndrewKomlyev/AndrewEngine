@@ -54,10 +54,9 @@ namespace AndrewEngine::Graphics
 
         Sampler mSampler;
 
-        std::array<const Texture*, 4> mTextures; 
+        std::array<const Texture*, 4> mTextures;
         Mode mMode = Mode::None;
 
         float mMirrorScale = -1.0f;
-
     };
 }

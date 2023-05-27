@@ -4,7 +4,6 @@
 
 using namespace AndrewEngine::Core;
 
-
 void WindowMessageHandler::Hook(HWND window, Callback cb)
 {
     mWindow = window;

@@ -6,7 +6,7 @@ namespace AndrewEngine::Graphics
 {
     using TextureId = std::size_t;
 
-    class TextureManager 
+    class TextureManager
     {
     public:
         static void StaticInitialize(const std::filesystem::path& root);
@@ -21,7 +21,7 @@ namespace AndrewEngine::Graphics
         TextureManager(const TextureManager&&) = delete;
         TextureManager& operator=(const TextureManager&&) = delete;
 
-        void SetRootDirectory(const std::filesystem::path& root) { mRootDirectory = std::move(root ); }
+        void SetRootDirectory(const std::filesystem::path& root) { mRootDirectory = std::move(root); }
 
         TextureId LoadTexture(std::filesystem::path fileName, bool userRootDir = true);
 
@@ -32,6 +32,5 @@ namespace AndrewEngine::Graphics
         using Inventory = std::unordered_map<TextureId, std::unique_ptr<Texture>>;
         Inventory mInventory;
         std::filesystem::path mRootDirectory;
-
     };
 }

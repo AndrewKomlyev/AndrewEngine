@@ -54,7 +54,6 @@ void AnimationUtil::ApplyBoneOffset(ModelId modelId, BoneTransforms& boneTransfo
     {
         for (auto& bone : model->skeleton->bones)
         {
-
             boneTransforms[bone->index] = bone->offsetTransform * boneTransforms[bone->index];
         }
     }

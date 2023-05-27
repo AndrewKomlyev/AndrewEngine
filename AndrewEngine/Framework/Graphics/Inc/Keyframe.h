@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Common.h"
 
 namespace AndrewEngine::Graphics
@@ -19,7 +18,7 @@ namespace AndrewEngine::Graphics
     struct KeyFrame
     {
         KeyFrame() = default;
-        KeyFrame(const T& k, float t, EaseType e = EaseType::None) 
+        KeyFrame(const T& k, float t, EaseType e = EaseType::None)
             : key(k), time(t), easeType(e)
         {
 
@@ -30,12 +29,10 @@ namespace AndrewEngine::Graphics
         EaseType easeType = EaseType::None;
     };
 
-
     template<class T>
     using Keyframes = std::vector<KeyFrame<T>>;
 
     using PositionKeys = Keyframes<AEMath::Vector3>;
     using RotationKeys = Keyframes<AEMath::Quaternion>;
     using ScaleKeys = Keyframes<AEMath::Vector3>;
-
 }

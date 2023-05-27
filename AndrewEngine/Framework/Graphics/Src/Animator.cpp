@@ -48,7 +48,6 @@ bool BlendNode::GetToParentTransform(const Bone* bone, Transform& transform) con
 
 bool AndrewEngine::Graphics::BlendNode::IsFinished() const
 {
-
     if (mLooping || mClipIndex < 0)
     {
         return false;
@@ -65,7 +64,6 @@ BlendNode::BlendNode(BlendNode&& rhs)
     , mClipIndex(rhs.mClipIndex)
     , mAnimationTick(rhs.mAnimationTick)
     , mLooping(rhs.mLooping)
-
 {
     rhs.mModelId = 0;
     rhs.mClipIndex = -1;

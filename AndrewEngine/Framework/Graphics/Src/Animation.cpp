@@ -118,7 +118,6 @@ Vector3 Animation::GetScale(float time) const
 
 Transform Animation::GetTransform(float time) const
 {
-
     Transform transform;
 
     transform.position = GetPosition(time);

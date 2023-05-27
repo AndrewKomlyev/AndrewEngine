@@ -1,16 +1,13 @@
 #include "GameState.h"
 #include "Input/Inc/InputSystem.h"
 
-
-
 using namespace AndrewEngine::AEMath;
 using namespace AndrewEngine::Input;
 
-
-void GameState::Initialize() 
+void GameState::Initialize()
 {
-    mCamera.SetPosition({0.0f, 1.0f, -4.0f});
-    mCamera.SetLookAt({0.0f, 0.0f, 0.0f});
+    mCamera.SetPosition({ 0.0f, 1.0f, -4.0f });
+    mCamera.SetLookAt({ 0.0f, 0.0f, 0.0f });
 
     mDirectionalLight.direction = AEMath::Normalize({ 1.0f, -1.0f, 1.0f });
     mDirectionalLight.ambient = { 0.8f, 0.8f, 0.8f, 1.0f };
@@ -23,7 +20,7 @@ void GameState::Initialize()
     mGround.material.ambient = { 0.8f, 0.8f, 0.8f, 1.0f };
     mGround.material.diffuse = { 0.8f, 0.8f, 0.8f, 1.0f };
     mGround.material.specular = { 0.8f, 0.8f, 0.8f, 1.0f };
-    mGround.material.power =  10.0f;
+    mGround.material.power = 10.0f;
 
     Mesh sphere = MeshBuilder::CreateSphere(20, 20, 1.0f);
     mSphere.meshBuffer.Initialize(sphere);
@@ -37,7 +34,6 @@ void GameState::Initialize()
     mStandartEffect.Initialize(L"../../Assets/Shaders/Standard.fx");
     mStandartEffect.SetCamera(mCamera);
     mStandartEffect.SetDireectionalLight(mDirectionalLight);
-    
 }
 
 void GameState::Terminate()
@@ -47,12 +43,11 @@ void GameState::Terminate()
     mGround.Terminate();
 }
 
-void GameState::Update(float deltaTime) 
+void GameState::Update(float deltaTime)
 {
     auto input = InputSystem::Get();
     const float moveSpeed = input->IsKeyDown(KeyCode::LSHIFT) ? 10.0f : 1.0f;
     const float turnspeed = 0.01f;
-
 
     if (input->IsKeyDown(KeyCode::W))
     {
@@ -90,23 +85,18 @@ void GameState::Update(float deltaTime)
     mPitch += mPitchTurnspeed * deltaTime;
     mRoll += mRollTurnspeed * deltaTime;
     mSphere.transform.rotation = Quaternion::CreateFromYawPitchRoll(mYaw, mPitch, mRoll);
-
 }
 
 void GameState::Render()
 {
-
     mStandartEffect.Begin();
-        mStandartEffect.Render(mGround);
-        mStandartEffect.Render(mSphere);
+    mStandartEffect.Render(mGround);
+    mStandartEffect.Render(mSphere);
     mStandartEffect.End();
-    
 }
 
 void GameState::DebugUI()
 {
-    //mGrainEffect.DebugUI();
-
     ImGui::Begin("Debug Control", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
     ImGui::Separator();
 
@@ -120,17 +110,15 @@ void GameState::DebugUI()
         ImGui::ColorEdit4("Diffuse##Light", &mDirectionalLight.diffuse.r);
         ImGui::ColorEdit4("Specular##Light", &mDirectionalLight.specular.r);
     }
-    
+
     ImGui::Separator();
     ImGui::DragInt("Scale", &scaleIndex, 0.1, 1, 5);
     ImGui::Text("Acceleration Scale: %.2f", scale[scaleIndex - 1]);
 
     ImGui::Separator();
-    ImGui::DragFloat("Yaw", &mYawTurnspeed, scale[scaleIndex-1], -5.0f, 5.0f);
+    ImGui::DragFloat("Yaw", &mYawTurnspeed, scale[scaleIndex - 1], -5.0f, 5.0f);
     ImGui::DragFloat("Pitch", &mPitchTurnspeed, scale[scaleIndex - 1], -5.0f, 5.0f);
     ImGui::DragFloat("Roll", &mRollTurnspeed, scale[scaleIndex - 1], -5.0f, 5.0f);
-
-
 
     ImGui::Separator();
     ImGui::End();
@@ -139,10 +127,3 @@ void GameState::DebugUI()
 void GameState::ShowNormals()
 {
 }
-
-
-
-
-
-
-

@@ -1,16 +1,13 @@
 #include "GameState.h"
 #include "Input/Inc/InputSystem.h"
 
-
-
 using namespace AndrewEngine::AEMath;
 using namespace AndrewEngine::Input;
 
-
-void GameState::Initialize() 
+void GameState::Initialize()
 {
-    mCamera.SetPosition({0.0f, 1.0f, -4.0f});
-    mCamera.SetLookAt({0.0f, 0.0f, 0.0f});
+    mCamera.SetPosition({ 0.0f, 1.0f, -4.0f });
+    mCamera.SetLookAt({ 0.0f, 0.0f, 0.0f });
 
     mDirectionalLight.direction = AEMath::Normalize({ 1.0f, -1.0f, 1.0f });
     mDirectionalLight.ambient = { 0.8f, 0.8f, 0.8f, 1.0f };
@@ -23,7 +20,7 @@ void GameState::Initialize()
     mGround.material.ambient = { 0.8f, 0.8f, 0.8f, 1.0f };
     mGround.material.diffuse = { 0.8f, 0.8f, 0.8f, 1.0f };
     mGround.material.specular = { 0.8f, 0.8f, 0.8f, 1.0f };
-    mGround.material.power =  10.0f;
+    mGround.material.power = 10.0f;
 
     Mesh sphere = MeshBuilder::CreateSphere(20, 20, 1.0f);
     mSphere.meshBuffer.Initialize(sphere);
@@ -51,8 +48,6 @@ void GameState::Initialize()
         //.AddScaleKey(Vector3(2.0f, 2.0f, 2.0f), 3.0f, EaseType::EaseInQuad)
 
         .AddPositionKey(Vector3(0.0f, 1.0f, 0.0f), 4.0f, EaseType::EaseInOut)
-
-
         .Build();
 }
 
@@ -63,12 +58,11 @@ void GameState::Terminate()
     mGround.Terminate();
 }
 
-void GameState::Update(float deltaTime) 
+void GameState::Update(float deltaTime)
 {
     auto input = InputSystem::Get();
     const float moveSpeed = input->IsKeyDown(KeyCode::LSHIFT) ? 10.0f : 1.0f;
     const float turnspeed = 0.01f;
-
 
     if (input->IsKeyDown(KeyCode::W))
     {
@@ -115,16 +109,14 @@ void GameState::Render()
 {
 
     mStandartEffect.Begin();
-        mStandartEffect.Render(mGround);
-        mStandartEffect.Render(mSphere);
+    mStandartEffect.Render(mGround);
+    mStandartEffect.Render(mSphere);
     mStandartEffect.End();
-    
+
 }
 
 void GameState::DebugUI()
 {
-    //mGrainEffect.DebugUI();
-
     ImGui::Begin("Debug Control", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
     ImGui::Separator();
 
@@ -138,9 +130,6 @@ void GameState::DebugUI()
         ImGui::ColorEdit4("Diffuse##Light", &mDirectionalLight.diffuse.r);
         ImGui::ColorEdit4("Specular##Light", &mDirectionalLight.specular.r);
     }
-    
-
-
 
     ImGui::Separator();
     ImGui::End();
@@ -149,10 +138,3 @@ void GameState::DebugUI()
 void GameState::ShowNormals()
 {
 }
-
-
-
-
-
-
-

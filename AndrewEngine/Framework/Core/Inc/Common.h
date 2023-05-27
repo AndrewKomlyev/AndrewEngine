@@ -1,5 +1,4 @@
 #pragma once
-
 #define WIN32_LEAN_AND_MEAN
 #define NOMINAX
 
@@ -25,4 +24,3 @@
 #include <unordered_map>
 #include <variant>
 #include <vector>
-

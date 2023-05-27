@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Colours.h"
 #include "Common.h"
 
@@ -44,7 +43,7 @@ namespace AndrewEngine::Graphics
     private:
 
         static LRESULT CALLBACK GraphicsSysteMessageHandler(HWND handel, UINT message, WPARAM wParam, LPARAM lParam);
-       
+
         friend ID3D11Device* GetDevice();
         friend ID3D11DeviceContext* GetContext();
 
@@ -62,7 +61,5 @@ namespace AndrewEngine::Graphics
 
         Color mClearColour = Colors::Black;
         UINT mVSync = 1;
-
-
     };
 }

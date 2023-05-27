@@ -44,5 +44,4 @@ namespace AndrewEngine::Graphics
             effect.Render(renderObject);
         }
     }
-
 }

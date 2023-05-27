@@ -4,7 +4,6 @@
 #include "Material.h"
 #include "Skeleton.h"
 
-
 namespace AndrewEngine::Graphics
 {
     struct Model

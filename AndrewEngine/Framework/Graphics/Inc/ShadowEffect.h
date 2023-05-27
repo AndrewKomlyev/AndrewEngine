@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Camera.h"
 #include "ConstantBuffer.h"
 #include "LightTypes.h"
@@ -52,6 +51,4 @@ namespace AndrewEngine::Graphics
         AEMath::Vector3 mFocusPosition;
         float mSize;
     };
-
-
 }

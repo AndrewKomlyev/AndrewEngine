@@ -7,11 +7,11 @@ LRESULT CALLBACK WindowMEssageHAndler(HWND handle, UINT message, WPARAM wParam, 
 {
     switch (message)
     {
-        case WM_DESTROY:
-        {
-            PostQuitMessage(0);
-            return 0;
-        }
+    case WM_DESTROY:
+    {
+        PostQuitMessage(0);
+        return 0;
+    }
     }
     return DefWindowProc(handle, message, wParam, lParam);
 }
@@ -86,6 +86,5 @@ void Window::ProcessMessage()
         {
             mActive = false;
         }
-
     }
 }

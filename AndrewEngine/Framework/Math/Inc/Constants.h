@@ -1,4 +1,5 @@
 #pragma once
+
 namespace AndrewEngine::AEMath::Constants
 {
     constexpr float Pi = 3.14159265f;

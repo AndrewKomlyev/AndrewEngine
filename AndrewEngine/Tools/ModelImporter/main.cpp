@@ -1,9 +1,7 @@
 #include <AndrewEngine/Inc/AndrewEngine.h>
-
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
-
 #include <cstdio>
 
 using namespace AndrewEngine;
@@ -205,7 +203,6 @@ uint32_t TryAddBone(const aiBone* bone, Skeleton& skeleton, BoneIndexLook& boneI
     boneIndexMap.emplace(newBone->name, newBone->index);
 
     return newBone->index;
-
 }
 
 //void TryBuildSkeleton(const aiNode* node, Skeleton& skeleton, BoneIndexLook& boneIndexLookup)
@@ -302,7 +299,7 @@ int main(int argc, char* argv[])
                 continue;
             }
 
-           
+
             if (aiMesh->HasBones())
             {
                 printf("Reading Bones...\n");
@@ -409,10 +406,7 @@ int main(int argc, char* argv[])
                 }
             }
         }
-
-
     }
-
 
     if (!arguments.animationOnly && scene->HasMaterials())
     {
@@ -446,7 +440,6 @@ int main(int argc, char* argv[])
             materialData.specularMapName = FindTexture(scene, aiMaterial, aiTextureType_SPECULAR, arguments, "_specular", materialIndex);
         }
     }
-
 
     if (!boneIndexLookup.empty())
     {
@@ -509,7 +502,7 @@ int main(int argc, char* argv[])
                 for (uint32_t keyIndex = 0; keyIndex < aiBoneAnim->mNumPositionKeys; ++keyIndex)
                 {
                     auto& posKey = aiBoneAnim->mPositionKeys[keyIndex];
-                    builder.AddPositionKey(ToVector3(posKey.mValue)* arguments.scale, static_cast<float>(posKey.mTime));
+                    builder.AddPositionKey(ToVector3(posKey.mValue) * arguments.scale, static_cast<float>(posKey.mTime));
                 }
                 for (uint32_t keyIndex = 0; keyIndex < aiBoneAnim->mNumRotationKeys; ++keyIndex)
                 {
@@ -541,7 +534,6 @@ int main(int argc, char* argv[])
 
     printf("Saving Animation...\n");
     ModelIO::SaveAnimation(arguments.outputFileName, model);
-
 
     printf("All Done\n");
     return 0;

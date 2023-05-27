@@ -87,9 +87,9 @@ namespace AndrewEngine::AEMath
 
         q.w = sqrt(1.0f + M._11 + M._22 + M._33);
         float w4 = q.w * 4;
-        q.x = (M._32 - M._23)/(w4);
-        q.y = (M._13 - M._31)/(w4);
-        q.z = (M._21 - M._12)/(w4);
+        q.x = (M._32 - M._23) / (w4);
+        q.y = (M._13 - M._31) / (w4);
+        q.z = (M._21 - M._12) / (w4);
         return q;
     }
 

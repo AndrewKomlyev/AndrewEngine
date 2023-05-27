@@ -4,7 +4,6 @@
 namespace AndrewEngine::AEMath
 {
     struct Matrix4;
-
     //------------------------------------------------------------------------------
     // Quaternion
     struct Quaternion

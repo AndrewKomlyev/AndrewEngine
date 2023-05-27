@@ -15,8 +15,6 @@ namespace AndrewEngine::AEMath
     {
         return (v) / Magnitude(v);
     }
-    
-
 
     template <typename T> inline T Min(T a, T b)
     {
@@ -38,6 +36,7 @@ namespace AndrewEngine::AEMath
     {
         return (v >= 0) ? v : -v;
     }
+
     //Vector2
     inline float Dot(const Vector2& a, const Vector2& b)
     {
@@ -81,15 +80,12 @@ namespace AndrewEngine::AEMath
 
         return { x,y,z };
     }
-    
 
-    
     //Vector4
     inline float Dot(const Vector4& a, const Vector4& b)
     {
         return (a.x * b.x) + (a.y * b.y) + (a.z * b.z) + (a.w * b.w);
     }
-
 
     //Matrix4
     inline Matrix4 Matrix4::RotationAxis(const Vector3& axis, float rad)
@@ -131,7 +127,6 @@ namespace AndrewEngine::AEMath
             m._14, m._24, m._34, m._44
         );
     }
-
 
     inline Vector3 GetTranslation(const Matrix4& m)
     {

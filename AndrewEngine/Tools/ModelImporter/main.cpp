@@ -506,7 +506,7 @@ int main(int argc, char* argv[])
                 boneAnimation = std::make_unique<Animation>();
 
                 AnimationBuilder builder;
-                for (uint32_t keyIndex = 0; keyIndex < aiBoneAnim->mNumRotationKeys; ++keyIndex)
+                for (uint32_t keyIndex = 0; keyIndex < aiBoneAnim->mNumPositionKeys; ++keyIndex)
                 {
                     auto& posKey = aiBoneAnim->mPositionKeys[keyIndex];
                     builder.AddPositionKey(ToVector3(posKey.mValue)* arguments.scale, static_cast<float>(posKey.mTime));
@@ -514,12 +514,12 @@ int main(int argc, char* argv[])
                 for (uint32_t keyIndex = 0; keyIndex < aiBoneAnim->mNumRotationKeys; ++keyIndex)
                 {
                     auto& rotKey = aiBoneAnim->mRotationKeys[keyIndex];
-                    builder.AddRotationKey(ToQuaternion(rotKey.mValue) * arguments.scale, static_cast<float>(rotKey.mTime));
+                    builder.AddRotationKey(ToQuaternion(rotKey.mValue), static_cast<float>(rotKey.mTime));
                 }
                 for (uint32_t keyIndex = 0; keyIndex < aiBoneAnim->mNumScalingKeys; ++keyIndex)
                 {
                     auto& scaleKey = aiBoneAnim->mScalingKeys[keyIndex];
-                    builder.AddScaleKey(ToVector3(scaleKey.mValue) * arguments.scale, static_cast<float>(scaleKey.mTime));
+                    builder.AddScaleKey(ToVector3(scaleKey.mValue), static_cast<float>(scaleKey.mTime));
                 }
 
                 *boneAnimation = builder.Build();

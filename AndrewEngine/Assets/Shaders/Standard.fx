@@ -104,7 +104,7 @@ VS_OUTPUT VS(VS_INPUT input)
     
     if (useSkinning)
     {
-        matrix boneTrasform = GetBoneTransform(input.blendIndices, input.blendWeight);
+        matrix boneTransform = GetBoneTransform(input.blendIndices, input.blendWeight);
         toWorld = mul(boneTransform, toWorld);
         toNDC = mul(boneTransform, toNDC);
 

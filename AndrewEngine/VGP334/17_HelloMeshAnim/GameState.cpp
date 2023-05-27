@@ -25,8 +25,11 @@ void GameState::Initialize()
     mGround.material.specular = { 0.8f, 0.8f, 0.8f, 1.0f };
     mGround.material.power =  10.0f;
 
-    mCharacterModelId = ModelManager::Get()->LoadModel("../../Assets/Models/FishGuy/character.model");
-    mCharacter = CreateRenderGroup(mCharacterModelId);
+    mCharacterModelId = ModelManager::Get()->LoadModel(L"../../Assets/Models/FishGuy/character.model");
+    ModelManager::Get()->AddAnimation(mCharacterModelId, L"../../Assets/Models/FishGuy/Capoeira.model");
+    mCharacterAnimator.Initialize(mCharacterModelId);
+    mCharacterAnimator.PlayAnimation(0, true);
+    mCharacter = CreateRenderGroup(mCharacterModelId, &mCharacterAnimator);
 
     mStandartEffect.Initialize(L"../../Assets/Shaders/Standard.fx");
     mStandartEffect.SetCamera(mCamera);
@@ -38,12 +41,16 @@ void GameState::Initialize()
 
 void GameState::Terminate()
 {
+    CleanupRenderGroup(mCharacter);
     mStandartEffect.Terminate();
     mGround.Terminate();
 }
 
 void GameState::Update(float deltaTime) 
 {
+    mCharacterAnimator.Update(deltaTime);
+    //movement
+
     auto input = InputSystem::Get();
     const float moveSpeed = input->IsKeyDown(KeyCode::LSHIFT) ? 10.0f : 1.0f;
     const float turnspeed = 0.01f;
@@ -88,7 +95,7 @@ void GameState::Render()
     if (mDrawSkeleton)
     {
         AnimationUtil::BoneTransforms boneTransforms;
-        AnimationUtil::ComputeBoneTransform(mCharacterModelId, boneTransforms);
+        AnimationUtil::ComputeBoneTransform(mCharacterModelId, boneTransforms, &mCharacterAnimator);
         AnimationUtil::DrawSkeleton(mCharacterModelId, boneTransforms);
     }
     else

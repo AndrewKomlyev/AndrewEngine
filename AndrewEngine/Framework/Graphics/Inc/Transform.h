@@ -9,7 +9,13 @@ namespace AndrewEngine::Graphics
 		AEMath::Quaternion rotation = AEMath::Quaternion::Identity;
 		AEMath::Vector3 scale = AEMath::Vector3::One;
 
-		
+		Transform() = default;
+		Transform(AEMath::Matrix4 m)
+		{
+			position = AEMath::GetTranslation(m);
+			rotation = AEMath::Quaternion::CreateFromRotationMatrix(m);
+			scale = AEMath::GetScale(m);
+		}
 
 		AEMath::Matrix4 GetMatrix4() const
 		{

@@ -43,10 +43,16 @@ ModelId ModelManager::LoadModel(const std::filesystem::path& filePath)
         ModelIO::LoadModel(filePath, *modelPtr);
         ModelIO::LoadMaterial(filePath, *modelPtr);
         ModelIO::LoadSkeleton(filePath, *modelPtr);
-
     }
 
     return modelId;
+}
+
+void ModelManager::AddAnimation(ModelId id, const std::filesystem::path& filePath)
+{
+    auto model = mInventory.find(id);
+    ASSERT(model != mInventory.end(), "ModelManager: need to load the model first");
+    ModelIO::LoadAnimation(filePath, *model->second);
 }
 
 const Model* ModelManager::GetModel(ModelId id)

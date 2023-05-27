@@ -2,6 +2,7 @@
 #include "AnimationUtil.h"
 #include "Colours.h"
 #include "SimpleDraw.h"
+#include "Animator.h"
 
 using namespace AndrewEngine;
 using namespace AndrewEngine::Graphics;
@@ -9,13 +10,20 @@ using namespace AndrewEngine::Graphics::AnimationUtil;
 
 namespace
 {
-    void ComputeBoneTransformRecursive(const Bone* bone, BoneTransforms& boneTransforms)
+    void ComputeBoneTransformRecursive(const Bone* bone, BoneTransforms& boneTransforms, const Animator* animator = nullptr)
     {
         if (bone != nullptr)
         {
             if (bone->parent != nullptr)
             {
-                boneTransforms[bone->index] = bone->toParentTransform * boneTransforms[bone->parentIndex];
+                if (animator != nullptr)
+                {
+                    boneTransforms[bone->index] = animator->GetToParentTransform(bone) * boneTransforms[bone->parentIndex];
+                }
+                else
+                {
+                    boneTransforms[bone->index] = bone->toParentTransform * boneTransforms[bone->parentIndex];
+                }
             }
             else
             {
@@ -23,19 +31,19 @@ namespace
             }
             for (auto child : bone->children)
             {
-                ComputeBoneTransformRecursive(child, boneTransforms);
+                ComputeBoneTransformRecursive(child, boneTransforms, animator);
             }
         }
     }
 }
 
-void AnimationUtil::ComputeBoneTransform(ModelId modelId, BoneTransforms& boneTransforms)
+void AnimationUtil::ComputeBoneTransform(ModelId modelId, BoneTransforms& boneTransforms, const Animator* animator)
 {
     auto model = ModelManager::Get()->GetModel(modelId);
     if (model->skeleton != nullptr)
     {
         boneTransforms.resize(model->skeleton->bones.size(), AEMath::Matrix4::Identity);
-        ComputeBoneTransformRecursive(model->skeleton->root, boneTransforms);
+        ComputeBoneTransformRecursive(model->skeleton->root, boneTransforms, animator);
     }
 }
 
@@ -46,7 +54,8 @@ void AnimationUtil::ApplyBoneOffset(ModelId modelId, BoneTransforms& boneTransfo
     {
         for (auto& bone : model->skeleton->bones)
         {
-            boneTransforms[bone->index] = bone->toParentTransform * boneTransforms[bone->parentIndex];
+
+            boneTransforms[bone->index] = bone->offsetTransform * boneTransforms[bone->index];
         }
     }
 }

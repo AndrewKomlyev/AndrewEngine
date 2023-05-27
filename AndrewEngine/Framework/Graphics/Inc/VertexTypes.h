@@ -48,7 +48,7 @@ namespace AndrewEngine::Graphics
 		AEMath::Vector3 tangent;
 		AEMath::Vector2 uvCoord;
 		int boneIndices[MaxBoneWeights] = {};
-		int boneWeights[MaxBoneWeights] = {};
+		float boneWeights[MaxBoneWeights] = {};
 	};
 }
 

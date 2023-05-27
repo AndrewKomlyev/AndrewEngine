@@ -99,7 +99,7 @@ void StandardEffect::Render(const RenderObject& renderObject)
     if (settingData.useSkinning)
     {
         AnimationUtil::BoneTransforms boneTransforms; 
-        AnimationUtil::ComputeBoneTransform(renderObject.modelId, boneTransforms);
+        AnimationUtil::ComputeBoneTransform(renderObject.modelId, boneTransforms, renderObject.animator);
         AnimationUtil::ApplyBoneOffset(renderObject.modelId, boneTransforms);
 
         for (auto& transform : boneTransforms)

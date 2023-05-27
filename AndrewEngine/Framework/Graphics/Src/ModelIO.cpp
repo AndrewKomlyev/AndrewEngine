@@ -1,6 +1,7 @@
 #include "Precompiled.h"
 #include "ModelIO.h"
 #include "Model.h"
+#include "AnimationBuilder.h"
 
 using namespace AndrewEngine;
 using namespace AndrewEngine::Graphics;
@@ -33,8 +34,10 @@ void AnimationIO::Read(FILE* file, Animation& animation)
 {
     AnimationBuilder builder;
 
-    uint32_t numPositionKeys, numRotationKeys, numScaleKeys = 0;
-    fscanf_s(file, "PositionKeysCount: %d\n", &numPositionKeys);
+    uint32_t numPositionKeys = 0;
+    uint32_t numRotationKeys = 0;
+    uint32_t numScaleKeys = 0;
+    fscanf_s(file, "PositionKeysCount %d\n", &numPositionKeys);
     for (uint32_t k = 0; k < numPositionKeys; ++k)
     {
         float time = 0.0f;
@@ -43,7 +46,7 @@ void AnimationIO::Read(FILE* file, Animation& animation)
         builder.AddPositionKey(pos, time);
     }
 
-    fscanf_s(file, "RotationKeysCount: %d\n", &numRotationKeys);
+    fscanf_s(file, "RotationKeysCount %d\n", &numRotationKeys);
     for (uint32_t k = 0; k < numRotationKeys; ++k)
     {
         float time = 0.0f;
@@ -52,7 +55,7 @@ void AnimationIO::Read(FILE* file, Animation& animation)
         builder.AddRotationKey(rot, time);
     }
 
-    fscanf_s(file, "ScaleKeysCount: %d\n", &numScaleKeys);
+    fscanf_s(file, "ScaleKeysCount %d\n", &numScaleKeys);
     for (uint32_t k = 0; k < numScaleKeys; ++k)
     {
         float time = 0.0f;
@@ -60,6 +63,8 @@ void AnimationIO::Read(FILE* file, Animation& animation)
         fscanf_s(file, "%f %f %f %f\n", &time, &scale.x, &scale.y, &scale.z);
         builder.AddScaleKey(scale, time);
     }
+
+    animation = builder.Build();
 }
 
 
@@ -90,25 +95,25 @@ void ModelIO::SaveModel(std::filesystem::path filePath, const Model& model)
         const uint32_t vertexCount = static_cast<uint32_t>(mesh.verticies.size());
         fprintf_s(file, "VertecCount: %d\n", vertexCount);
 
-        for (auto& v: mesh.verticies)
+        for (auto& v : mesh.verticies)
         {
-            fprintf_s(file, "%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %d %d %d %d\n", 
-                v.position.x, v.position.y, v.position.z, 
-                v.normal.x, v.normal.y, v.normal.z, 
-                v.tangent.x, v.tangent.y, v.tangent.z, 
-                v.uvCoord.x, v.uvCoord.y, 
+            fprintf_s(file, "%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %d %d %d %d\n",
+                v.position.x, v.position.y, v.position.z,
+                v.normal.x, v.normal.y, v.normal.z,
+                v.tangent.x, v.tangent.y, v.tangent.z,
+                v.uvCoord.x, v.uvCoord.y,
                 v.boneWeights[0], v.boneWeights[1], v.boneWeights[2], v.boneWeights[3],
                 v.boneIndices[0], v.boneIndices[1], v.boneIndices[2], v.boneIndices[3]);
         }
 
         const uint32_t indexCount = static_cast<uint32_t>(mesh.indicies.size());
         fprintf_s(file, "IndexCount: %d\n", indexCount);
-        for (size_t n = 2; n < indexCount; n+=3)
+        for (size_t n = 2; n < indexCount; n += 3)
         {
             fprintf_s(file, "%d %d %d\n", mesh.indicies[n - 2], mesh.indicies[n - 1], mesh.indicies[n]);
         }
     }
-    
+
     fclose(file);
 }
 void ModelIO::LoadModel(std::filesystem::path filePath, Model& model)
@@ -135,10 +140,10 @@ void ModelIO::LoadModel(std::filesystem::path filePath, Model& model)
         mesh.verticies.resize(vertexCount);
         for (auto& v : mesh.verticies)
         {
-            fscanf_s(file, "%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %d %d %d %d\n", 
-                &v.position.x, &v.position.y, &v.position.z, 
-                &v.normal.x, &v.normal.y, &v.normal.z, 
-                &v.tangent.x, &v.tangent.y, &v.tangent.z, 
+            fscanf_s(file, "%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %d %d %d %d\n",
+                &v.position.x, &v.position.y, &v.position.z,
+                &v.normal.x, &v.normal.y, &v.normal.z,
+                &v.tangent.x, &v.tangent.y, &v.tangent.z,
                 &v.uvCoord.x, &v.uvCoord.y,
                 &v.boneWeights[0], &v.boneWeights[1], &v.boneWeights[2], &v.boneWeights[3],
                 &v.boneIndices[0], &v.boneIndices[1], &v.boneIndices[2], &v.boneIndices[3]);
@@ -173,7 +178,7 @@ void ModelIO::SaveMaterial(std::filesystem::path filePath, const Model& model)
 
     uint32_t materialCount = static_cast<uint32_t>(model.materialData.size());
     fprintf_s(file, "MaterialCount: %d\n", materialCount);
-    for (auto& materialData: model.materialData)
+    for (auto& materialData : model.materialData)
     {
         auto& m = materialData.material;
 
@@ -415,7 +420,6 @@ void ModelIO::LoadAnimation(std::filesystem::path filePath, Model& model)
         return;
     }
 
-
     uint32_t animClipCount = 0;
     fscanf_s(file, "AnimClipCount: %d\n", &animClipCount);
     for (uint32_t i = 0; i < animClipCount; ++i)
@@ -436,9 +440,10 @@ void ModelIO::LoadAnimation(std::filesystem::path filePath, Model& model)
         for (uint32_t b = 0; b < boneAnimCount; ++b)
         {
             char label[128]{};
-            fscanf_s(file, "%s", label, (uint32_t)sizeof(label));
+            fscanf_s(file, "%s\n", label, (uint32_t)sizeof(label));
             if (strcmp(label, "[ANIMATION]") == 0)
             {
+                animClipData.boneAnimations[b] = std::make_unique<Animation>();
                 AnimationIO::Read(file, *animClipData.boneAnimations[b]);
             }
         }

@@ -19,7 +19,7 @@ public:
 protected:    
     Camera mCamera;
     DirectionalLight mDirectionalLight;
-
+    Animator mCharacterAnimator;
     RenderObject mGround;
     StandardEffect mStandartEffect;
     RenderGroup mCharacter;

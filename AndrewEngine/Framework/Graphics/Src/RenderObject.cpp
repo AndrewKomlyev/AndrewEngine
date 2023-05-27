@@ -11,14 +11,15 @@ void RenderObject::Terminate()
     displacementMapId = 0;
     normalMapId = 0;
     modelId = 0;
+    animator = nullptr;
     meshBuffer.Terminate();
 }
 
 
-RenderGroup Graphics::CreateRenderGroup(ModelId modelId)
+RenderGroup Graphics::CreateRenderGroup(ModelId modelId, const Animator* animator)
 {
     auto model = ModelManager::Get()->GetModel(modelId);
-    RenderGroup renderGroup = CreateRenderGroup(*model);
+    RenderGroup renderGroup = CreateRenderGroup(*model, animator);
     for (auto& renderObject : renderGroup)
     {
         renderObject.modelId = modelId;
@@ -27,7 +28,7 @@ RenderGroup Graphics::CreateRenderGroup(ModelId modelId)
     return renderGroup;
 }
 
-RenderGroup Graphics::CreateRenderGroup(const Model& model)
+RenderGroup Graphics::CreateRenderGroup(const Model& model, const Animator* animator)
 {
     RenderGroup renderGroup;
     renderGroup.reserve(model.meshData.size());
@@ -54,7 +55,7 @@ RenderGroup Graphics::CreateRenderGroup(const Model& model)
         renderObject.normalMapId = TryLoadTexture(materialData.normalMapName);
 
         renderObject.skeleton = model.skeleton.get();
-
+        renderObject.animator = animator;
         renderObject.meshBuffer.Initialize(meshData.mesh);
     }
     return renderGroup;

@@ -1,4 +1,5 @@
 #pragma once
+#include "Animator.h"
 #include "Material.h"
 #include "MeshBuffer.h"
 #include "ModelManager.h"
@@ -9,6 +10,7 @@
 namespace AndrewEngine::Graphics
 {
     struct Model;
+    class Animator;
     class RenderObject
     {
     public:
@@ -26,11 +28,12 @@ namespace AndrewEngine::Graphics
         ModelId modelId = 0;
         MeshBuffer meshBuffer;
         const Skeleton* skeleton = nullptr;
+        const Animator* animator = nullptr;
     };
 
     using RenderGroup = std::vector<RenderObject>;
-    [[nodiscard]] RenderGroup CreateRenderGroup(ModelId modelId);
-    [[nodiscard]] RenderGroup CreateRenderGroup(const Model& model);
+    [[nodiscard]] RenderGroup CreateRenderGroup(ModelId modelId, const Animator* animator = nullptr);
+    [[nodiscard]] RenderGroup CreateRenderGroup(const Model& model, const Animator* animator = nullptr);
     void CleanupRenderGroup(RenderGroup& renderGroup);
 
     template<class Effect>

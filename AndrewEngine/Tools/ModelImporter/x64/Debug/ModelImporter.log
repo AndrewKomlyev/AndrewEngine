@@ -1,6 +1,5 @@
 ﻿  main.cpp
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Tools\ModelImporter\main.cpp(38,35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Tools\ModelImporter\main.cpp(353,63): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Tools\ModelImporter\main.cpp(39,35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   ModelImporter.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\ModelImporter.exe
   C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\..\External\assimp-5.0.1\Bin\assimp-vc142-mt.dll
           1 file(s) copied.

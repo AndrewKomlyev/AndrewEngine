@@ -1,1 +1,6 @@
 -scale 0.01 ../../Assets/Models/FishGuy/character.fbx ../../Assets/Models/FishGuy/character.model
+
+-scale 0.01 -animOnly 1 ../../Assets/Models/FishGuy/character.fbx ../../Assets/Models/FishGuy/Capoeira.model
+
+
+-scale 0.01 -animOnly 1 ../../Assets/Models/FishGuy/character.fbx ../../Assets/Models/FishGuy/Capoeira.fbx

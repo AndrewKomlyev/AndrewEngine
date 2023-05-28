@@ -9,6 +9,9 @@ namespace AndrewEngine
         uint32_t winWidth = 1200;
         uint32_t winHeigth = 720;
         uint32_t debugDrawLimit = 100000;
+        Vector3 gravity = { 0.0f, -9.81f, 0.0f };
+        int simulationSteps = 10;
+        float fixedTimeStep = 1.0f / 60.0f;
     };
 
     class App final

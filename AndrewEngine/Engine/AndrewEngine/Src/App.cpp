@@ -6,6 +6,7 @@ using namespace AndrewEngine;
 using namespace AndrewEngine::Core;
 using namespace AndrewEngine::Graphics;
 using namespace AndrewEngine::Input;
+using namespace AndrewEngine::Physics;
 
 void App::ChangeState(size_t stateID)
 {
@@ -36,6 +37,12 @@ void App::Run(const AppConfig& config)
     SimpleDraw::StaticInitialize(config.debugDrawLimit);
     TextureManager::StaticInitialize("../../Assets/");
     ModelManager::StaticInitialize();
+    PhysicsWorld::Settings settings =
+    {
+        config.gravity,
+        config.simulationSteps,
+        config.fixedTimeStep
+    };
 
     ASSERT(mCurrentState, "App -- no app state found!");
     mCurrentState->Initialize();
@@ -70,6 +77,7 @@ void App::Run(const AppConfig& config)
         auto deltaTime = TimeUtil::GetDeltaTime();
         if (deltaTime < 0.5f)
         {
+            PhysicsWorld::Get()->Update(deltaTime);
             mCurrentState->Update(deltaTime);
         }
         auto graphicsSystem = GraphicsSystem::Get();
@@ -77,10 +85,13 @@ void App::Run(const AppConfig& config)
         mCurrentState->Render();
         DebugUI::BeginRender();
         mCurrentState->DebugUI();
+        PhysicsWorld::Get()->DebugUI();
         DebugUI::EndRender();
         graphicsSystem->EndRender();
     }
     mCurrentState->Terminate();
+
+    PhysicsWorld::StaticTerminate();
     ModelManager::StaticTerminate();
     TextureManager::StaticTerminate();
     SimpleDraw::StaticTerminate();

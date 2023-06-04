@@ -55,11 +55,11 @@ Vector3 Animation::GetPosition(float time) const
     {
         if (time < mPositionKeys[i].time)
         {
-            //if (i > 0)
-            //{
-            //    float lerpTime = GetLerpTime(mPositionKeys[i - 1].time, mPositionKeys[i].time, time, mPositionKeys[i].easeType);
-            //    return Lerp(mPositionKeys[i - 1].time, mPositionKeys[i].time, lerpTime);
-            //}
+            if (i > 0)
+            {
+                float lerpTime = GetLerpTime(mPositionKeys[i - 1].time, mPositionKeys[i].time, time, mPositionKeys[i].easeType);
+                return Lerp(mPositionKeys[i - 1].key, mPositionKeys[i].key, lerpTime);
+            }
             return mPositionKeys[i].key;
         }
     }
@@ -76,11 +76,11 @@ Quaternion Animation::GetRotation(float time) const
     {
         if (time < mRotationKeys[i].time)
         {
-            //if (i > 0)
-            //{
-            //    float lerpTime = GetLerpTime(mRotationKeys[i - 1].time, mRotationKeys[i].time, time, mRotationKeys[i].easeType);
-            //    return Quaternion::Slerp(mRotationKeys[i - 1].key, mRotationKeys[i].key, lerpTime);
-            //}
+            if (i > 0)
+            {
+                float lerpTime = GetLerpTime(mRotationKeys[i - 1].time, mRotationKeys[i].time, time, mRotationKeys[i].easeType);
+                return Quaternion::Slerp(mRotationKeys[i - 1].key, mRotationKeys[i].key, lerpTime);
+            }
 
             return mRotationKeys[i].key;
         }
@@ -99,11 +99,11 @@ Vector3 Animation::GetScale(float time) const
     {
         if (time < mScaleKeys[i].time)
         {
-            //if (i > 0)
-            //{
-            //    float lerpTime = GetLerpTime(mScaleKeys[i - 1].time, mScaleKeys[i].time, time, mScaleKeys[i].easeType);
-            //    return Lerp(mScaleKeys[i - 1].time, mScaleKeys[i].time, lerpTime);
-            //}
+            if (i > 0)
+            {
+                float lerpTime = GetLerpTime(mScaleKeys[i - 1].time, mScaleKeys[i].time, time, mScaleKeys[i].easeType);
+                return Lerp(mScaleKeys[i - 1].key, mScaleKeys[i].key, lerpTime);
+            }
 
             return mScaleKeys[i].key;
         }

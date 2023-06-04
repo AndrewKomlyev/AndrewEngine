@@ -1,4 +1,6 @@
 #pragma once
 #include "Common.h"
-#include "PhysicsWorld.h"
+#include "CollisionShape.h"
 #include "PhysicsDebugDrawer.h"
+#include "PhysicsWorld.h"
+#include "RigidBody.h"

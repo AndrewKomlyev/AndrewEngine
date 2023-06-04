@@ -16,7 +16,7 @@ void BlendNode::Update(float deltaTime)
 {
     auto model = ModelManager::Get()->GetModel(mModelId);
     const auto& animClip = model->animationClips[mClipIndex];
-    //mAnimationTick += animClip.tickPerSecond * deltaTime;
+    mAnimationTick += animClip.tickPerSecond * deltaTime;
     if (mAnimationTick > animClip.tickDuration)
     {
         if (mLooping)

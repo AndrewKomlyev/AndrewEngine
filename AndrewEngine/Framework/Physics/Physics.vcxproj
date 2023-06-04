@@ -19,15 +19,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\CollisionShape.cpp" />
     <ClCompile Include="Src\PhysicsDebugDrawer.cpp" />
     <ClCompile Include="Src\PhysicsWorld.cpp" />
-    <ClCompile Include="Src\Precompiled.cpp" />
+    <ClCompile Include="Src\Precompiled.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Src\RigidBody.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Inc\CollisionShape.h" />
     <ClInclude Include="Inc\Common.h" />
     <ClInclude Include="Inc\Physics.h" />
     <ClInclude Include="Inc\PhysicsDebugDrawer.h" />
     <ClInclude Include="Inc\PhysicsWorld.h" />
+    <ClInclude Include="Inc\RigidBody.h" />
     <ClInclude Include="Src\Precompiled.h" />
   </ItemGroup>
   <ItemGroup>

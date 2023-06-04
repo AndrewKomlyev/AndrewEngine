@@ -68,7 +68,7 @@ Quaternion ToQuaternion(const aiQuaternion& q)
         static_cast<float>(q.x),
         static_cast<float>(q.y),
         static_cast<float>(q.z),
-        static_cast<float>(q.z)
+        static_cast<float>(q.w)
     };
 }
 

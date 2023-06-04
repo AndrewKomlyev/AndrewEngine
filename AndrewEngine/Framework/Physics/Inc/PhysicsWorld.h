@@ -2,7 +2,8 @@
 
 namespace AndrewEngine::Physics
 {
-    class PhysicDebugDrawer;
+    class PhysicsDebugDrawer;
+    class RigidBody;
     class PhysicsWorld final
     {
     public:
@@ -25,7 +26,13 @@ namespace AndrewEngine::Physics
 
         void Update(float deltaTime);
         void DebugUI();
+
+
     private:
+        friend class RigidBody;
+        void Register(RigidBody* rigidBody);
+        void Unregister(RigidBody* rigidBody);
+
         Settings mSettings;
 
         btBroadphaseInterface* mInterface = nullptr;
@@ -34,6 +41,9 @@ namespace AndrewEngine::Physics
         btDiscreteDynamicsWorld* mDynamicWorld = nullptr;
         btSequentialImpulseConstraintSolver* mSolver = nullptr;
         PhysicsDebugDrawer* mDebugDrawer = nullptr;
+
+        using RigidBodies = std::vector<RigidBody*>;
+        RigidBodies mRigidBodies;
 
         bool mRenderDebugUI = false;
     };

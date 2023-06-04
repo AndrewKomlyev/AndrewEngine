@@ -44,6 +44,7 @@ void App::Run(const AppConfig& config)
         config.fixedTimeStep
     };
 
+    PhysicsWorld::StaticInitalize(settings);
     ASSERT(mCurrentState, "App -- no app state found!");
     mCurrentState->Initialize();
 

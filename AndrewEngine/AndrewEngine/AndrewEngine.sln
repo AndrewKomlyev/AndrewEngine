@@ -92,6 +92,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bullet", "..\External\Bulle
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Physics", "..\Framework\Physics\Physics.vcxproj", "{284796E9-1811-4056-BC2B-9B8B022FA9D3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "18_HelloPhysicsAnimation", "..\VGP334\18_HelloPhysicsAnimation\18_HelloPhysicsAnimation.vcxproj", "{DB1A47FA-BF83-4FF0-963F-157C510106B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -316,6 +318,14 @@ Global
 		{284796E9-1811-4056-BC2B-9B8B022FA9D3}.Release|x64.Build.0 = Release|x64
 		{284796E9-1811-4056-BC2B-9B8B022FA9D3}.Release|x86.ActiveCfg = Release|Win32
 		{284796E9-1811-4056-BC2B-9B8B022FA9D3}.Release|x86.Build.0 = Release|Win32
+		{DB1A47FA-BF83-4FF0-963F-157C510106B7}.Debug|x64.ActiveCfg = Debug|x64
+		{DB1A47FA-BF83-4FF0-963F-157C510106B7}.Debug|x64.Build.0 = Debug|x64
+		{DB1A47FA-BF83-4FF0-963F-157C510106B7}.Debug|x86.ActiveCfg = Debug|Win32
+		{DB1A47FA-BF83-4FF0-963F-157C510106B7}.Debug|x86.Build.0 = Debug|Win32
+		{DB1A47FA-BF83-4FF0-963F-157C510106B7}.Release|x64.ActiveCfg = Release|x64
+		{DB1A47FA-BF83-4FF0-963F-157C510106B7}.Release|x64.Build.0 = Release|x64
+		{DB1A47FA-BF83-4FF0-963F-157C510106B7}.Release|x86.ActiveCfg = Release|Win32
+		{DB1A47FA-BF83-4FF0-963F-157C510106B7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -350,6 +360,7 @@ Global
 		{16353D08-3FE7-4D10-9082-FD0A17844A28} = {243BAE52-6D8F-44BF-9C90-C4A217D831D8}
 		{516192EB-788A-4FE7-B2B7-2EF9AC036B12} = {34D28FF4-3BEC-41DE-9BAA-0743E62E7F66}
 		{284796E9-1811-4056-BC2B-9B8B022FA9D3} = {0375EFA9-787A-4CA6-A716-6C33E5C25E9B}
+		{DB1A47FA-BF83-4FF0-963F-157C510106B7} = {243BAE52-6D8F-44BF-9C90-C4A217D831D8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CD4003E1-A166-410F-9CB2-7443B726D9DE}

@@ -1,5 +1,4 @@
 #pragma once
-
 #include <AndrewEngine/Inc/AndrewEngine.h>
 
 using namespace AndrewEngine;

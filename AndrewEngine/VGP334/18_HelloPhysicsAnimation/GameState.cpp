@@ -21,20 +21,21 @@ void GameState::Initialize()
     mBall.material.diffuse = { 0.8f, 0.8f, 0.8f, 1.0f };
     mBall.material.specular = { 0.8f, 0.8f, 0.8f, 1.0f };
     mBall.material.power = 10.0f;
-
+    
+    mBall.transform.position.y = 10;
     mSphereCollisionShape.Initialize(1.0f);
-    mBallRigidBody.Initialize(mBall.transform, mSphereCollisionShape, 5.0f);
+    mBallRigidBody.Initialize(mBall.transform, mSphereCollisionShape, 10.0f);
 
 
     Mesh ground = MeshBuilder::CreatePlane(20, 20, 1.0f);
     mGround.meshBuffer.Initialize(ground);
-    mGround.diffuseMapId = TextureManager::Get()->LoadTexture(L"Textures/misc/concrete.jpg");
+    mGround.diffuseMapId = TextureManager::Get()->LoadTexture(L"Textures/space.jpg");
     mGround.material.ambient = { 0.8f, 0.8f, 0.8f, 1.0f };
     mGround.material.diffuse = { 0.8f, 0.8f, 0.8f, 1.0f };
     mGround.material.specular = { 0.8f, 0.8f, 0.8f, 1.0f };
     mGround.material.power = 10.0f;
 
-    mBoxCollisionShape.Initialize({10.0f, 0.25f, 10.0f});
+    mBoxCollisionShape.Initialize({10.0f, 0.01f, 10.0f});
     mGroundRigidBody.Initialize(mGround.transform, mBoxCollisionShape, 0.0f);
 
 

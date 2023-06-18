@@ -22,8 +22,13 @@ void GameState::Initialize()
     mGround.material.specular = { 0.8f, 0.8f, 0.8f, 1.0f };
     mGround.material.power = 10.0f;
 
-    mCharacterModelId = ModelManager::Get()->LoadModel(L"../../Assets/Models/FishGuy/character.model");
-    ModelManager::Get()->AddAnimation(mCharacterModelId, L"../../Assets/Models/FishGuy/Capoeira.model");
+    mCharacterModelId = ModelManager::Get()->LoadModel(L"../../Assets/Models/Soldier/Soldier.model");
+    ModelManager::Get()->AddAnimation(mCharacterModelId, L"../../Assets/Models/Soldier/Idle.animset");
+    ModelManager::Get()->AddAnimation(mCharacterModelId, L"../../Assets/Models/Soldier/RunForward.animset");
+    ModelManager::Get()->AddAnimation(mCharacterModelId, L"../../Assets/Models/Soldier/RunBackwards.animset");
+    ModelManager::Get()->AddAnimation(mCharacterModelId, L"../../Assets/Models/Soldier/RunLeft.animset");
+    ModelManager::Get()->AddAnimation(mCharacterModelId, L"../../Assets/Models/Soldier/RunRight.animset");
+
     mCharacterAnimator.Initialize(mCharacterModelId);
     mCharacterAnimator.PlayAnimation(0, true);
     mCharacter = CreateRenderGroup(mCharacterModelId, &mCharacterAnimator);
@@ -41,6 +46,8 @@ void GameState::Terminate()
     mStandartEffect.Terminate();
     mGround.Terminate();
 }
+
+int gAnimationIndex = 0;
 
 void GameState::Update(float deltaTime)
 {
@@ -81,6 +88,46 @@ void GameState::Update(float deltaTime)
         mCamera.Yaw(input->GetMouseMoveX() * turnspeed * deltaTime);
         mCamera.Pitch(input->GetMouseMoveY() * turnspeed * deltaTime);
     }
+
+    if (input->IsKeyPressed(KeyCode::UP))
+    {
+        int animCount = mCharacterAnimator.GetAnimationCount();
+        gAnimationIndex = (gAnimationIndex + 1) % animCount;
+        mCharacterAnimator.PlayAnimation(gAnimationIndex, true, 1.0f);
+    }
+    else if (input->IsKeyPressed(KeyCode::DOWN))
+    {
+        int animCount = mCharacterAnimator.GetAnimationCount();
+        gAnimationIndex = (gAnimationIndex - 1);
+        if (gAnimationIndex < 0)
+        {
+            gAnimationIndex = animCount - 1;
+        }
+
+        mCharacterAnimator.PlayAnimation(gAnimationIndex, true, 1.0f);
+    }
+
+    if (input->IsKeyPressed(KeyCode::NUMPAD8))
+    {
+        mCharacterAnimator.PlayAnimation(1, true, 1.0f);
+    }
+    else if (input->IsKeyPressed(KeyCode::NUMPAD2))
+    {
+        mCharacterAnimator.PlayAnimation(2, true, 1.0f);
+    }
+    else if (input->IsKeyPressed(KeyCode::NUMPAD4))
+    {
+        mCharacterAnimator.PlayAnimation(3, true, 1.0f);
+    }
+    else if (input->IsKeyPressed(KeyCode::NUMPAD6))
+    {
+        mCharacterAnimator.PlayAnimation(4, true, 1.0f);
+    }
+    else if (input->IsKeyPressed(KeyCode::NUMPAD5))
+    {
+        mCharacterAnimator.PlayAnimation(0, true, 1.0f);
+    }
+
 }
 
 void GameState::Render()

@@ -29,7 +29,7 @@ namespace
             {
                 boneTransforms[bone->index] = bone->toParentTransform;
             }
-            for (auto child : bone->children)
+            for (auto& child : bone->children)
             {
                 ComputeBoneTransformRecursive(child, boneTransforms, animator);
             }

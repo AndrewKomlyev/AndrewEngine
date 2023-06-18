@@ -1,6 +1,4 @@
 ﻿  Precompiled.cpp
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Physics\Inc\RigidBody.h(6,20): warning C4099: 'AndrewEngine::Graphics::Transform': type name first seen using 'struct' now seen using 'class'
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Inc\Transform.h(6): message : see declaration of 'AndrewEngine::Graphics::Transform'
   AndrewEngine.cpp
   App.cpp
 C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Src\App.cpp(43,15): warning C4838: conversion from 'const int' to 'uint32_t' requires a narrowing conversion

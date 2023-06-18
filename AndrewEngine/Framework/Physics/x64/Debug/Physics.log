@@ -1,2 +1,4 @@
-﻿  CollisionShape.cpp
+﻿  PhysicsWorld.cpp
+  RigidBody.cpp
+  Generating Code...
   Physics.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\Physics.lib

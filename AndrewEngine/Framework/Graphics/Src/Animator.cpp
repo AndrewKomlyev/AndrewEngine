@@ -101,7 +101,7 @@ void Animator::Update(float deltaTime)
         mNextAnimation.Update(deltaTime);
     }
 
-    if (mBlendTime > 0.0f && mBlendDuration > 0.0f)
+    if (mBlendDuration > 0.0f)
     {
         mBlendTime += deltaTime;
         if (mBlendTime >= mBlendDuration)

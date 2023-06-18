@@ -25,13 +25,14 @@ void RigidBody::Initialize(Graphics::Transform& graphicsTransform, const Collisi
 
 void RigidBody::Terminate()
 {
+    PhysicsWorld::Get()->Unregister(this);
     SafeDelete(mMotionState);
     SafeDelete(mRigidBody);
 }
 
 void RigidBody::SetCollisionFilter(int filter)
 {
-    mRigidBody->setCollisionFlags(filter);
+    mRigidBody->setCollisionFlags(btCollisionObject::CF_NO_CONTACT_RESPONSE);
 }
 
 void RigidBody::SetPosition(const AndrewEngine::AEMath::Vector3& position)

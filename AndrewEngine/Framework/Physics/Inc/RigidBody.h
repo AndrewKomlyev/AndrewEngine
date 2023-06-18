@@ -3,7 +3,7 @@
 
 namespace AndrewEngine::Graphics
 {
-    class Transform;
+    struct Transform;
 }
 
 namespace AndrewEngine::Physics

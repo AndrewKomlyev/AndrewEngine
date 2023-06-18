@@ -29,6 +29,7 @@
 #include "Transform.h"
 #include "ShadowEffect.h"
 #include "SimpleDraw.h"
+#include "SimpleEffect.h"
 #include "Skeleton.h"
 #include "StandardEffect.h"
 #include "VertexShader.h"

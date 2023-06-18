@@ -104,14 +104,14 @@ namespace AndrewEngine::AEMath
         float dot = (q1.x * q2.x) + (q1.y * q2.y) + (q1.z * q2.z) + (q1.w * q2.w);
 
         // Determine the direction of the rotation.
-        //if (dot < 0.0f)
-        //{
-        //    dot = -dot;
-        //    q2.x = -q2.x;
-        //    q2.y = -q2.y;
-        //    q2.z = -q2.z;
-        //    q2.w = -q2.w;
-        //}
+        if (dot < 0.0f)
+        {
+            dot = -dot;
+            q2.x = -q2.x;
+            q2.y = -q2.y;
+            q2.z = -q2.z;
+            q2.w = -q2.w;
+        }
         if (dot > 0.999f)
         {
             return Normalize(Lerp(q1, q2, t));

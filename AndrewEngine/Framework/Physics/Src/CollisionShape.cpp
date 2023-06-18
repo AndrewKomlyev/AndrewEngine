@@ -5,7 +5,7 @@ using namespace AndrewEngine::Physics;
 
 CollisionShape::~CollisionShape()
 {
-    ASSERT(mCollisionShape = nullptr, "CollisionShape: terminate must be called first");
+    ASSERT(mCollisionShape == nullptr, "CollisionShape: terminate must be called first");
 }
 
 void CollisionShape::Terminate()

@@ -1,6 +1,7 @@
--scale 0.01 ../../Assets/Models/FishGuy/character.fbx ../../Assets/Models/FishGuy/character.model
+-scale 0.01 ../../Assets/Models/Soldier/Soldier.fbx ../../Assets/Models/Soldier/Soldier.model
 
--scale 0.01 -animOnly 1 ../../Assets/Models/FishGuy/character.fbx ../../Assets/Models/FishGuy/Capoeira.model
-
-
--scale 0.01 -animOnly 1 ../../Assets/Models/FishGuy/character.fbx ../../Assets/Models/FishGuy/Capoeira.fbx
+-scale 0.01 -animOnly 1 ../../Assets/Models/Soldier/Soldier.fbx ../../Assets/Models/Soldier/Idle.fbx
+-scale 0.01 -animOnly 1 ../../Assets/Models/Soldier/Soldier.fbx ../../Assets/Models/Soldier/RunBackwards.fbx
+-scale 0.01 -animOnly 1 ../../Assets/Models/Soldier/Soldier.fbx ../../Assets/Models/Soldier/RunForward.fbx
+-scale 0.01 -animOnly 1 ../../Assets/Models/Soldier/Soldier.fbx ../../Assets/Models/Soldier/RunLeft.fbx
+-scale 0.01 -animOnly 1 ../../Assets/Models/Soldier/Soldier.fbx ../../Assets/Models/Soldier/RunRight.fbx

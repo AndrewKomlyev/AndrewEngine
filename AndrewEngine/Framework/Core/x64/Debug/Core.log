@@ -1,4 +1,5 @@
 ﻿  Precompiled.cpp
+  BlockAllocator.cpp
   TimeUtil.cpp
   Window.cpp
   WindowMessageHandler.cpp

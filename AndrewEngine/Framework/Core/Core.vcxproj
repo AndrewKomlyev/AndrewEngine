@@ -24,6 +24,7 @@
     <ClInclude Include="Inc\Core.h" />
     <ClInclude Include="Inc\DebugUtil.h" />
     <ClInclude Include="Inc\TimeUtil.h" />
+    <ClInclude Include="Inc\TypedAllocator.h" />
     <ClInclude Include="Inc\Window.h" />
     <ClInclude Include="Inc\WindowMessageHandler.h" />
     <ClInclude Include="Src\Precompiled.h" />

@@ -27,7 +27,7 @@ BlockAllocator::BlockAllocator(const char* name, size_t blockSize, size_t capaci
 
 BlockAllocator::~BlockAllocator()
 {
-    ASSERT(mFreeBlocks.size() == mCapacity, "BlockAllocator:not all blocks are freed, potential memory leak");
+    ASSERT(mBlocksAlocatedTotal == mBlocksFreed, "BlockAllocator:not all blocks are freed, potential memory leak");
     std::free(mData);
 
     LOG("%s destructed. Allocated: %zu, Freed: %zu, HighestCount: %zu", mName.c_str(), mBlocksAllocatedCurrent, mBlocksFreed, mBlocksHighest);
@@ -61,9 +61,14 @@ void BlockAllocator::Free(void* ptr)
     }
 
     const auto start = static_cast<uint8_t*>(mData);
-    const auto end = static_cast<uint8_t*>(mData) + (mBlockSize* mCapacity);
+    const auto end = static_cast<uint8_t*>(mData) + (mBlockSize * mCapacity);
     const auto current = static_cast<uint8_t*>(ptr);
     const auto diff = current - start;
 
-    
+    ASSERT(current >= start && current < end && static_cast<size_t>(diff) % mBlockSize == 0, "BlockAllocator: ivalid Address being freed!");
+
+    LOG("%s free %p", mName.c_str(), ptr);
+    --mBlocksAllocatedCurrent;
+    ++mBlocksFreed;
+    mFreeBlocks.emplace_back(ptr);
 }

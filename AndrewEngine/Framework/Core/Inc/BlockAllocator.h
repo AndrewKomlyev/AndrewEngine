@@ -27,6 +27,5 @@ namespace AndrewEngine::Core
         size_t mBlocksAlocatedTotal = 0;
         size_t mBlocksFreed = 0;
         size_t mBlocksHighest = 0;
-
     };
 }

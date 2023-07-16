@@ -1,6 +1,4 @@
-﻿  Precompiled.cpp
-  AndrewEngine.cpp
-  App.cpp
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Src\App.cpp(43,15): warning C4838: conversion from 'const int' to 'uint32_t' requires a narrowing conversion
+﻿  GameObject.cpp
+  TransformComponent.cpp
   Generating Code...
   AndrewEngine.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\AndrewEngine.lib

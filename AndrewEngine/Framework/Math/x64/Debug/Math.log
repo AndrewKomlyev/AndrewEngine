@@ -1,2 +1,8 @@
-﻿  Quaternion.cpp
+﻿  Precompiled.cpp
+  AEMath.cpp
+  Quaternion.cpp
+  Vector2.cpp
+  Vector3.cpp
+  Vector4.cpp
+  Generating Code...
   Math.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\Math.lib

@@ -7,6 +7,12 @@
     <Filter Include="Src">
       <UniqueIdentifier>{895d24db-a920-4e8e-91c2-9d116f45a739}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Inc\Components">
+      <UniqueIdentifier>{f7bddb81-2f3d-494a-9635-0a686724e97d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Components">
+      <UniqueIdentifier>{900f481d-1162-4c15-94ef-91d5409e7ea1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Precompiled.cpp">
@@ -17,6 +23,18 @@
     </ClCompile>
     <ClCompile Include="Src\AndrewEngine.cpp">
       <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GameObject.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\CameraComponent.cpp">
+      <Filter>Src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\TransformComponent.cpp">
+      <Filter>Src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\FPSCameraControllerComponent.cpp">
+      <Filter>Src\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +52,24 @@
     </ClInclude>
     <ClInclude Include="Inc\AppState.h">
       <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\GameObject.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\Component.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\TypeIds.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\TransformComponent.h">
+      <Filter>Inc\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\CameraComponent.h">
+      <Filter>Inc\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\FPSCameraControllerComponent.h">
+      <Filter>Inc\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -46,7 +46,7 @@ void* BlockAllocator::Allocate()
 
     ++mBlocksAlocatedTotal;
     ++mBlocksAllocatedCurrent;
-    mBlocksHighest = max(mBlocksHighest, mBlocksAllocatedCurrent);
+    mBlocksHighest = std::max(mBlocksHighest, mBlocksAllocatedCurrent);
 
     LOG("%s allocated blocks at %p, Allocated: %zu, HighestCount: %zu", mName.c_str(), freeBlock, mBlocksAllocatedCurrent, mBlocksHighest);
 

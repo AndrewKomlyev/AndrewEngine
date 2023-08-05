@@ -1,3 +1,1 @@
-﻿  GameState.cpp
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\GameObject.h(41): warning C4715: 'AndrewEngine::GameObject::GetComponent<AndrewEngine::CameraComponent>': not all control paths return a value
-  21_HelloGameObject.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\21_HelloGameObject.exe
+﻿  21_HelloGameObject.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\21_HelloGameObject.exe

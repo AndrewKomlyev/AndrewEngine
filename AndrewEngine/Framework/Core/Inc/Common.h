@@ -1,6 +1,6 @@
 #pragma once
 #define WIN32_LEAN_AND_MEAN
-#define NOMINAX
+#define NOMINMAX
 
 //win32 Headers
 #include<objbase.h>

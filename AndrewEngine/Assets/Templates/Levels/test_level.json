@@ -1,0 +1,20 @@
+{
+    "Name": "Test Level",
+    "Capacity": 100,
+    "Services": {
+        "CameraService": {
+
+        },
+        "RenderService": {
+            "DirectionalLight": [ 1.0, -1.0, 1.0 ]
+        }
+    },
+    "GameObjects": {
+        "MainCamera": {
+            "Template": "../../Assets/Templates/fps_camera.json"
+        },
+        "TestPlayer": {
+            "Template": "../../Assets/Templates/test_player.json"
+        }
+    }
+}

@@ -17,10 +17,6 @@ public:
     virtual void Render() override;
     virtual void DebugUI() override;
 protected:
-    DirectionalLight mDirectionalLight;
-
-    StandardEffect mStandartEffect;
-    GameObject mGameObject;
-    GameObject mCameraGameObject;
+    GameWorld mGameWorld;
 };
 

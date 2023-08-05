@@ -13,6 +13,12 @@
     <Filter Include="Src\Components">
       <UniqueIdentifier>{900f481d-1162-4c15-94ef-91d5409e7ea1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Inc\Services">
+      <UniqueIdentifier>{e7ec2035-5ae6-4807-984f-34d8b071c7c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Services">
+      <UniqueIdentifier>{09432f9f-8587-477e-bc80-32c5942e3299}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Precompiled.cpp">
@@ -34,6 +40,21 @@
       <Filter>Src\Components</Filter>
     </ClCompile>
     <ClCompile Include="Src\FPSCameraControllerComponent.cpp">
+      <Filter>Src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GameObjectFactory.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GameWorld.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\CameraService.cpp">
+      <Filter>Src\Services</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\RenderService.cpp">
+      <Filter>Src\Services</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ModelComponent.cpp">
       <Filter>Src\Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -69,6 +90,27 @@
       <Filter>Inc\Components</Filter>
     </ClInclude>
     <ClInclude Include="Inc\FPSCameraControllerComponent.h">
+      <Filter>Inc\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\GameObjectFactory.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\GameObjectHandle.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\Services.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\GameWorld.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\CameraService.h">
+      <Filter>Inc\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\RenderService.h">
+      <Filter>Inc\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\ModelComponent.h">
       <Filter>Inc\Components</Filter>
     </ClInclude>
   </ItemGroup>

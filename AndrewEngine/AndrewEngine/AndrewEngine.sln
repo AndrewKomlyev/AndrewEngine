@@ -102,6 +102,17 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "20_HelloMemory", "..\VGP336
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "21_HelloGameObject", "..\VGP336\21_HelloGameObject\21_HelloGameObject.vcxproj", "{FB80441B-46F0-476E-A019-70826EC1364E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{6608E614-AE8F-4D38-943A-AE358FBFEC09}"
+	ProjectSection(SolutionItems) = preProject
+		..\Assets\Templates\fps_camera.json = ..\Assets\Templates\fps_camera.json
+		..\Assets\Templates\test_player.json = ..\Assets\Templates\test_player.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Levels", "Levels", "{BA926B62-8E9C-4AF8-9642-3F6864F8DC35}"
+	ProjectSection(SolutionItems) = preProject
+		..\Assets\Templates\Levels\test_level.json = ..\Assets\Templates\Levels\test_level.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -396,6 +407,8 @@ Global
 		{233F4850-9091-48C7-817E-E9FED3DA6A4B} = {243BAE52-6D8F-44BF-9C90-C4A217D831D8}
 		{3CE7407E-0654-4357-912D-9029A65DC9A4} = {66C03447-0161-4E6A-B579-CD0CB55D4970}
 		{FB80441B-46F0-476E-A019-70826EC1364E} = {66C03447-0161-4E6A-B579-CD0CB55D4970}
+		{6608E614-AE8F-4D38-943A-AE358FBFEC09} = {F0DA4A4A-8FE0-4BF7-84BD-702759D4ED33}
+		{BA926B62-8E9C-4AF8-9642-3F6864F8DC35} = {6608E614-AE8F-4D38-943A-AE358FBFEC09}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CD4003E1-A166-410F-9CB2-7443B726D9DE}

@@ -8,7 +8,20 @@ namespace AndrewEngine
     {
         Transform,
         Camera,
-        FPSCameraController
+        FPSCameraController,
+        Model,
+
+        Count
+    };
+
+    enum class ServiceId
+    {
+        Camera,
+        Render,
+        Physics,
+        
+
+        Count
     };
 }
 

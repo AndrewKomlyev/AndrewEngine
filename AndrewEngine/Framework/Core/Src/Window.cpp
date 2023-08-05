@@ -42,8 +42,8 @@ void Window::Initialize(HINSTANCE instance, wstring appName, uint32_t width, uin
 
     const int screenWidth = GetSystemMetrics(SM_CXSCREEN);
     const int screenHeight = GetSystemMetrics(SM_CYSCREEN);
-    const int winWidth = min(static_cast<int>(rc.right - rc.left), screenWidth);
-    const int winHeight = min(static_cast<int>(rc.bottom - rc.top), screenHeight);
+    const int winWidth = std::min(static_cast<int>(rc.right - rc.left), screenWidth);
+    const int winHeight = std::min(static_cast<int>(rc.bottom - rc.top), screenHeight);
     const int left = (screenWidth - winWidth) / 2;
     const int top = (screenHeight - winHeight) / 2;
 

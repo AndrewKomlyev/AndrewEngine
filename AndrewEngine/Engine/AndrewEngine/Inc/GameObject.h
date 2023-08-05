@@ -2,10 +2,12 @@
 
 #include "Component.h"
 #include "TypeIds.h"
+#include "GameObjectHandle.h"
 
 
 namespace AndrewEngine
 {
+    class GameWorld;
     class GameObject final
     {
     public:
@@ -56,10 +58,18 @@ namespace AndrewEngine
         void SetName(const char* name) { mName = name; }
         const std::string& GetName() const { return mName; }
 
+        GameWorld& GetWorld() { return *mWorld; }
+        const GameWorld& GetWorld() const { return *mWorld; }
+        const GameObjectHandle& GetHandle() const { return mHandle; }
+
     private:
+        friend class GameWorld;
+        GameWorld* mWorld = nullptr;
+        GameObjectHandle mHandle;
 
         using Components = std::vector<std::unique_ptr<Component>>;
         Components mComponents;
+
 
         std::string mName = "EMPTY";
         bool mInitialized = false;

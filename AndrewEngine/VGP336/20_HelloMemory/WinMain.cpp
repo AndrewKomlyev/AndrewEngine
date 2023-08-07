@@ -40,7 +40,7 @@ int WINAPI  WinMain(HINSTANCE instance, HINSTANCE, LPSTR, int)
     a->SetGrade(90);
     b->SetGrade(100);
 
-
     studentPool.Delete(a);
+    studentPool.Delete(b);
     return 0;
 }

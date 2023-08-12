@@ -1,14 +1,3 @@
 ﻿  WinMain.cpp
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Core\Inc\BlockAllocator.h(20,14): error C2039: 'string': is not a member of 'std'
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\VGP336\20_HelloMemory\predefined C++ types (compiler internal)(341): message : see declaration of 'std'
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Core\Inc\BlockAllocator.h(20,21): error C3646: 'mName': unknown override specifier
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Core\Inc\BlockAllocator.h(20,26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Core\Inc\BlockAllocator.h(21,14): error C2039: 'vector': is not a member of 'std'
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\VGP336\20_HelloMemory\predefined C++ types (compiler internal)(341): message : see declaration of 'std'
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Core\Inc\BlockAllocator.h(21,20): error C2143: syntax error: missing ';' before '<'
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Core\Inc\BlockAllocator.h(21,20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Core\Inc\BlockAllocator.h(21,39): error C2238: unexpected token(s) preceding ';'
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\GameObject.h(12,25): error C2535: 'void AndrewEngine::GameObject::Terminate(void)': member function already defined or declared
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\GameObject.h(11): message : see declaration of 'AndrewEngine::GameObject::Terminate'
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\GameObject.h(15,37): error C2535: 'void AndrewEngine::GameObject::Update(float)': member function already defined or declared
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\GameObject.h(14): message : see declaration of 'AndrewEngine::GameObject::Update'
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\RenderService.h(22,38): warning C4114: same type qualifier used more than once
+  20_HelloMemory.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\20_HelloMemory.exe

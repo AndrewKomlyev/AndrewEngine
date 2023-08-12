@@ -27,7 +27,7 @@ BlockAllocator::BlockAllocator(const char* name, size_t blockSize, size_t capaci
 
 BlockAllocator::~BlockAllocator()
 {
-    ASSERT(mBlocksAlocatedTotal == mBlocksFreed, "BlockAllocator:not all blocks are freed, potential memory leak");
+    ASSERT(mBlocksAlocatedTotal == mBlocksFreed, "BlockAllocator: not all blocks are freed, potential memory leak.");
     std::free(mData);
 
     LOG("%s destructed. Allocated: %zu, Freed: %zu, HighestCount: %zu", mName.c_str(), mBlocksAllocatedCurrent, mBlocksFreed, mBlocksHighest);

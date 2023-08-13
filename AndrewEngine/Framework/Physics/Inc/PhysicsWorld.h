@@ -27,11 +27,11 @@ namespace AndrewEngine::Physics
         void Update(float deltaTime);
         void DebugUI();
 
-
-    private:
-        friend class RigidBody;
+        void SetGravity(const AndrewEngine::AEMath::Vector3& gravity);
         void Register(RigidBody* rigidBody);
         void Unregister(RigidBody* rigidBody);
+    private:
+        friend class RigidBody;
 
         Settings mSettings;
 

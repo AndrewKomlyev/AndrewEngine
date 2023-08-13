@@ -7,7 +7,7 @@ namespace AndrewEngine::Graphics
     struct MeshBase
     {
         using VertexType = VertexT;
-        std::vector<VertexType> verticies;
+        std::vector<VertexType> vertices;
         std::vector<uint32_t> indicies;
     };
 

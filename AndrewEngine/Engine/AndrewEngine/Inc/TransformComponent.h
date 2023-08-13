@@ -9,7 +9,7 @@ namespace AndrewEngine
         , public Graphics::Transform
     {
     public:
-        SET_TYPE_ID(ComponentId::Transform);
+        SET_TYPE_ID(ComponentId::TransformComponent);
 
         void DebugUI() override;
     };

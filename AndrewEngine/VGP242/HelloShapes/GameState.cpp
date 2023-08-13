@@ -5,21 +5,21 @@
 
 void GameState::OnCreateShape() 
 {
-    mVerticies.push_back({ AEMath::Vector3(0.0f,-1.0f,0.0f), Colors::Red });
-    mVerticies.push_back({ AEMath::Vector3(-0.5f,0.0f,0.0f), Colors::Red });
-    mVerticies.push_back({ AEMath::Vector3(0.0f,0.0f,0.0f), Colors::Yellow });
+    mVertices.push_back({ AEMath::Vector3(0.0f,-1.0f,0.0f), Colors::Red });
+    mVertices.push_back({ AEMath::Vector3(-0.5f,0.0f,0.0f), Colors::Red });
+    mVertices.push_back({ AEMath::Vector3(0.0f,0.0f,0.0f), Colors::Yellow });
 
-    mVerticies.push_back({ AEMath::Vector3(0.0f,0.0f,0.0f), Colors::Yellow });
-    mVerticies.push_back({ AEMath::Vector3(0.5f,0.0f,0.0f), Colors::Red });
-    mVerticies.push_back({ AEMath::Vector3(0.0f,-1.0f,0.0f), Colors::Red });
+    mVertices.push_back({ AEMath::Vector3(0.0f,0.0f,0.0f), Colors::Yellow });
+    mVertices.push_back({ AEMath::Vector3(0.5f,0.0f,0.0f), Colors::Red });
+    mVertices.push_back({ AEMath::Vector3(0.0f,-1.0f,0.0f), Colors::Red });
 
-    mVerticies.push_back({ AEMath::Vector3(-0.5f,0.0f,0.0f), Colors::Red });
-    mVerticies.push_back({ AEMath::Vector3(-0.25f,0.5f,0.0f), Colors::Red });
-    mVerticies.push_back({ AEMath::Vector3(0.0f,0.0f,0.0f), Colors::Yellow });
+    mVertices.push_back({ AEMath::Vector3(-0.5f,0.0f,0.0f), Colors::Red });
+    mVertices.push_back({ AEMath::Vector3(-0.25f,0.5f,0.0f), Colors::Red });
+    mVertices.push_back({ AEMath::Vector3(0.0f,0.0f,0.0f), Colors::Yellow });
 
-    mVerticies.push_back({ AEMath::Vector3(+0.0f,0.0f,0.0f), Colors::Yellow });
-    mVerticies.push_back({ AEMath::Vector3(+0.25f,0.5f,0.0f), Colors::Red });
-    mVerticies.push_back({ AEMath::Vector3(0.5f,0.0f,0.0f), Colors::Red });
+    mVertices.push_back({ AEMath::Vector3(+0.0f,0.0f,0.0f), Colors::Yellow });
+    mVertices.push_back({ AEMath::Vector3(+0.25f,0.5f,0.0f), Colors::Red });
+    mVertices.push_back({ AEMath::Vector3(0.5f,0.0f,0.0f), Colors::Red });
 
 }
 
@@ -46,14 +46,14 @@ void GameState::Initialize()
     //Create Vertex Buffer
 
     D3D11_BUFFER_DESC bufferDesc{};
-    bufferDesc.ByteWidth = static_cast<UINT>(mVerticies.size() * sizeof(Vertex));
+    bufferDesc.ByteWidth = static_cast<UINT>(mVertices.size() * sizeof(Vertex));
     bufferDesc.Usage = D3D11_USAGE_DEFAULT;
     bufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
     bufferDesc.MiscFlags = 0;
     bufferDesc.StructureByteStride = 0;
 
     D3D11_SUBRESOURCE_DATA initData{};
-    initData.pSysMem = mVerticies.data();
+    initData.pSysMem = mVertices.data();
     HRESULT hr = device->CreateBuffer(&bufferDesc, &initData, &mVertexBuffer);
     ASSERT(SUCCEEDED(hr), "Failed to create vertex buffeer");
 
@@ -126,7 +126,7 @@ void GameState::Render()
     UINT stride = sizeof(Vertex);
     UINT offset = 0;
     context->IASetVertexBuffers(0, 1, &mVertexBuffer, &stride, &offset);
-    context->Draw((UINT)mVerticies.size(), 0);
+    context->Draw((UINT)mVertices.size(), 0);
 
 }
 
@@ -137,37 +137,37 @@ void GameState::DebugUI()
 
 void Triangle::OnCreateShape()
 {
-    mVerticies.push_back({ AEMath::Vector3(0.0f, 0.5f, 0.0f), Colors::Green });
-    mVerticies.push_back({ AEMath::Vector3(0.5f, -0.5f, 0.0f), Colors::Green });
-    mVerticies.push_back({ AEMath::Vector3(-0.5f, -0.5f, 0.0f), Colors::Green });
+    mVertices.push_back({ AEMath::Vector3(0.0f, 0.5f, 0.0f), Colors::Green });
+    mVertices.push_back({ AEMath::Vector3(0.5f, -0.5f, 0.0f), Colors::Green });
+    mVertices.push_back({ AEMath::Vector3(-0.5f, -0.5f, 0.0f), Colors::Green });
 }
 
 void Square::OnCreateShape()
 {
-    mVerticies.push_back({ AEMath::Vector3(-0.9f,-0.9f,0.0f), Colors::LightYellow });
-    mVerticies.push_back({ AEMath::Vector3(-0.6f,0.0f,0.0f), Colors::Red });
-    mVerticies.push_back({ AEMath::Vector3(0.0f,-0.9f,0.0f), Colors::OrangeRed });
+    mVertices.push_back({ AEMath::Vector3(-0.9f,-0.9f,0.0f), Colors::LightYellow });
+    mVertices.push_back({ AEMath::Vector3(-0.6f,0.0f,0.0f), Colors::Red });
+    mVertices.push_back({ AEMath::Vector3(0.0f,-0.9f,0.0f), Colors::OrangeRed });
 
-    mVerticies.push_back({ AEMath::Vector3(0.0f,-0.9f,0.0f), Colors::OrangeRed });
-    mVerticies.push_back({ AEMath::Vector3(-0.6f,0.0f,0.0f), Colors::Red });
-    mVerticies.push_back({ AEMath::Vector3(0.3f,0.0f,0.0f), Colors::White });
+    mVertices.push_back({ AEMath::Vector3(0.0f,-0.9f,0.0f), Colors::OrangeRed });
+    mVertices.push_back({ AEMath::Vector3(-0.6f,0.0f,0.0f), Colors::Red });
+    mVertices.push_back({ AEMath::Vector3(0.3f,0.0f,0.0f), Colors::White });
 
   
 }
 
 void Diamond::OnCreateShape()
 {
-    mVerticies.push_back({ AEMath::Vector3(-1.0f,-1.0f,0.0f), Colors::Yellow });
-    mVerticies.push_back({ AEMath::Vector3(-0.5f,0.0f,0.0f), Colors::Red });
-    mVerticies.push_back({ AEMath::Vector3(0.0f,-1.0f,0.0f), Colors::Green });
+    mVertices.push_back({ AEMath::Vector3(-1.0f,-1.0f,0.0f), Colors::Yellow });
+    mVertices.push_back({ AEMath::Vector3(-0.5f,0.0f,0.0f), Colors::Red });
+    mVertices.push_back({ AEMath::Vector3(0.0f,-1.0f,0.0f), Colors::Green });
 
-    mVerticies.push_back({ AEMath::Vector3(0.0f,-1.0f,0.0f), Colors::Yellow });
-    mVerticies.push_back({ AEMath::Vector3(0.5f,0.0,0.0f), Colors::Red });
-    mVerticies.push_back({ AEMath::Vector3(1.0f,-1.0f,0.0f), Colors::Green });
+    mVertices.push_back({ AEMath::Vector3(0.0f,-1.0f,0.0f), Colors::Yellow });
+    mVertices.push_back({ AEMath::Vector3(0.5f,0.0,0.0f), Colors::Red });
+    mVertices.push_back({ AEMath::Vector3(1.0f,-1.0f,0.0f), Colors::Green });
 
-    mVerticies.push_back({ AEMath::Vector3(-0.5f,0.0f,0.0f), Colors::Yellow });
-    mVerticies.push_back({ AEMath::Vector3(0.0f,1.0,0.0f), Colors::Red });
-    mVerticies.push_back({ AEMath::Vector3(0.5f,0.0f,0.0f), Colors::Green });
+    mVertices.push_back({ AEMath::Vector3(-0.5f,0.0f,0.0f), Colors::Yellow });
+    mVertices.push_back({ AEMath::Vector3(0.0f,1.0,0.0f), Colors::Red });
+    mVertices.push_back({ AEMath::Vector3(0.5f,0.0f,0.0f), Colors::Green });
 
 
 }

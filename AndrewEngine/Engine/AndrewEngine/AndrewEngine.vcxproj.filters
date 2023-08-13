@@ -57,6 +57,15 @@
     <ClCompile Include="Src\ModelComponent.cpp">
       <Filter>Src\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Src\MeshComponent.cpp">
+      <Filter>Src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ColliderComponent.cpp">
+      <Filter>Src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\RigidBodyComponent.cpp">
+      <Filter>Src\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Precompiled.h">
@@ -111,6 +120,15 @@
       <Filter>Inc\Services</Filter>
     </ClInclude>
     <ClInclude Include="Inc\ModelComponent.h">
+      <Filter>Inc\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\MeshComponent.h">
+      <Filter>Inc\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\ColliderComponent.h">
+      <Filter>Inc\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\RigidBodyComponent.h">
       <Filter>Inc\Components</Filter>
     </ClInclude>
   </ItemGroup>

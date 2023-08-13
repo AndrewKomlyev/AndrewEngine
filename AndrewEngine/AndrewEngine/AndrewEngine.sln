@@ -105,6 +105,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{6608E614-AE8F-4D38-943A-AE358FBFEC09}"
 	ProjectSection(SolutionItems) = preProject
 		..\Assets\Templates\fps_camera.json = ..\Assets\Templates\fps_camera.json
+		..\Assets\Templates\ground.json = ..\Assets\Templates\ground.json
 		..\Assets\Templates\test_player.json = ..\Assets\Templates\test_player.json
 	EndProjectSection
 EndProject

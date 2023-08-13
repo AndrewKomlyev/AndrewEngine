@@ -15,7 +15,7 @@ void Particle::Initialize(const ParticleInfo& info)
 
     mMesh = MeshBuilder::CreateSpherePC(10.0f, 10.0f, 0.1f);
 
-    mParticle.meshBuffer.Initialize(nullptr, sizeof(VertexPC), mMesh.verticies.size(), mMesh.indicies.data(), mMesh.indicies.size());
+    mParticle.meshBuffer.Initialize(nullptr, sizeof(VertexPC), mMesh.vertices.size(), mMesh.indicies.data(), mMesh.indicies.size());
 
     mCollision.Initialize(0.1f);
     mRigidBody.Initialize(mParticle.transform, mCollision, 0.1f);
@@ -60,12 +60,12 @@ void Particle::Render(SimpleEffect& effect)
 {
     if (mIsAcive)
     {
-        for (auto& v : mMesh.verticies)
+        for (auto& v : mMesh.vertices)
         {
             v.color = mCurrentColour;
         }
         mParticle.transform.scale = mCurrentScale;
-        mParticle.meshBuffer.Update(mMesh.verticies.data(), mMesh.verticies.size());
+        mParticle.meshBuffer.Update(mMesh.vertices.data(), mMesh.vertices.size());
         effect.Render(mParticle);
     }
 }

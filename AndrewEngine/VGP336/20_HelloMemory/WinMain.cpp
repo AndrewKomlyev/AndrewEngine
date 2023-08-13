@@ -42,10 +42,6 @@ int WINAPI  WinMain(HINSTANCE instance, HINSTANCE, LPSTR, int)
 
     studentPool.Delete(a);
     studentPool.Delete(b);
-<<<<<<< Updated upstream
-=======
 
-
->>>>>>> Stashed changes
     return 0;
 }

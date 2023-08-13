@@ -23,7 +23,7 @@ protected:
         AndrewEngine::AEMath::Vector3 position;
         AndrewEngine::Color color;
     };
-    std::vector<Vertex> mVerticies;
+    std::vector<Vertex> mVertices;
 
     ID3D11Buffer* mVertexBuffer = nullptr;
     ID3D11VertexShader* mVertexShader = nullptr;

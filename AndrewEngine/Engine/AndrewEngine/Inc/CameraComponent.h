@@ -8,7 +8,7 @@ namespace AndrewEngine
     {
     public:
 
-        SET_TYPE_ID(ComponentId::Camera);
+        SET_TYPE_ID(ComponentId::CameraComponent);
 
         void Initialize() override;
         void Terminate() override;

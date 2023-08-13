@@ -9,7 +9,7 @@ namespace AndrewEngine
     class FPSCameraControllerComponent final : public Component
     {
     public:
-        SET_TYPE_ID(ComponentId::FPSCameraController);
+        SET_TYPE_ID(ComponentId::FPSCameraControllerComponent);
 
 
         void Initialize() override;

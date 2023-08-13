@@ -14,14 +14,15 @@ C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\GrainEf
   LightTypes.cpp
   MeshBuffer.cpp
   MeshBuilder.cpp
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\MeshBuilder.cpp(95,50): warning C4267: 'initializing': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\MeshBuilder.cpp(95,49): warning C4267: 'initializing': conversion from 'size_t' to 'uint32_t', possible loss of data
 C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\MeshBuilder.cpp(275,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\MeshBuilder.cpp(334,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\MeshBuilder.cpp(369,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\MeshBuilder.cpp(439,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   ModelIO.cpp
 C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\ModelIO.cpp(11,52): warning C4267: 'initializing': conversion from 'size_t' to 'uint32_t', possible loss of data
 C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\ModelIO.cpp(18,43): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
 C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\ModelIO.cpp(25,40): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\ModelIO.cpp(231,25): warning C4477: 'fprintf_s' : format string '%f' requires an argument of type 'double', but variadic argument 1 has type 'float *'
 C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\ModelIO.cpp(268,54): warning C4267: 'initializing': conversion from 'size_t' to 'uint32_t', possible loss of data
 C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\ModelIO.cpp(278,63): warning C4267: 'initializing': conversion from 'size_t' to 'uint32_t', possible loss of data
 C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Src\ModelIO.cpp(319,28): warning C4018: '<': signed/unsigned mismatch

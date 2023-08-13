@@ -84,6 +84,12 @@ void PhysicsWorld::DebugUI()
     }
 }
 
+void AndrewEngine::Physics::PhysicsWorld::SetGravity(const AndrewEngine::AEMath::Vector3& gravity)
+{
+
+    mDynamicWorld->setGravity(ConvertTobtVector3(gravity));
+}
+
 void PhysicsWorld::Register(RigidBody* rigidBody)
 {
     if (rigidBody != nullptr)

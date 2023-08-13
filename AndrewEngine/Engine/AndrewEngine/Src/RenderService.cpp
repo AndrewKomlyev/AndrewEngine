@@ -1,5 +1,6 @@
 #include "Precompiled.h"
 #include "RenderService.h"
+#include "MeshComponent.h"
 #include "ModelComponent.h"
 #include "TransformComponent.h"
 
@@ -73,7 +74,33 @@ void AndrewEngine::RenderService::SetDirectionLight(const const AEMath::Vector3&
     mDirectionalLight.direction = AEMath::Normalize(direction);
 }
 
-void AndrewEngine::RenderService::Register(const ModelComponent* modelComponent)
+void AndrewEngine::RenderService::Register(const MeshComponent* meshComponent)
+{
+    auto& entry = mRenderEntities.emplace_back();
+
+    auto& gameObject = meshComponent->GetOwner();
+    entry.meshComponent = meshComponent;
+    entry.transformComponent = gameObject.GetComponent<TransformComponent>();
+    entry.renderGroup.push_back(meshComponent->GetRenderObject());
+}
+
+void RenderService::Unregister(const MeshComponent* meshComponent)
+{
+    auto iter = std::find_if(mRenderEntities.begin(), mRenderEntities.end(), [&](const Entry& entry)
+        {
+            return entry.meshComponent == meshComponent;
+        }
+    );
+
+    if (iter != mRenderEntities.end())
+    {
+        auto& entry = *iter;
+        CleanupRenderGroup(entry.renderGroup);
+        mRenderEntities.erase(iter);
+    }
+}
+
+void RenderService::Register(const ModelComponent* modelComponent)
 {
     auto& entry = mRenderEntities.emplace_back();
 
@@ -83,7 +110,7 @@ void AndrewEngine::RenderService::Register(const ModelComponent* modelComponent)
     entry.renderGroup = CreateRenderGroup(modelComponent->GetModelId());
 }
 
-void AndrewEngine::RenderService::Unregister(const ModelComponent* modelComponent)
+void RenderService::Unregister(const ModelComponent* modelComponent)
 {
     auto iter = std::find_if(mRenderEntities.begin(), mRenderEntities.end(), [&](const Entry& entry)
         {

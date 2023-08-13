@@ -5,6 +5,7 @@
 #include "RenderService.h"
 
 #include "TransformComponent.h"
+#include "RigidBodyComponent.h"
 
 using namespace AndrewEngine;
 
@@ -122,6 +123,20 @@ void GameWorld::LoadLevel(const std::filesystem::path& levelFile)
     uint32_t capacity = static_cast<uint32_t>(doc["Capacity"].GetInt());
     Initialize(capacity);
 
+    if (doc.HasMember("Physics"))
+    {
+        const auto& physicsData = doc["Physics"].GetObj();
+        if (physicsData.HasMember("Gravity"))
+        {
+            const auto& gravity = physicsData["Gravity"].GetArray();
+            const auto& x = gravity[0].GetFloat();
+            const auto& y = gravity[1].GetFloat();
+            const auto& z = gravity[2].GetFloat();
+
+            Physics::PhysicsWorld::Get()->SetGravity({ x,y,z });
+        }
+    }
+
     auto gameObjects = doc["GameObjects"].GetObj();
     for (auto& gameObject : gameObjects)
     {
@@ -140,6 +155,12 @@ void GameWorld::LoadLevel(const std::filesystem::path& levelFile)
 
                 auto transform = obj->GetComponent < TransformComponent>();
                 transform->position = { x,y,z };
+
+                auto rigidBodyComponent = obj->GetComponent<RigidBodyComponent>();
+                if (rigidBodyComponent != nullptr)
+                {
+                    rigidBodyComponent->SetPosition(transform->position);
+                }
             }
         }
     }

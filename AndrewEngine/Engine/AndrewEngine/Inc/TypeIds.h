@@ -6,10 +6,13 @@ namespace AndrewEngine
 {
     enum class ComponentId
     {
-        Transform,
-        Camera,
-        FPSCameraController,
-        Model,
+        CameraComponent,
+        ColliderComponent,
+        FPSCameraControllerComponent,
+        MeshComponent,
+        ModelComponent,
+        RigidBodyComponent,
+        TransformComponent,
 
         Count
     };
@@ -18,9 +21,7 @@ namespace AndrewEngine
     {
         Camera,
         Render,
-        Physics,
         
-
         Count
     };
 }

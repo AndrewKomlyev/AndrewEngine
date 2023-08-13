@@ -2,8 +2,11 @@
 #include "GameObjectFactory.h"
 #include "GameObject.h"
 #include "CameraComponent.h"
+#include "ColliderComponent.h"
 #include "FPSCameraControllerComponent.h"
+#include "MeshComponent.h"
 #include "ModelComponent.h"
+#include "RigidBodyComponent.h"
 #include "TransformComponent.h"
 
 using namespace AndrewEngine;
@@ -76,6 +79,152 @@ void GameObjectFactory::Make(const std::filesystem::path& templateFile, GameObje
             {
                 const char* fileName = component.value["FileName"].GetString();
                 modelComponent->SetFileName(fileName);
+            }
+        }
+        else if (strcmp(componentName, "MeshComponent") == 0)
+        {
+            MeshComponent* meshComponent = gameObject.AddComponent<MeshComponent>();
+            if (component.value.HasMember("Shape"))
+            {
+                const auto& shapeData = component.value["Shape"].GetObj();
+                if (shapeData.HasMember("Type"))
+                {
+                    const char* shapeType = shapeData["Type"].GetString();
+                    if (strcmp(shapeType, "Cube"))
+                    {
+                        const float size = shapeData["Size"].GetFloat();
+                        meshComponent->CreateCube(size);
+                    }
+                    else if (strcmp(shapeType, "Sphere"))
+                    {
+                        const int slices = shapeData["Slices"].GetInt();
+                        const int rings = shapeData["Sings"].GetInt();
+                        const float radius = shapeData["Radius"].GetFloat();
+                        meshComponent->CreateSphere(slices, rings, radius);
+                    }
+                    else if (strcmp(shapeType, "Plane"))
+                    {
+                        const int rows = shapeData["Rows"].GetInt();
+                        const int columns = shapeData["Columns"].GetInt();
+                        const float size = shapeData["Size"].GetFloat();
+                        meshComponent->CreatePlane(rows, columns, size);
+                    }
+                    else
+                    {
+                        ASSERT(false, "ShapeType: %s is not valid", shapeType);
+                    }
+                }
+            }
+            if (component.value.HasMember("Material"))
+            {
+                Material material;
+                const auto& materialData = component.value["Material"].GetObj();
+                if (materialData.HasMember("Ambient"))
+                {
+                    const auto& color = materialData["Ambient"].GetArray();
+                    material.ambient.r = color[0].GetFloat();
+                    material.ambient.g = color[1].GetFloat();
+                    material.ambient.b = color[2].GetFloat();
+                    material.ambient.a = color[3].GetFloat();
+                }
+                if (materialData.HasMember("Diffuse"))
+                {
+                    const auto& color = materialData["Diffuse"].GetArray();
+                    material.diffuse.r = color[0].GetFloat();
+                    material.diffuse.g = color[1].GetFloat();
+                    material.diffuse.b = color[2].GetFloat();
+                    material.diffuse.a = color[3].GetFloat();
+                }
+                if (materialData.HasMember("Specular"))
+                {
+                    const auto& color = materialData["Specular"].GetArray();
+                    material.specular.r = color[0].GetFloat();
+                    material.specular.g = color[1].GetFloat();
+                    material.specular.b = color[2].GetFloat();
+                    material.specular.a = color[3].GetFloat();
+                }
+                if (materialData.HasMember("Emissive"))
+                {
+                    const auto& color = materialData["Emissive"].GetArray();
+                    material.emissive.r = color[0].GetFloat();
+                    material.emissive.g = color[1].GetFloat();
+                    material.emissive.b = color[2].GetFloat();
+                    material.emissive.a = color[3].GetFloat();
+                }
+                if (materialData.HasMember("SpecularPower"))
+                {
+                    material.power = materialData["SpecularPower"].GetFloat();
+
+                }
+                meshComponent->SetMaterial(material);
+            }
+            if (component.value.HasMember("Textures"))
+            {
+                const auto& textureData = component.value["Textures"].GetObj();
+                if (textureData.HasMember("DiffuseMap"))
+                {
+                    const char* diffuseMapFileName = textureData["DiffuseMap"].GetString();
+                    meshComponent->SetDiffuseMap(diffuseMapFileName);
+                }
+                if (textureData.HasMember("DisplacementMap"))
+                {
+                    const char* displacementMapFileName = textureData["DisplacementMap"].GetString();
+                    meshComponent->SetDisplacementMap(displacementMapFileName);
+                }
+                if (textureData.HasMember("NormalMap"))
+                {
+                    const char* normalMapFileName = textureData["NormalMap"].GetString();
+                    meshComponent->SetNormalMap(normalMapFileName);
+                }
+                if (textureData.HasMember("SpecularMap"))
+                {
+                    const char* specularlMapFileName = textureData["SpecularMap"].GetString();
+                    meshComponent->SetSpecularMap(specularlMapFileName);
+                }
+
+            }
+
+        }
+        else if (strcmp(componentName, "ColliderComponent") == 0)
+        {
+            ColliderComponent* colliderComponent = gameObject.AddComponent<ColliderComponent>();
+            if (component.value.HasMember("Shape"))
+            {
+                const auto& shapeData = component.value["Shape"].GetObj();
+                if (shapeData.HasMember("Type"))
+                {
+                    const char* shapeType = shapeData["Type"].GetString();
+                    if (strcmp(shapeType, "Box"))
+                    {
+                        const auto& halfExtents = shapeData["HalfExtents"].GetArray();
+                        const float x = halfExtents[0].GetFloat();
+                        const float y = halfExtents[1].GetFloat();
+                        const float z = halfExtents[2].GetFloat();
+                        colliderComponent->SetBoxCollider({ x,y,z });
+                    }
+                    else if (strcmp(shapeType, "Sphere"))
+                    {
+                        const float radius = shapeData["Radius"].GetFloat();
+                        colliderComponent->SetSphereCollision(radius);
+                    }
+                    else
+                    {
+                        ASSERT(false, "ShapeType: %s is not valid", shapeType);
+                    }
+                }
+                else
+                {
+                    ASSERT(false, "ColliderComponent: ShapeType is not valid");
+                }
+            }
+        }
+        else if (strcmp(componentName, "RigidBodyComponent") == 0)
+        {
+            RigidBodyComponent* rigidBodyComponent = gameObject.AddComponent<RigidBodyComponent>();
+            if (component.value.HasMember("Mass"))
+            {
+                const float mass = component.value["Mass"].GetFloat();
+                rigidBodyComponent->SetMass(mass);
             }
         }
         else

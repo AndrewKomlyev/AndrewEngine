@@ -13,17 +13,17 @@ namespace AndrewEngine::Graphics
         };
 
         template<class VertexType>
-        void Initialize(const std::vector<VertexType>& verticies)
+        void Initialize(const std::vector<VertexType>& vertices)
         {
-            Initialize(verticies.data(), static_cast<uint32_t>(sizeof(VertexType)), static_cast<uint32_t>(verticies.size()));
+            Initialize(vertices.data(), static_cast<uint32_t>(sizeof(VertexType)), static_cast<uint32_t>(vertices.size()));
         }
         template<class MeshType>
         void Initialize(const MeshType& mesh)
         {
-            Initialize(mesh.verticies.data(), static_cast<uint32_t>(sizeof(MeshType::VertexType)), static_cast<uint32_t>(mesh.verticies.size()), mesh.indicies.data(), static_cast<uint32_t>(mesh.indicies.size()));
+            Initialize(mesh.vertices.data(), static_cast<uint32_t>(sizeof(MeshType::VertexType)), static_cast<uint32_t>(mesh.vertices.size()), mesh.indicies.data(), static_cast<uint32_t>(mesh.indicies.size()));
         }
-        void Initialize(const void* verticies, uint32_t vertexSize, uint32_t vertexCount);
-        void Initialize(const void* verticies, uint32_t vertexSize, uint32_t vertexCount, const uint32_t* indicies, uint32_t indexCount);
+        void Initialize(const void* vertices, uint32_t vertexSize, uint32_t vertexCount);
+        void Initialize(const void* vertices, uint32_t vertexSize, uint32_t vertexCount, const uint32_t* indicies, uint32_t indexCount);
         void Terminate();
 
         void Update(const void* vertices, uint32_t vertexCount);
@@ -32,7 +32,7 @@ namespace AndrewEngine::Graphics
 
     private:
 
-        void CreateVertexBuffer(const void* verticies, uint32_t vertexSize, uint32_t vertexCount);
+        void CreateVertexBuffer(const void* vertices, uint32_t vertexSize, uint32_t vertexCount);
         void CreateIndexBuffer(const uint32_t* indicies, uint32_t indexCount);
         ID3D11Buffer* mVertexBuffer = nullptr;
         ID3D11Buffer* mIndexBuffer = nullptr;

@@ -92,10 +92,10 @@ void ModelIO::SaveModel(std::filesystem::path filePath, const Model& model)
         fprintf_s(file, "MaterialIndex: %d\n", meshData.materialIndex);
 
         const auto& mesh = meshData.mesh;
-        const uint32_t vertexCount = static_cast<uint32_t>(mesh.verticies.size());
+        const uint32_t vertexCount = static_cast<uint32_t>(mesh.vertices.size());
         fprintf_s(file, "VertecCount: %d\n", vertexCount);
 
-        for (auto& v : mesh.verticies)
+        for (auto& v : mesh.vertices)
         {
             fprintf_s(file, "%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %d %d %d %d\n",
                 v.position.x, v.position.y, v.position.z,
@@ -137,8 +137,8 @@ void ModelIO::LoadModel(std::filesystem::path filePath, Model& model)
         auto& mesh = meshData.mesh;
         uint32_t vertexCount = 0;
         fscanf_s(file, "VertecCount: %d\n", &vertexCount);
-        mesh.verticies.resize(vertexCount);
-        for (auto& v : mesh.verticies)
+        mesh.vertices.resize(vertexCount);
+        for (auto& v : mesh.vertices)
         {
             fscanf_s(file, "%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %d %d %d %d\n",
                 &v.position.x, &v.position.y, &v.position.z,
@@ -186,7 +186,7 @@ void ModelIO::SaveMaterial(std::filesystem::path filePath, const Model& model)
         fprintf_s(file, "%f %f %f %f \n", m.diffuse.r, m.diffuse.g, m.diffuse.b, m.diffuse.a);
         fprintf_s(file, "%f %f %f %f \n", m.specular.r, m.specular.g, m.specular.b, m.specular.a);
         fprintf_s(file, "%f %f %f %f \n", m.emissive.r, m.emissive.g, m.emissive.b, m.emissive.a);
-
+        fprintf_s(file, "SpecularPower: %f\n", m.power);
 
 
         fprintf_s(file, "%s\n", materialData.diffuseMapName.empty() ? "none" : materialData.diffuseMapName.c_str());
@@ -228,7 +228,7 @@ void ModelIO::LoadMaterial(std::filesystem::path filePath, Model& model)
         fscanf_s(file, "%f %f %f %f \n", &m.diffuse.r, &m.diffuse.g, &m.diffuse.b, &m.diffuse.a);
         fscanf_s(file, "%f %f %f %f \n", &m.specular.r, &m.specular.g, &m.specular.b, &m.specular.a);
         fscanf_s(file, "%f %f %f %f \n", &m.emissive.r, &m.emissive.g, &m.emissive.b, &m.emissive.a);
-
+        fprintf_s(file, "SpecularPower: %f\n", &m.power);
 
 
         TryReadTextureName(materialData.diffuseMapName);

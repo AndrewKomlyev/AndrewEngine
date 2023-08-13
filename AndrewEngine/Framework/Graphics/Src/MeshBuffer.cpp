@@ -6,14 +6,14 @@ using namespace AndrewEngine;
 using namespace AndrewEngine::Graphics;
 
 
-void MeshBuffer::Initialize(const void* verticies, uint32_t vertexSize, uint32_t vertexCount)
+void MeshBuffer::Initialize(const void* vertices, uint32_t vertexSize, uint32_t vertexCount)
 {
-    CreateVertexBuffer(verticies, vertexSize, vertexCount);
+    CreateVertexBuffer(vertices, vertexSize, vertexCount);
 }
 
-void MeshBuffer::Initialize(const void* verticies, uint32_t vertexSize, uint32_t vertexCount, const uint32_t* indicies, uint32_t indexCount)
+void MeshBuffer::Initialize(const void* vertices, uint32_t vertexSize, uint32_t vertexCount, const uint32_t* indicies, uint32_t indexCount)
 {
-    CreateVertexBuffer(verticies, vertexSize, vertexCount);
+    CreateVertexBuffer(vertices, vertexSize, vertexCount);
     CreateIndexBuffer(indicies, indexCount);
 }
 
@@ -68,7 +68,7 @@ void MeshBuffer::Render() const
     }
 }
 
-void AndrewEngine::Graphics::MeshBuffer::CreateVertexBuffer(const void* verticies, uint32_t vertexSize, uint32_t vertexCount)
+void AndrewEngine::Graphics::MeshBuffer::CreateVertexBuffer(const void* vertices, uint32_t vertexSize, uint32_t vertexCount)
 {
     mVertexSize = vertexSize;
     mVertexCount = vertexCount;
@@ -76,7 +76,7 @@ void AndrewEngine::Graphics::MeshBuffer::CreateVertexBuffer(const void* verticie
     auto device = GraphicsSystem::Get()->GetDevice();
     //===========================================================================
     //Create Vertex Buffer
-    const bool isDynamic = (verticies == nullptr);
+    const bool isDynamic = (vertices == nullptr);
 
     D3D11_BUFFER_DESC bufferDesc{};
     bufferDesc.ByteWidth = static_cast<UINT>(vertexCount * vertexSize);
@@ -87,7 +87,7 @@ void AndrewEngine::Graphics::MeshBuffer::CreateVertexBuffer(const void* verticie
     bufferDesc.StructureByteStride = 0;
 
     D3D11_SUBRESOURCE_DATA initData{};
-    initData.pSysMem = verticies;
+    initData.pSysMem = vertices;
     HRESULT hr = device->CreateBuffer(&bufferDesc, (isDynamic ? nullptr : &initData), &mVertexBuffer);
     ASSERT(SUCCEEDED(hr), "Failed to create vertex buffeer");
 }

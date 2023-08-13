@@ -36,8 +36,8 @@ namespace
         MeshBuffer mMeshBuffer;
         BlendState mAlphaBlendState;
 
-        std::unique_ptr<VertexPC[]> mLineVerticies;
-        std::unique_ptr<VertexPC[]> mFaceVerticies;
+        std::unique_ptr<VertexPC[]> mLineVertices;
+        std::unique_ptr<VertexPC[]> mFaceVertices;
 
         uint32_t mLineVertexCount = 0;
         uint32_t mFaceVertexCount = 0;
@@ -54,8 +54,8 @@ namespace
         mMeshBuffer.Initialize(nullptr, sizeof(VertexPC), mMaxVertexCount);
         mAlphaBlendState.Initialize(BlendState::Mode::AlphaBlend);
 
-        mLineVerticies = std::make_unique<VertexPC[]>(maxVertexCount);
-        mFaceVerticies = std::make_unique<VertexPC[]>(maxVertexCount);
+        mLineVertices = std::make_unique<VertexPC[]>(maxVertexCount);
+        mFaceVertices = std::make_unique<VertexPC[]>(maxVertexCount);
         mLineVertexCount = 0;
         mFaceVertexCount = 0;
     }
@@ -74,8 +74,8 @@ namespace
     {
         if (mLineVertexCount + 2 <= mMaxVertexCount)
         {
-            mLineVerticies[mLineVertexCount++] = VertexPC{ v0, colour };
-            mLineVerticies[mLineVertexCount++] = VertexPC{ v1, colour };
+            mLineVertices[mLineVertexCount++] = VertexPC{ v0, colour };
+            mLineVertices[mLineVertexCount++] = VertexPC{ v1, colour };
         }
     }
 
@@ -83,9 +83,9 @@ namespace
     {
         if (mFaceVertexCount + 3 <= mMaxVertexCount)
         {
-            mFaceVerticies[mFaceVertexCount++] = VertexPC{ v0, colour };
-            mFaceVerticies[mFaceVertexCount++] = VertexPC{ v1, colour };
-            mFaceVerticies[mFaceVertexCount++] = VertexPC{ v2, colour };
+            mFaceVertices[mFaceVertexCount++] = VertexPC{ v0, colour };
+            mFaceVertices[mFaceVertexCount++] = VertexPC{ v1, colour };
+            mFaceVertices[mFaceVertexCount++] = VertexPC{ v2, colour };
         }
     }
 
@@ -102,11 +102,11 @@ namespace
 
         mAlphaBlendState.Set();
 
-        mMeshBuffer.Update(mLineVerticies.get(), mLineVertexCount);
+        mMeshBuffer.Update(mLineVertices.get(), mLineVertexCount);
         mMeshBuffer.SetTopology(MeshBuffer::Topology::Lines);
         mMeshBuffer.Render();
 
-        mMeshBuffer.Update(mFaceVerticies.get(), mFaceVertexCount);
+        mMeshBuffer.Update(mFaceVertices.get(), mFaceVertexCount);
         mMeshBuffer.SetTopology(MeshBuffer::Topology::Triangles);
         mMeshBuffer.Render();
 

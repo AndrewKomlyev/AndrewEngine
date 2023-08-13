@@ -342,10 +342,10 @@ int main(int argc, char* argv[])
 
                 meshData.materialIndex = aiMesh->mMaterialIndex;
 
-                printf("Reading verticies...\n");
+                printf("Reading vertices...\n");
 
                 auto& mesh = meshData.mesh;
-                mesh.verticies.reserve(numVertices);
+                mesh.vertices.reserve(numVertices);
 
                 const aiVector3D* positions = aiMesh->mVertices;
                 const aiVector3D* normals = aiMesh->mNormals;
@@ -353,7 +353,7 @@ int main(int argc, char* argv[])
                 const aiVector3D* texCoords = aiMesh->HasTextureCoords(0) ? aiMesh->mTextureCoords[0] : nullptr;
                 for (uint32_t v = 0; v < numVertices; ++v)
                 {
-                    auto& vertex = mesh.verticies.emplace_back();
+                    auto& vertex = mesh.vertices.emplace_back();
                     vertex.position = ToVector3(positions[v] * arguments.scale);
                     vertex.normal = ToVector3(normals[v]);
                     vertex.tangent = tangents ? ToVector3(tangents[v]) : Vector3::Zero;
@@ -382,7 +382,7 @@ int main(int argc, char* argv[])
                         model.skeleton = std::make_unique<Skeleton>();
                     }
 
-                    std::vector<int> numWeightAdded(mesh.verticies.size(), 0);
+                    std::vector<int> numWeightAdded(mesh.vertices.size(), 0);
                     for (uint32_t b = 0; b < aiMesh->mNumBones; ++b)
                     {
                         aiBone* bone = aiMesh->mBones[b];
@@ -392,7 +392,7 @@ int main(int argc, char* argv[])
                             for (uint32_t w = 0; w < bone->mNumWeights; ++w)
                             {
                                 const aiVertexWeight& weight = bone->mWeights[w];
-                                auto& vertex = mesh.verticies[weight.mVertexId];
+                                auto& vertex = mesh.vertices[weight.mVertexId];
                                 auto& count = numWeightAdded[weight.mVertexId];
                                 if (count < Vertex::MaxBoneWeights)
                                 {

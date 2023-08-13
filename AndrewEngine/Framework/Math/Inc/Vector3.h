@@ -16,7 +16,7 @@ namespace AndrewEngine::AEMath
         static const Vector3 YAxis;
         static const Vector3 ZAxis;
 
-        constexpr Vector3 operator-()
+        constexpr Vector3 operator-() const 
         {
             return Vector3(-x, -y, -z);
         }

@@ -92,13 +92,13 @@ namespace
     {
         // Caps
         int index = rand() % 100;
-        uint32_t topIndex = mesh.verticies.size();
+        uint32_t topIndex = mesh.vertices.size();
         uint32_t bottomIndex = topIndex + 1;
 
         // top center
-        mesh.verticies.push_back({ {0.0f, halfHeight, 0.0f}, GetNextColor(index) });
+        mesh.vertices.push_back({ {0.0f, halfHeight, 0.0f}, GetNextColor(index) });
         // bottom center
-        mesh.verticies.push_back({ {0.0f, -halfHeight, 0.0f}, GetNextColor(index) });
+        mesh.vertices.push_back({ {0.0f, -halfHeight, 0.0f}, GetNextColor(index) });
         CreateCapsIndicies(mesh.indicies, slices, topIndex);
     }
 }
@@ -129,7 +129,7 @@ Mesh MeshBuilder::CreatePlane(int numRows, int numColumns, float spacing)
             float u = 1.0f - (uStep * cf);
             float v = (vStep * rf);
 
-            mesh.verticies.push_back({ {x, 0.0f , z  }, n, t, AEMath::Vector2(u,v) });
+            mesh.vertices.push_back({ {x, 0.0f , z  }, n, t, AEMath::Vector2(u,v) });
             x += spacing;
         }
         x = -halfPlaneWidth;
@@ -149,16 +149,16 @@ MeshPC MeshBuilder::CreateCubePC(float size, Color colour)
     MeshPC mesh;
     const float hs = size * 0.5f;
     //face
-    mesh.verticies.push_back({ { -hs, hs, -hs }, colour });
-    mesh.verticies.push_back({ { hs, hs, -hs }, colour });
-    mesh.verticies.push_back({ { hs, -hs, -hs }, colour });
-    mesh.verticies.push_back({ { -hs, -hs, -hs }, colour });
+    mesh.vertices.push_back({ { -hs, hs, -hs }, colour });
+    mesh.vertices.push_back({ { hs, hs, -hs }, colour });
+    mesh.vertices.push_back({ { hs, -hs, -hs }, colour });
+    mesh.vertices.push_back({ { -hs, -hs, -hs }, colour });
 
     //back
-    mesh.verticies.push_back({ { -hs, hs, hs }, colour });
-    mesh.verticies.push_back({ { hs, hs, hs }, colour });
-    mesh.verticies.push_back({ { hs, -hs, hs }, colour });
-    mesh.verticies.push_back({ { -hs, -hs, hs }, colour });
+    mesh.vertices.push_back({ { -hs, hs, hs }, colour });
+    mesh.vertices.push_back({ { hs, hs, hs }, colour });
+    mesh.vertices.push_back({ { hs, -hs, hs }, colour });
+    mesh.vertices.push_back({ { -hs, -hs, hs }, colour });
 
     CreateCubeIndicies(mesh.indicies);
 
@@ -173,16 +173,16 @@ MeshPC CreateRectanglePC(float width, float height, float depth)
     const float hh = height * 0.5f;
     const float hd = depth * 0.5f;
     //face
-    mesh.verticies.push_back({ { -hw, hh, -hd }, GetNextColor(index) });
-    mesh.verticies.push_back({ { hw, hh, -hd }, GetNextColor(index) });
-    mesh.verticies.push_back({ { hw, -hh, -hd }, GetNextColor(index) });
-    mesh.verticies.push_back({ { -hw, -hh, -hd }, GetNextColor(index) });
+    mesh.vertices.push_back({ { -hw, hh, -hd }, GetNextColor(index) });
+    mesh.vertices.push_back({ { hw, hh, -hd }, GetNextColor(index) });
+    mesh.vertices.push_back({ { hw, -hh, -hd }, GetNextColor(index) });
+    mesh.vertices.push_back({ { -hw, -hh, -hd }, GetNextColor(index) });
 
     //back
-    mesh.verticies.push_back({ { -hw, hh, hd }, GetNextColor(index) });
-    mesh.verticies.push_back({ { hw, hh, hd }, GetNextColor(index) });
-    mesh.verticies.push_back({ { hw, -hh, hd }, GetNextColor(index) });
-    mesh.verticies.push_back({ { -hw, -hh, hd }, GetNextColor(index) });
+    mesh.vertices.push_back({ { -hw, hh, hd }, GetNextColor(index) });
+    mesh.vertices.push_back({ { hw, hh, hd }, GetNextColor(index) });
+    mesh.vertices.push_back({ { hw, -hh, hd }, GetNextColor(index) });
+    mesh.vertices.push_back({ { -hw, -hh, hd }, GetNextColor(index) });
 
     CreateCubeIndicies(mesh.indicies);
     
@@ -206,7 +206,7 @@ MeshPC MeshBuilder::CreatePlanePC(int numRows, int numColumns, float spacing)
     {
         for (int c = 0; c <= numColumns; ++c)
         {
-            mesh.verticies.push_back({ {x, y ,0.0f }, GetNextColor(index) });
+            mesh.vertices.push_back({ {x, y ,0.0f }, GetNextColor(index) });
             x += spacing;
         }
         x = -halfPlaneWidth;
@@ -237,7 +237,7 @@ MeshPC MeshBuilder::CreateCylinderPC(int slices, int rings)
             float slice = static_cast<float>(s);
             float rotations = (slice / static_cast<float>(slices)) * AEMath::Constants::TwoPi;
             
-            mesh.verticies.push_back({ { sin(rotations), ring - halfHeight, -cos(rotations) }, GetNextColor(index) });
+            mesh.vertices.push_back({ { sin(rotations), ring - halfHeight, -cos(rotations) }, GetNextColor(index) });
         }
     }
 
@@ -276,7 +276,7 @@ MeshPC MeshBuilder::CreateSpherePC(int slices, int rings, float radius)
             float v = vStep * ring;
 
 
-            mesh.verticies.push_back({
+            mesh.vertices.push_back({
                 {radius * sin(rotation) * sin(phi),
                 radius * cos(phi),
                 radius * cos(rotation) * sin(phi)},
@@ -295,16 +295,16 @@ MeshPX MeshBuilder::CreateCubePX(float size)
     MeshPX mesh;
     const float hs = size * 0.5f;
     //face
-    mesh.verticies.push_back({ { -hs, hs, -hs }, {0.25f, 0.33f} });
-    mesh.verticies.push_back({{ hs, hs, -hs }, {0.5f, 0.33f} });
-    mesh.verticies.push_back({{ hs, -hs, -hs }, {0.5f, 0.66f} });
-    mesh.verticies.push_back({{ -hs, -hs, -hs }, {0.25f, 0.66f} });
+    mesh.vertices.push_back({ { -hs, hs, -hs }, {0.25f, 0.33f} });
+    mesh.vertices.push_back({{ hs, hs, -hs }, {0.5f, 0.33f} });
+    mesh.vertices.push_back({{ hs, -hs, -hs }, {0.5f, 0.66f} });
+    mesh.vertices.push_back({{ -hs, -hs, -hs }, {0.25f, 0.66f} });
 
     //back
-    mesh.verticies.push_back({{ -hs, hs, hs }, {0.0f, 0.33f} });
-    mesh.verticies.push_back({{ hs, hs, hs }, {0.5f, 0.0f} });
-    mesh.verticies.push_back({{ hs, -hs, hs }, {0.5f, 1.0f} });
-    mesh.verticies.push_back({{ -hs, -hs, hs }, {0.25f, 1.0f} });
+    mesh.vertices.push_back({{ -hs, hs, hs }, {0.0f, 0.33f} });
+    mesh.vertices.push_back({{ hs, hs, hs }, {0.5f, 0.0f} });
+    mesh.vertices.push_back({{ hs, -hs, hs }, {0.5f, 1.0f} });
+    mesh.vertices.push_back({{ -hs, -hs, hs }, {0.25f, 1.0f} });
 
     CreateCubeIndicies(mesh.indicies);
 
@@ -335,7 +335,7 @@ MeshPX MeshBuilder::CreateSpherePX(int slices, int rings, float radius)
             float v = vStep * ring;
 
 
-            mesh.verticies.push_back({
+            mesh.vertices.push_back({
                 {radius * sin(rotation) * sin(phi),
                 radius * cos(phi),
                 radius * cos(rotation) * sin(phi)},
@@ -345,6 +345,76 @@ MeshPX MeshBuilder::CreateSpherePX(int slices, int rings, float radius)
     }
 
     CreatePlaneIndicies(mesh.indicies, rings, slices);
+
+    return mesh;
+}
+
+Mesh MeshBuilder::CreateCube(float size)
+{
+    Mesh mesh;
+
+    float hs = size * 0.5f;
+
+    // FRONT
+    mesh.vertices.push_back({ AEMath::Vector3{  hs,  hs, -hs }, AEMath::Vector3::ZAxis, AEMath::Vector3::XAxis, AEMath::Vector2(0.5f, 0.33f) }); // Top Right Close
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs, -hs, -hs }, AEMath::Vector3::ZAxis, AEMath::Vector3::XAxis, AEMath::Vector2(0.25f, 0.66f) }); // Bottom Left Close
+    mesh.vertices.push_back({ AEMath::Vector3{  hs, -hs, -hs }, AEMath::Vector3::ZAxis, AEMath::Vector3::XAxis, AEMath::Vector2(0.5f, 0.66f) }); // Bottom Right Close
+                                                               
+    mesh.vertices.push_back({ AEMath::Vector3{  hs,  hs, -hs }, AEMath::Vector3::ZAxis, AEMath::Vector3::XAxis, AEMath::Vector2(0.5f, 0.33f) }); // Top Right Close
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs,  hs, -hs }, AEMath::Vector3::ZAxis, AEMath::Vector3::XAxis, AEMath::Vector2(0.25f, 0.33f) }); // Top Left Close
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs, -hs, -hs }, AEMath::Vector3::ZAxis, AEMath::Vector3::XAxis, AEMath::Vector2(0.25f, 0.66f) }); // Bottom Left Close
+                                                               
+    // BACK                                                     
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs,  hs,  hs }, -AEMath::Vector3::ZAxis, -AEMath::Vector3::XAxis, AEMath::Vector2(1.0f, 0.33f) }); // Top Left Far
+    mesh.vertices.push_back({ AEMath::Vector3{  hs, -hs,  hs }, -AEMath::Vector3::ZAxis, -AEMath::Vector3::XAxis, AEMath::Vector2(0.75f, 0.66f) }); // Bottom Right Far
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs, -hs,  hs }, -AEMath::Vector3::ZAxis, -AEMath::Vector3::XAxis, AEMath::Vector2(1.0f, 0.66f) }); // Bottom Left Far
+                                                                
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs,  hs,  hs }, -AEMath::Vector3::ZAxis, -AEMath::Vector3::XAxis, AEMath::Vector2(1.0f, 0.33f) }); // Top Left Far
+    mesh.vertices.push_back({ AEMath::Vector3{  hs,  hs,  hs }, -AEMath::Vector3::ZAxis, -AEMath::Vector3::XAxis, AEMath::Vector2(0.75f, 0.33f) }); // Top Right Far
+    mesh.vertices.push_back({ AEMath::Vector3{  hs, -hs,  hs }, -AEMath::Vector3::ZAxis, -AEMath::Vector3::XAxis, AEMath::Vector2(0.75f, 0.66f) }); // Bottom Right Far
+                                                                
+    // RIGHT                                                    
+    mesh.vertices.push_back({ AEMath::Vector3{  hs,  hs,  hs }, AEMath::Vector3::XAxis, AEMath::Vector3::ZAxis, AEMath::Vector2(0.75f, 0.33f) }); // Top Right Far
+    mesh.vertices.push_back({ AEMath::Vector3{  hs, -hs, -hs }, AEMath::Vector3::XAxis, AEMath::Vector3::ZAxis, AEMath::Vector2(0.5f, 0.66f) }); // Bottom Right Close
+    mesh.vertices.push_back({ AEMath::Vector3{  hs, -hs,  hs }, AEMath::Vector3::XAxis, AEMath::Vector3::ZAxis, AEMath::Vector2(0.75f, 0.66f) }); // Bottom Right Far
+                                                              
+    mesh.vertices.push_back({ AEMath::Vector3{  hs,  hs,  hs }, AEMath::Vector3::XAxis, AEMath::Vector3::ZAxis, AEMath::Vector2(0.75f, 0.33f) }); // Top Right Far
+    mesh.vertices.push_back({ AEMath::Vector3{  hs,  hs, -hs }, AEMath::Vector3::XAxis, AEMath::Vector3::ZAxis, AEMath::Vector2(0.5f, 0.33f) }); // Top Right Close
+    mesh.vertices.push_back({ AEMath::Vector3{  hs, -hs, -hs }, AEMath::Vector3::XAxis, AEMath::Vector3::ZAxis, AEMath::Vector2(0.5f, 0.66f) }); // Bottom Right Close
+                                                                
+    // Left                                                     
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs,  hs, -hs }, -AEMath::Vector3::XAxis, -AEMath::Vector3::ZAxis, AEMath::Vector2(0.25f, 0.33f) }); // Top Left Close
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs, -hs,  hs }, -AEMath::Vector3::XAxis, -AEMath::Vector3::ZAxis, AEMath::Vector2(0.0f, 0.66f) }); // Bottom Left Far
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs, -hs, -hs }, -AEMath::Vector3::XAxis, -AEMath::Vector3::ZAxis, AEMath::Vector2(0.25f, 0.66f) }); // Bottom Left Close
+                                                                 
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs,  hs, -hs }, -AEMath::Vector3::XAxis, -AEMath::Vector3::ZAxis, AEMath::Vector2(0.25f, 0.33f) }); // Top Left Close
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs,  hs,  hs }, -AEMath::Vector3::XAxis, -AEMath::Vector3::ZAxis, AEMath::Vector2(0.0f, 0.33f) }); // Top Left Far
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs, -hs,  hs }, -AEMath::Vector3::XAxis, -AEMath::Vector3::ZAxis, AEMath::Vector2(0.0f, 0.66f) }); // Bottom Left Far
+                                                                 
+    // Top                                                       
+    mesh.vertices.push_back({ AEMath::Vector3{  hs,  hs,  hs }, AEMath::Vector3::YAxis, AEMath::Vector3::XAxis, AEMath::Vector2(0.5f,  0.0f) }); // Top Right Far
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs,  hs, -hs }, AEMath::Vector3::YAxis, AEMath::Vector3::XAxis, AEMath::Vector2(0.25f, 0.33f) }); // Top Left Close
+    mesh.vertices.push_back({ AEMath::Vector3{  hs,  hs, -hs }, AEMath::Vector3::YAxis, AEMath::Vector3::XAxis, AEMath::Vector2(0.5f, 0.33f) }); // Top Right Close
+                                                                 
+    mesh.vertices.push_back({ AEMath::Vector3{  hs,  hs,  hs }, AEMath::Vector3::YAxis, AEMath::Vector3::XAxis, AEMath::Vector2(0.5f,  0.0f) }); // Top Right Far
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs,  hs,  hs }, AEMath::Vector3::YAxis, AEMath::Vector3::XAxis, AEMath::Vector2(0.25f,  0.0f) }); // Top Left Far
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs,  hs, -hs }, AEMath::Vector3::YAxis, AEMath::Vector3::XAxis, AEMath::Vector2(0.25f, 0.33f) }); // Top Left Close
+                               
+    // Bottom                  
+    mesh.vertices.push_back({ AEMath::Vector3{  hs, -hs, -hs }, -AEMath::Vector3::YAxis, -AEMath::Vector3::XAxis, AEMath::Vector2(0.5f, 0.66f) }); // Bottom Right Close
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs, -hs,  hs }, -AEMath::Vector3::YAxis, -AEMath::Vector3::XAxis, AEMath::Vector2(0.25f,  1.0f) }); // Bottom Left Far
+    mesh.vertices.push_back({ AEMath::Vector3{  hs, -hs,  hs }, -AEMath::Vector3::YAxis, -AEMath::Vector3::XAxis, AEMath::Vector2(0.5f,  1.0f) }); // Bottom Right Far
+                               
+    mesh.vertices.push_back({ AEMath::Vector3{  hs, -hs, -hs }, -AEMath::Vector3::YAxis, -AEMath::Vector3::XAxis, AEMath::Vector2(0.5f, 0.66f) }); // Bottom Right Close
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs, -hs, -hs }, -AEMath::Vector3::YAxis, -AEMath::Vector3::XAxis, AEMath::Vector2(0.25f, 0.66f) }); // Bottom Left Close
+    mesh.vertices.push_back({ AEMath::Vector3{ -hs, -hs,  hs }, -AEMath::Vector3::YAxis, -AEMath::Vector3::XAxis, AEMath::Vector2(0.25f,  1.0f) }); // Bottom Left Far
+
+    int i = 0;
+    for (const auto& vertex : mesh.vertices)
+    {
+        mesh.indicies.push_back(i);
+        ++i;
+    }
 
     return mesh;
 }
@@ -376,7 +446,7 @@ Mesh MeshBuilder::CreateSphere(int slices, int rings, float radius)
             const AEMath::Vector3 pos = {x, y, z};
             const AEMath::Vector3 norm = AEMath::Normalize(pos);
             const AEMath::Vector3 tan = AEMath::Normalize({-z, 0.0f, x});
-            mesh.verticies.push_back({ pos, norm, tan, {u, v} });
+            mesh.vertices.push_back({ pos, norm, tan, {u, v} });
         }
     }
 
@@ -388,10 +458,10 @@ Mesh MeshBuilder::CreateSphere(int slices, int rings, float radius)
 MeshPX MeshBuilder::CreateScreenQuad()
 {
     MeshPX mesh;
-    mesh.verticies.push_back({ {-1.0f, -1.0f, 0.0f}, {0.0f, 1.0f} });
-    mesh.verticies.push_back({ {-1.0f,  1.0f, 0.0f}, {0.0f, 0.0f} });
-    mesh.verticies.push_back({ { 1.0f,  1.0f, 0.0f}, {1.0f, 0.0f} });
-    mesh.verticies.push_back({ { 1.0f, -1.0f, 0.0f}, {1.0f, 1.0f} });
+    mesh.vertices.push_back({ {-1.0f, -1.0f, 0.0f}, {0.0f, 1.0f} });
+    mesh.vertices.push_back({ {-1.0f,  1.0f, 0.0f}, {0.0f, 0.0f} });
+    mesh.vertices.push_back({ { 1.0f,  1.0f, 0.0f}, {1.0f, 0.0f} });
+    mesh.vertices.push_back({ { 1.0f, -1.0f, 0.0f}, {1.0f, 1.0f} });
     mesh.indicies = { 0,1,2,0,2,3 };
     return mesh;
 }

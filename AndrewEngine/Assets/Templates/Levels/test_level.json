@@ -15,6 +15,10 @@
         },
         "TestPlayer": {
             "Template": "../../Assets/Templates/test_player.json"
+        },
+        "Ground": {
+            "Template": "../../Assets/Templates/ground.json",
+            "Position": [ 0.0, 0.0, 0.0 ]
         }
     }
 }

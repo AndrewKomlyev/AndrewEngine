@@ -12,8 +12,11 @@
 #include "TypeIds.h"
 
 #include "CameraComponent.h"
+#include "ColliderComponent.h"
 #include "FPSCameraControllerComponent.h"
+#include "MeshComponent.h"
 #include "ModelComponent.h"
+#include "RigidBodyComponent.h"
 #include "TransformComponent.h"
 
 #include "CameraService.h"

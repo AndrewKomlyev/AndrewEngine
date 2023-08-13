@@ -7,7 +7,7 @@ namespace AndrewEngine
     class ModelComponent final : public Component
     {
     public:
-        SET_TYPE_ID(ComponentId::Model);
+        SET_TYPE_ID(ComponentId::ModelComponent);
 
         void Initialize() override;
         void Terminate() override;

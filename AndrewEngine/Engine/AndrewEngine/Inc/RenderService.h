@@ -5,6 +5,7 @@
 namespace AndrewEngine
 {
     class CameraService;
+    class MeshComponent;
     class ModelComponent;
     class TransformComponent;
 
@@ -22,6 +23,11 @@ namespace AndrewEngine
         void SetDirectionLight(const const AEMath::Vector3& direction);
     private: 
 
+        friend class MeshComponent;
+
+        void Register(const MeshComponent* meshComponent);
+        void Unregister(const MeshComponent* meshComponent);
+
         friend class ModelComponent;
 
         void Register(const ModelComponent* modelComponent);
@@ -29,6 +35,7 @@ namespace AndrewEngine
 
         struct Entry
         {
+            const MeshComponent* meshComponent = nullptr;
             const ModelComponent* modelComponent = nullptr;
             const TransformComponent* transformComponent = nullptr;
             Graphics::RenderGroup renderGroup;

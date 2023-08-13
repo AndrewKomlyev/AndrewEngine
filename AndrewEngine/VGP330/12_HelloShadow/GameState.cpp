@@ -125,7 +125,7 @@ void GameState::ShowNormals()
 {
     if (mShowNormals)
     {
-        for (const auto& v : mSphere.verticies)
+        for (const auto& v : mSphere.vertices)
         {
             SimpleDraw::AddLine(v.position, v.position + (v.normal * 0.25f), Colors::Pink);
         }

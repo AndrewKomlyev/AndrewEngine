@@ -28,4 +28,11 @@ namespace AndrewEngine::Physics
         CollisionShapeBox() = default;
         void Initialize(const AndrewEngine::AEMath::Vector3& extend);
     };
+
+    class CollisionShapeHull : public CollisionShape
+    {
+    public:
+        CollisionShapeHull() = default;
+        void Initialize(const AndrewEngine::AEMath::Vector3& halfExtend, const AndrewEngine::AEMath::Vector3& origin);
+    };
 }

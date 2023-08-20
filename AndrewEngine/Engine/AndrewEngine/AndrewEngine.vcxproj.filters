@@ -66,6 +66,9 @@
     <ClCompile Include="Src\RigidBodyComponent.cpp">
       <Filter>Src\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Src\AnimationComponent.cpp">
+      <Filter>Src\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Precompiled.h">
@@ -129,6 +132,9 @@
       <Filter>Inc\Components</Filter>
     </ClInclude>
     <ClInclude Include="Inc\RigidBodyComponent.h">
+      <Filter>Inc\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\AnimationComponent.h">
       <Filter>Inc\Components</Filter>
     </ClInclude>
   </ItemGroup>

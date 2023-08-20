@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\AndrewEngine.cpp" />
+    <ClCompile Include="Src\AnimationComponent.cpp" />
     <ClCompile Include="Src\App.cpp" />
     <ClCompile Include="Src\CameraComponent.cpp" />
     <ClCompile Include="Src\CameraService.cpp" />
@@ -170,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inc\AndrewEngine.h" />
+    <ClInclude Include="Inc\AnimationComponent.h" />
     <ClInclude Include="Inc\App.h" />
     <ClInclude Include="Inc\AppState.h" />
     <ClInclude Include="Inc\CameraComponent.h" />

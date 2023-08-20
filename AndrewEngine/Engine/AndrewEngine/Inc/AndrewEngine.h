@@ -11,6 +11,7 @@
 #include "Services.h"
 #include "TypeIds.h"
 
+#include "AnimationComponent.h"
 #include "CameraComponent.h"
 #include "ColliderComponent.h"
 #include "FPSCameraControllerComponent.h"

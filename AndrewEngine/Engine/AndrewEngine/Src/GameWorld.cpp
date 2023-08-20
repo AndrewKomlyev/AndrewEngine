@@ -8,6 +8,19 @@
 #include "RigidBodyComponent.h"
 
 using namespace AndrewEngine;
+using namespace AndrewEngine::Physics;
+
+
+namespace
+{
+    CustomService TryServiceMake;
+}
+
+void GameWorld::SetCustomServiceMake(CustomService customService)
+{
+    TryServiceMake = customService;
+
+}
 
 void GameWorld::Initialize(uint32_t capacity)
 {
@@ -97,7 +110,12 @@ void GameWorld::LoadLevel(const std::filesystem::path& levelFile)
     for (auto& service : services)
     {
         const char* serviceName = service.name.GetString();
-        if (strcmp(serviceName, "CameraService") == 0)
+
+        if (TryServiceMake(serviceName, service.value, *this))
+        {
+
+        }
+        else if (strcmp(serviceName, "CameraService") == 0)
         {
             auto cameraService = AddService<CameraService>();
         }

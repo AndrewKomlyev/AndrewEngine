@@ -1,6 +1,7 @@
 #include "Precompiled.h"
 #include "RigidBodyComponent.h"
 
+#include "GameObject.h"
 #include "ColliderComponent.h"
 #include "TransformComponent.h"
 

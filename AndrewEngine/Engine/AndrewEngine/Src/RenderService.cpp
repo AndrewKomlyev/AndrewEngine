@@ -3,6 +3,7 @@
 #include "MeshComponent.h"
 #include "ModelComponent.h"
 #include "TransformComponent.h"
+#include "AnimationComponent.h"
 
 
 #include "CameraService.h"
@@ -107,6 +108,14 @@ void RenderService::Register(const ModelComponent* modelComponent)
     auto& gameObject = modelComponent->GetOwner();
     entry.modelComponent = modelComponent;
     entry.transformComponent = gameObject.GetComponent<TransformComponent>();
+
+    const Animator* animator = nullptr;
+
+    auto animatorComponent = gameObject.GetComponent<AnimationComponent>();
+    if (animatorComponent != nullptr)
+    {
+        animator = &animatorComponent->GetAnimator();
+    }
     entry.renderGroup = CreateRenderGroup(modelComponent->GetModelId());
 }
 

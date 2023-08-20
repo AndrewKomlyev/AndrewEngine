@@ -1,6 +1,8 @@
 #include "Precompiled.h"
 #include "GameObjectFactory.h"
 #include "GameObject.h"
+
+#include "AnimationComponent.h"
 #include "CameraComponent.h"
 #include "ColliderComponent.h"
 #include "FPSCameraControllerComponent.h"
@@ -14,6 +16,17 @@ using namespace AndrewEngine::Graphics;
 using namespace AndrewEngine::AEMath;
 
 namespace rj = rapidjson;
+
+namespace
+{
+    CustomMake TryMake;
+}
+
+void GameObjectFactory::SetCustomMake(CustomMake customMake)
+{
+
+    TryMake = customMake;
+}
 
 void GameObjectFactory::Make(const std::filesystem::path& templateFile, GameObject& gameObject)
 {
@@ -33,7 +46,11 @@ void GameObjectFactory::Make(const std::filesystem::path& templateFile, GameObje
     for (auto& component : components)
     {
         const char* componentName = component.name.GetString();
-        if (strcmp(componentName, "CameraComponent") == 0)
+        if (TryMake(componentName, component.value, gameObject))
+        {
+
+        }
+        else if (strcmp(componentName, "CameraComponent") == 0)
         {
             CameraComponent* cameraComponent = gameObject.AddComponent<CameraComponent>();
             if (component.value.HasMember("Position"))
@@ -75,11 +92,30 @@ void GameObjectFactory::Make(const std::filesystem::path& templateFile, GameObje
         else if (strcmp(componentName, "ModelComponent") == 0)
         {
             ModelComponent* modelComponent = gameObject.AddComponent<ModelComponent>();
+
             if (component.value.HasMember("FileName"))
             {
                 const char* fileName = component.value["FileName"].GetString();
                 modelComponent->SetFileName(fileName);
             }
+            if (component.value.HasMember("Animations"))
+            {
+                const auto& animationNames = component.value["Animations"].GetArray();
+                for (const auto& animationName : animationNames)
+                {
+                    const char* animation = animationName.GetString();
+                    modelComponent->AddAnimation(animation);
+                }
+            }
+            {
+                const char* fileName = component.value["FileName"].GetString();
+                modelComponent->SetFileName(fileName);
+            }
+
+        }
+        else if (strcmp(componentName, "AnimatorComponent") == 0)
+        {
+            AnimationComponent* animationComponent = gameObject.AddComponent<AnimationComponent>();
         }
         else if (strcmp(componentName, "MeshComponent") == 0)
         {
@@ -206,6 +242,18 @@ void GameObjectFactory::Make(const std::filesystem::path& templateFile, GameObje
                     {
                         const float radius = shapeData["Radius"].GetFloat();
                         colliderComponent->SetSphereCollision(radius);
+                    }
+                    else if (strcmp(shapeType, "Hull"))
+                    {
+                        const auto& halfExtents = shapeData["HalfExtents"].GetArray();
+                        const auto& origin = shapeData["Origin"].GetArray();
+                        const float ex = halfExtents[0].GetFloat();
+                        const float ey = halfExtents[1].GetFloat();
+                        const float ez = halfExtents[2].GetFloat();
+                        const float ox = origin[0].GetFloat();
+                        const float oy = origin[1].GetFloat();
+                        const float oz = origin[2].GetFloat();
+                        colliderComponent->SetHullCollision({ ex,ey,ez }, { ox,oy,oz });
                     }
                     else
                     {

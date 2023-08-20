@@ -13,6 +13,7 @@ namespace AndrewEngine
         void Terminate() override;
 
         void SetFileName(const char* fileName) { mFileName = fileName; }
+        void AddAnimation(const char* animationFileName) { mAnimationFileNames.push_back(animationFileName); }
 
         Graphics::ModelId GetModelId() const { return mModelId; }
         const Graphics::Model& GetModel() const
@@ -20,9 +21,14 @@ namespace AndrewEngine
             return *Graphics::ModelManager::Get()->GetModel(mModelId);
         }
 
+
+
     private:
         std::string mFileName;
 
         Graphics::ModelId mModelId = 0;
+        using Animations = std::vector<std::string>;
+        Animations mAnimationFileNames;
+
     };
 }

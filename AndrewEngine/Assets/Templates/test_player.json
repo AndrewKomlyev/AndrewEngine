@@ -4,7 +4,24 @@
             "Position": [ 0.0, 0.0, 0.0 ]
         },
         "ModelComponent": {
-            "FileName": "../../Assets/Models/Soldier/Soldier.model"
+            "FileName": "../../Assets/Models/Soldier/Soldier.model",
+            "Animations": [
+                "../../Assets/Models/Soldier/Idle.animset",
+                "../../Assets/Models/Soldier/RunForward.animset",
+                "../../Assets/Models/Soldier/RunBackwards.animset",
+                "../../Assets/Models/Soldier/RunLeft.animset",
+                "../../Assets/Models/Soldier/RunRight.animset"
+            ]
+        },
+        "ColliderComponent": {
+            "Shape": {
+                "Type": "Hull",
+                "HalfExtents": [ 0.5, 1.0, 0.5 ],
+                "Origin": [ 0.0, -1.0, 0.0 ]
+            }
+        },
+        "RigidBodyComponent": {
+            "Mass": 2.0
         }
     }
 }

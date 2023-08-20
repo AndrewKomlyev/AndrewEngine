@@ -6,6 +6,7 @@ namespace AndrewEngine
 {
     enum class ComponentId
     {
+        Animator,
         CameraComponent,
         ColliderComponent,
         FPSCameraControllerComponent,

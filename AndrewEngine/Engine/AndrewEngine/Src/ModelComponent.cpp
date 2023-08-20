@@ -13,6 +13,10 @@ void ModelComponent::Initialize()
     if (mm->GetModel(mModelId) == nullptr)
     {
         mm->LoadModel(mFileName);
+        for (const auto& animationFileName : mAnimationFileNames)
+        {
+            mm->AddAnimation(mModelId, animationFileName);
+        }
     }
 
     auto renderService = GetOwner().GetWorld().GetService<RenderService>();

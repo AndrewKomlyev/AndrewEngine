@@ -7,6 +7,9 @@
         },
         "RenderService": {
             "DirectionalLight": [ 1.0, -1.0, 1.0 ]
+        },
+        "AnimationChangeInputService": {
+
         }
     },
     "GameObjects": {
@@ -14,11 +17,16 @@
             "Template": "../../Assets/Templates/fps_camera.json"
         },
         "TestPlayer": {
-            "Template": "../../Assets/Templates/test_player.json"
+            "Template": "../../Assets/Templates/test_player.json",
+            "Position": [ 0.0, 1.0, 0.0 ]
+        },
+        "TestPlayer2": {
+            "Template": "../../Assets/Templates/test_player.json",
+            "Position": [ 2.0, 0.0, 0.0 ]
         },
         "Ground": {
             "Template": "../../Assets/Templates/ground.json",
-            "Position": [ 0.0, 0.0, 0.0 ]
+            "Position": [ 0.0, -1.0, 0.0 ]
         }
     }
 }

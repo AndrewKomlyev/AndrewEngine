@@ -12,5 +12,6 @@ namespace AndrewEngine
         virtual void Update(float deltaTime) {}
         virtual void Render() {}
         virtual void DebugUI() {}
+        virtual void EditorUI() {}
     };
 }

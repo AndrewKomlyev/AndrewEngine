@@ -1,7 +1,2 @@
-﻿  Precompiled.cpp
-  CollisionShape.cpp
-  PhysicsDebugDrawer.cpp
-  PhysicsWorld.cpp
-  RigidBody.cpp
-  Generating Code...
+﻿  PhysicsWorld.cpp
   Physics.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\Physics.lib

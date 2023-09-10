@@ -93,6 +93,22 @@ void GameWorld::DebugUI()
     ImGui::End();
 }
 
+void GameWorld::EditorUI()
+{
+    ImGui::Begin("Editor Control", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
+
+    if (ImGui::Button("Save"))
+    {
+        SaveLevel("../../Assets/Templates/Levels/test_level.json");
+    }
+
+    for (auto& gameObject : mUpdateList)
+    {
+        gameObject->EditorUI();
+    }
+    ImGui::End();
+}
+
 void GameWorld::LoadLevel(const std::filesystem::path& levelFile)
 {
     FILE* file = nullptr;
@@ -122,7 +138,7 @@ void GameWorld::LoadLevel(const std::filesystem::path& levelFile)
         else if (strcmp(serviceName, "RenderService") == 0)
         {
             auto renderService = AddService<RenderService>();
-            if (service.value.HasMember("DirectionsLight"))
+            if (service.value.HasMember("DirectionalLight"))
             {
                 const auto& direction = service.value["DirectionalLight"].GetArray();
                 const float x = direction[0].GetFloat();
@@ -183,6 +199,30 @@ void GameWorld::LoadLevel(const std::filesystem::path& levelFile)
         }
     }
 }
+
+void GameWorld::SaveLevel(const std::filesystem::path& levelFile)
+{
+    rapidjson::Document doc;
+    rapidjson::Value gameObjects(rapidjson::kObjectType);
+    for (auto& gameObject : mUpdateList)
+    {
+        gameObject->Serialize(doc, gameObjects);
+    }
+    doc.AddMember("GameObjects", gameObjects, doc.GetAllocator());
+
+    FILE* file = nullptr;
+    auto err = fopen_s(&file, levelFile.u8string().c_str(), "w");
+    ASSERT(err == 0 && file != nullptr, "GameWorld: failed to open level %s", levelFile.u8string().c_str());
+
+    char writeBuffer[65536];
+    rapidjson::FileWriteStream writeStream(file, writeBuffer, sizeof(writeBuffer));
+
+    rapidjson::Writer<rapidjson::FileWriteStream> writer(writeStream);
+    doc.Accept(writer);
+
+    fclose(file);
+}
+
 
 GameObject* GameWorld::CreateGameObject(const std::filesystem::path& templateFile)
 {

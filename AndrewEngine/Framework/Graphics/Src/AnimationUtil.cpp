@@ -14,16 +14,17 @@ namespace
     {
         if (bone != nullptr)
         {
+            if (animator != nullptr)
+            {
+                boneTransforms[bone->index] = animator->GetToParentTransform(bone);
+            }
+            else
+            {
+                boneTransforms[bone->index] = bone->toParentTransform;
+            }
             if (bone->parent != nullptr)
             {
-                if (animator != nullptr)
-                {
-                    boneTransforms[bone->index] = animator->GetToParentTransform(bone) * boneTransforms[bone->parentIndex];
-                }
-                else
-                {
-                    boneTransforms[bone->index] = bone->toParentTransform * boneTransforms[bone->parentIndex];
-                }
+                boneTransforms[bone->index] = boneTransforms[bone->index] * boneTransforms[bone->parentIndex];
             }
             else
             {

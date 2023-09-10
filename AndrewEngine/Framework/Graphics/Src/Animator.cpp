@@ -28,6 +28,7 @@ void BlendNode::Update(float deltaTime)
         }
         else
         {
+            //animClip = model->animationClips[0];
             mAnimationTick = animClip.tickDuration;
         }
     }

@@ -17,7 +17,6 @@ namespace
             return true;
         }
         return false;
-
     }
 
     bool CustomServiceMake(const char* serviceName, const rapidjson::Value& value, GameWorld& gameWorld)
@@ -28,10 +27,8 @@ namespace
             return true;
         }
         return false;
-
     }
 }
-
 
 void GameState::Initialize()
 {

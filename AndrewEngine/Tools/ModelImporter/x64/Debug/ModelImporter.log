@@ -1,6 +1,5 @@
 ﻿  main.cpp
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Physics\Inc\RigidBody.h(6,20): warning C4099: 'AndrewEngine::Graphics::Transform': type name first seen using 'struct' now seen using 'class'
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Graphics\Inc\Transform.h(6): message : see declaration of 'AndrewEngine::Graphics::Transform'
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\RenderService.h(23,38): warning C4114: same type qualifier used more than once
 C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Tools\ModelImporter\main.cpp(37,35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   ModelImporter.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\ModelImporter.exe
   C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\..\External\assimp-5.0.1\Bin\assimp-vc142-mt.dll

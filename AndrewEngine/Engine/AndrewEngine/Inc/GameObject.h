@@ -18,6 +18,9 @@ namespace AndrewEngine
 
         void Update(float deltaTime);
         void DebugUI();
+        void EditorUI();
+
+        void OnCollision(GameObject* gameObject);
 
         template<class ComponentType>
         ComponentType* AddComponent()
@@ -29,7 +32,7 @@ namespace AndrewEngine
         }
 
         template<class ComponentType>
-        ComponentType* GetComponent() 
+        ComponentType* GetComponent()
         {
             //auto constThis = static_cast<const GameObjecy*>(this);
             //return const_cast<Component*>(constThis->GetComponent<ComponentType>());
@@ -40,10 +43,11 @@ namespace AndrewEngine
                     return static_cast<ComponentType*>(component.get());
                 }
             }
+            return nullptr;
         }
 
         template<class ComponentType>
-        const ComponentType* GetComponent() const 
+        const ComponentType* GetComponent() const
         {
             for (auto& component : mComponents)
             {
@@ -62,6 +66,10 @@ namespace AndrewEngine
         const GameWorld& GetWorld() const { return *mWorld; }
         const GameObjectHandle& GetHandle() const { return mHandle; }
 
+        uint32_t GetUniqueId() const { return mUniqueId; }
+
+        void Serialize(rapidjson::Document& doc, rapidjson::Value& value);
+
     private:
         friend class GameWorld;
         GameWorld* mWorld = nullptr;
@@ -72,8 +80,9 @@ namespace AndrewEngine
 
 
         std::string mName = "EMPTY";
+        std::string mTemplate = "template_file.json";
         bool mInitialized = false;
-
+        uint32_t mUniqueId = 0;
 
     };
 

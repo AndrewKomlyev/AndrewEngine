@@ -21,6 +21,8 @@ namespace AndrewEngine
         virtual void Terminate() {}
         virtual void Update(float deltaTime) {}
         virtual void DebugUI() {}
+        virtual void EditorUI() {}
+        virtual void Serialize(rapidjson::Document& doc, rapidjson::Value& value) {}
 
         virtual uint32_t GetTypeId() const = 0;
 

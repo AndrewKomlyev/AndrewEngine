@@ -1,16 +1,16 @@
 {
     "Components": {
         "TransformComponent": {
-            "Position": [ 0.0, 0.0, 0.0 ]
+            "Position": [ 0.0, 1.0, 0.0 ]
         },
         "ModelComponent": {
-            "FileName": "../../Assets/Models/Soldier/Soldier.model",
+            "FileName": "../../Assets/Models/SwatGuy/SwatGuy.model",
             "Animations": [
-                "../../Assets/Models/Soldier/Idle.animset",
-                "../../Assets/Models/Soldier/RunForward.animset",
-                "../../Assets/Models/Soldier/RunBackwards.animset",
-                "../../Assets/Models/Soldier/RunLeft.animset",
-                "../../Assets/Models/Soldier/RunRight.animset"
+                "../../Assets/Models/SwatGuy/SwatGuy_Idle.animset",
+                "../../Assets/Models/SwatGuy/SwatGuy_ForwardDodge.animset",
+                "../../Assets/Models/SwatGuy/SwatGuy_BackDodge.animset",
+                "../../Assets/Models/SwatGuy/SwatGuy_LeftDodge.animset",
+                "../../Assets/Models/SwatGuy/SwatGuy_RightDofge.animset"
             ]
         },
         "ColliderComponent": {
@@ -22,6 +22,14 @@
         },
         "RigidBodyComponent": {
             "Mass": 2.0
+        },
+        "AnimationComponent": {
+
+        },
+        "AnimationChangeComponent": {
+
+
         }
+
     }
 }

@@ -12,5 +12,8 @@ namespace AndrewEngine
         SET_TYPE_ID(ComponentId::TransformComponent);
 
         void DebugUI() override;
+        void EditorUI() override;
+
+        void Serialize(rapidjson::Document& doc, rapidjson::Value& value) override;
     };
 }

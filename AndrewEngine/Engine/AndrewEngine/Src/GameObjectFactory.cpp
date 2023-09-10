@@ -92,7 +92,6 @@ void GameObjectFactory::Make(const std::filesystem::path& templateFile, GameObje
         else if (strcmp(componentName, "ModelComponent") == 0)
         {
             ModelComponent* modelComponent = gameObject.AddComponent<ModelComponent>();
-
             if (component.value.HasMember("FileName"))
             {
                 const char* fileName = component.value["FileName"].GetString();
@@ -113,7 +112,7 @@ void GameObjectFactory::Make(const std::filesystem::path& templateFile, GameObje
             }
 
         }
-        else if (strcmp(componentName, "AnimatorComponent") == 0)
+        else if (strcmp(componentName, "AnimationComponent") == 0)
         {
             AnimationComponent* animationComponent = gameObject.AddComponent<AnimationComponent>();
         }
@@ -126,23 +125,23 @@ void GameObjectFactory::Make(const std::filesystem::path& templateFile, GameObje
                 if (shapeData.HasMember("Type"))
                 {
                     const char* shapeType = shapeData["Type"].GetString();
-                    if (strcmp(shapeType, "Cube"))
+                    if (strcmp(shapeType, "Cube") == 0)
                     {
                         const float size = shapeData["Size"].GetFloat();
                         meshComponent->CreateCube(size);
                     }
-                    else if (strcmp(shapeType, "Sphere"))
+                    else if (strcmp(shapeType, "Sphere") == 0)
                     {
                         const int slices = shapeData["Slices"].GetInt();
                         const int rings = shapeData["Sings"].GetInt();
                         const float radius = shapeData["Radius"].GetFloat();
                         meshComponent->CreateSphere(slices, rings, radius);
                     }
-                    else if (strcmp(shapeType, "Plane"))
+                    else if (strcmp(shapeType, "Plane") == 0)
                     {
                         const int rows = shapeData["Rows"].GetInt();
                         const int columns = shapeData["Columns"].GetInt();
-                        const float size = shapeData["Size"].GetFloat();
+                        const float size = shapeData["Spacing"].GetFloat();
                         meshComponent->CreatePlane(rows, columns, size);
                     }
                     else
@@ -230,7 +229,7 @@ void GameObjectFactory::Make(const std::filesystem::path& templateFile, GameObje
                 if (shapeData.HasMember("Type"))
                 {
                     const char* shapeType = shapeData["Type"].GetString();
-                    if (strcmp(shapeType, "Box"))
+                    if (strcmp(shapeType, "Box") == 0)
                     {
                         const auto& halfExtents = shapeData["HalfExtents"].GetArray();
                         const float x = halfExtents[0].GetFloat();
@@ -238,12 +237,12 @@ void GameObjectFactory::Make(const std::filesystem::path& templateFile, GameObje
                         const float z = halfExtents[2].GetFloat();
                         colliderComponent->SetBoxCollider({ x,y,z });
                     }
-                    else if (strcmp(shapeType, "Sphere"))
+                    else if (strcmp(shapeType, "Sphere") == 0)
                     {
                         const float radius = shapeData["Radius"].GetFloat();
                         colliderComponent->SetSphereCollision(radius);
                     }
-                    else if (strcmp(shapeType, "Hull"))
+                    else if (strcmp(shapeType, "Hull") == 0)
                     {
                         const auto& halfExtents = shapeData["HalfExtents"].GetArray();
                         const auto& origin = shapeData["Origin"].GetArray();

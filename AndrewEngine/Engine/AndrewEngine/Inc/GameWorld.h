@@ -19,8 +19,10 @@ namespace AndrewEngine
         void Update(float deltaTime);
         void Render();
         void DebugUI();
+        void EditorUI();
 
         void LoadLevel(const std::filesystem::path& levelFile);
+        void SaveLevel(const std::filesystem::path& levelFile);
 
         GameObject* CreateGameObject(const std::filesystem::path& templateFile);
         GameObject* GetGameObject(const GameObjectHandle& handle);

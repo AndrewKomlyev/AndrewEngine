@@ -1,7 +1,7 @@
--scale 0.01 ../../Assets/Models/Soldier/Soldier.fbx ../../Assets/Models/Soldier/Soldier.model
+-scale 0.01 ../../Assets/Models/SwatGuy/SwatGuy.fbx ../../Assets/Models/SwatGuy/SwatGuy.model
 
--scale 0.01 -animOnly 1 ../../Assets/Models/Soldier/Soldier.fbx ../../Assets/Models/Soldier/Idle.fbx
--scale 0.01 -animOnly 1 ../../Assets/Models/Soldier/Soldier.fbx ../../Assets/Models/Soldier/RunBackwards.fbx
--scale 0.01 -animOnly 1 ../../Assets/Models/Soldier/Soldier.fbx ../../Assets/Models/Soldier/RunForward.fbx
--scale 0.01 -animOnly 1 ../../Assets/Models/Soldier/Soldier.fbx ../../Assets/Models/Soldier/RunLeft.fbx
--scale 0.01 -animOnly 1 ../../Assets/Models/Soldier/Soldier.fbx ../../Assets/Models/Soldier/RunRight.fbx
+-scale 0.01 -animOnly 1 ../../Assets/Models/SwatGuy/SwatGuy.fbx ../../Assets/Models/SwatGuy/SwatGuy_Idle.fbx
+-scale 0.01 -animOnly 1 ../../Assets/Models/SwatGuy/SwatGuy.fbx ../../Assets/Models/SwatGuy/SwatGuy_BackDodge.fbx
+-scale 0.01 -animOnly 1 ../../Assets/Models/SwatGuy/SwatGuy.fbx ../../Assets/Models/SwatGuy/SwatGuy_ForwardDodge.fbx
+-scale 0.01 -animOnly 1 ../../Assets/Models/SwatGuy/SwatGuy.fbx ../../Assets/Models/SwatGuy/SwatGuy_LeftDodge.fbx
+-scale 0.01 -animOnly 1 ../../Assets/Models/SwatGuy/SwatGuy.fbx ../../Assets/Models/SwatGuy/SwatGuy_RightDofge.fbx

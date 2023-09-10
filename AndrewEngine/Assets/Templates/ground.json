@@ -5,7 +5,7 @@
         },
         "MeshComponent": {
             "Shape": {
-                "type": "Plane",
+                "Type": "Plane",
                 "Rows": 10,
                 "Columns": 10,
                 "Spacing": 1.0
@@ -16,8 +16,18 @@
                 "Specular": [ 0.9, 0.9, 0.9, 1.0 ]
             },
             "Texture": {
-                "DiffuseMap":  "misc/concrete.jpg"
+                "DiffuseMap": "misc/concrete.jpg"
             }
+        },
+        "ColliderComponent": {
+            "Shape": {
+                "Type": "Hull",
+                "HalfExtents": [ 5, 1.0, 5 ],
+                "Origin": [ 0.0, -1.0, 0.0 ]
+            }
+        },
+        "RigidBodyComponent": {
+            "Mass": 0.0
         }
     }
 }

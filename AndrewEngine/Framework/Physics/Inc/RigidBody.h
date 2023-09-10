@@ -9,6 +9,7 @@ namespace AndrewEngine::Graphics
 namespace AndrewEngine::Physics
 {
     class CollisionShape;
+    using CollisionCallback = std::function<void(void*, void*)>;
 
     class RigidBody final
     {
@@ -24,6 +25,9 @@ namespace AndrewEngine::Physics
         void SetVelocity(const AndrewEngine::AEMath::Vector3& velocity);
 
         bool IsDynamic() const;
+
+        void OnCollision(void* otherObject);
+
         void UpdateTransform();
     private:
         friend class PhysicsWorld;

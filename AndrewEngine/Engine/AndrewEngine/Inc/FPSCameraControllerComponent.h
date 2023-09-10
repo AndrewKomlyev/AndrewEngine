@@ -21,7 +21,7 @@ namespace AndrewEngine
 
     private:
         CameraComponent* mCameraComponent = nullptr;
-        float mMoveSpeed = 1.0f;
-        float mTurnSpeed = 0.1f;
+        float mMoveSpeed = 5.0f;
+        float mTurnSpeed = 0.9f;
     };
 }

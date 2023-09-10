@@ -7,6 +7,11 @@
 using namespace AndrewEngine;
 using namespace AndrewEngine::Physics;
 
+void CollisionTest(void* dataA, void* dataB)
+{
+
+}
+
 RigidBody::~RigidBody()
 {
     ASSERT(mRigidBody == nullptr && mMotionState == nullptr, "RigidBody: terminate must be called first");
@@ -19,15 +24,16 @@ void RigidBody::Initialize(Graphics::Transform& graphicsTransform, const Collisi
 
     mMotionState = new btDefaultMotionState(ConvertTobtTransform(graphicsTransform));
     mRigidBody = new btRigidBody(mMass, mMotionState, shape.GetCollisionShape());
-
+    mRigidBody->setUserPointer(CollisionTest);
+    
     PhysicsWorld::Get()->Register(this);
 }
 
 void RigidBody::Terminate()
 {
     PhysicsWorld::Get()->Unregister(this);
-    SafeDelete(mMotionState);
     SafeDelete(mRigidBody);
+    SafeDelete(mMotionState);
 }
 
 void RigidBody::SetCollisionFilter(int filter)
@@ -49,6 +55,12 @@ void RigidBody::SetVelocity(const AndrewEngine::AEMath::Vector3& velocity)
 bool RigidBody::IsDynamic() const
 {
     return mMass > 0.0f;
+}
+
+void RigidBody::OnCollision(void* otherObject)
+{
+
+
 }
 
 void RigidBody::UpdateTransform()

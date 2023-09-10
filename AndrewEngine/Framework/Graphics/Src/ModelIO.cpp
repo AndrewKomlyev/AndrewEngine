@@ -228,7 +228,7 @@ void ModelIO::LoadMaterial(std::filesystem::path filePath, Model& model)
         fscanf_s(file, "%f %f %f %f \n", &m.diffuse.r, &m.diffuse.g, &m.diffuse.b, &m.diffuse.a);
         fscanf_s(file, "%f %f %f %f \n", &m.specular.r, &m.specular.g, &m.specular.b, &m.specular.a);
         fscanf_s(file, "%f %f %f %f \n", &m.emissive.r, &m.emissive.g, &m.emissive.b, &m.emissive.a);
-        fprintf_s(file, "SpecularPower: %f\n", &m.power);
+        fscanf_s(file, "SpecularPower: %f\n", &m.power);
 
 
         TryReadTextureName(materialData.diffuseMapName);

@@ -13,11 +13,12 @@ void RigidBodyComponent::Initialize()
     TransformComponent* transform = GetOwner().GetComponent<TransformComponent>();
     ColliderComponent* collider = GetOwner().GetComponent<ColliderComponent>();
     mRigidBody.Initialize(*transform, *collider->mCollisionShape, mMass);
+    //mRigidBody.GetRigidBody();
 }
 
 void RigidBodyComponent::Terminate()
 {
-    
+    mRigidBody.Terminate();
 }
 
 void RigidBodyComponent::SetMass(float mass)

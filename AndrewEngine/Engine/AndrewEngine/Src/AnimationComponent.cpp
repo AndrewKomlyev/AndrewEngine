@@ -21,6 +21,7 @@ void AnimationComponent::Update(float deltaTime)
 
 void AnimationComponent::DebugUI()
 {
+
 }
 
 bool AnimationComponent::PlayAnimation(int index, bool looping)

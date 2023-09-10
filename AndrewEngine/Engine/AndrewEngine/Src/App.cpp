@@ -2,6 +2,8 @@
 #include "App.h"
 #include "AppState.h"
 
+//efine _IS_EDITOR
+
 using namespace AndrewEngine;
 using namespace AndrewEngine::Core;
 using namespace AndrewEngine::Graphics;
@@ -78,16 +80,28 @@ void App::Run(const AppConfig& config)
         auto deltaTime = TimeUtil::GetDeltaTime();
         if (deltaTime < 0.5f)
         {
+#ifdef _IS_EDITOR
             PhysicsWorld::Get()->Update(deltaTime);
+#endif
             mCurrentState->Update(deltaTime);
         }
         auto graphicsSystem = GraphicsSystem::Get();
         graphicsSystem->BeginRender();
+
         mCurrentState->Render();
+
+#ifdef _IS_EDITOR
+        DebugUI::BeginRender();
+        mCurrentState->EditorUI();
+        DebugUI::EndRender();
+#else
         DebugUI::BeginRender();
         mCurrentState->DebugUI();
-        PhysicsWorld::Get()->DebugUI();
         DebugUI::EndRender();
+#endif // !_IS_EDITOR
+
+
+        PhysicsWorld::Get()->DebugUI();
         graphicsSystem->EndRender();
     }
     mCurrentState->Terminate();

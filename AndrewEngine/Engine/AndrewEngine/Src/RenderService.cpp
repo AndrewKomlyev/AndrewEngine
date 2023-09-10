@@ -5,7 +5,6 @@
 #include "TransformComponent.h"
 #include "AnimationComponent.h"
 
-
 #include "CameraService.h"
 #include "GameWorld.h"
 
@@ -17,9 +16,9 @@ void RenderService::Initialize()
 {
     mCameraService = GetWorld().GetService<CameraService>();
 
-    mDirectionalLight.ambient = { 0.8f, 0.8f, 0.8f, 1.0f };
-    mDirectionalLight.diffuse = { 0.7f, 0.7f, 0.7f, 1.0f };
-    mDirectionalLight.specular = { 0.7f, 0.7f, 0.7f, 1.0f };
+    mDirectionalLight.ambient = { 0.6f, 0.6f, 0.6f, 1.0f };
+    mDirectionalLight.diffuse = { 0.8f, 0.8f, 0.8f, 1.0f };
+    mDirectionalLight.specular = { 0.9f, 0.9f, 0.9f, 1.0f };
 
     mStandartEffect.Initialize(L"../../Assets/Shaders/Standard.fx");
     mStandartEffect.SetDireectionalLight(mDirectionalLight);
@@ -116,7 +115,7 @@ void RenderService::Register(const ModelComponent* modelComponent)
     {
         animator = &animatorComponent->GetAnimator();
     }
-    entry.renderGroup = CreateRenderGroup(modelComponent->GetModelId());
+    entry.renderGroup = CreateRenderGroup(modelComponent->GetModelId(), animator);
 }
 
 void RenderService::Unregister(const ModelComponent* modelComponent)

@@ -1,6 +1,27 @@
-﻿  RenderService.cpp
+﻿  Precompiled.cpp
+  AndrewEngine.cpp
 C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\RenderService.h(23,38): warning C4114: same type qualifier used more than once
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Src\RenderService.cpp(72,59): warning C4114: same type qualifier used more than once
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\GameObject.h(59): warning C4715: 'AndrewEngine::GameObject::GetComponent<AndrewEngine::TransformComponent>': not all control paths return a value
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\GameObject.h(59): warning C4715: 'AndrewEngine::GameObject::GetComponent<AndrewEngine::AnimationComponent>': not all control paths return a value
+  AnimationComponent.cpp
+  App.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Src\App.cpp(45,15): warning C4838: conversion from 'const int' to 'uint32_t' requires a narrowing conversion
+  CameraComponent.cpp
+  CameraService.cpp
+  ColliderComponent.cpp
+  FPSCameraControllerComponent.cpp
+  GameObject.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Src\GameObject.cpp(96,74): warning C4267: 'argument': conversion from 'size_t' to 'rapidjson::SizeType', possible loss of data
+  GameObjectFactory.cpp
+  GameWorld.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\RenderService.h(23,38): warning C4114: same type qualifier used more than once
+  MeshComponent.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Src\MeshComponent.cpp(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\RenderService.h(23,38): warning C4114: same type qualifier used more than once
+  ModelComponent.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\RenderService.h(23,38): warning C4114: same type qualifier used more than once
+  RenderService.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\RenderService.h(23,38): warning C4114: same type qualifier used more than once
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Src\RenderService.cpp(77,59): warning C4114: same type qualifier used more than once
+  RigidBodyComponent.cpp
+  TransformComponent.cpp
+  Generating Code...
   AndrewEngine.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\AndrewEngine.lib

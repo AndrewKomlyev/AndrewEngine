@@ -1,4 +1,1 @@
-﻿  GameState.cpp
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\VGP330\10_HelloPostProcessing\GameState.cpp(20,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\VGP330\10_HelloPostProcessing\GameState.cpp(20,41): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  10_HelloPostProcessing.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\10_HelloPostProcessing.exe
+﻿

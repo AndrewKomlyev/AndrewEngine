@@ -6,12 +6,12 @@ enum class States : size_t
     GameState = 0,
 };
 
-int WINAPI  WinMain(HINSTANCE instance, HINSTANCE, LPSTR, int)
+int WINAPI WinMain(HINSTANCE instance, HINSTANCE, LPSTR, int)
 {
     AndrewEngine::App& mainApp = AndrewEngine::MainApp();
     mainApp.AddState<GameState>((size_t)States::GameState);
     AndrewEngine::AppConfig config;
-    config.appName = L"Hello Final";
+    config.appName = L"Hello Final"; 
     config.winWidth = 1200;
     config.winHeigth = 720;
 

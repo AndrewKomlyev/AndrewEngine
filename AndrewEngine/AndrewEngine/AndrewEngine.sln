@@ -107,6 +107,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{
 		..\Assets\Templates\fps_camera.json = ..\Assets\Templates\fps_camera.json
 		..\Assets\Templates\ground.json = ..\Assets\Templates\ground.json
 		..\Assets\Templates\test_player.json = ..\Assets\Templates\test_player.json
+		..\Assets\Templates\test_player2.json = ..\Assets\Templates\test_player2.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Levels", "Levels", "{BA926B62-8E9C-4AF8-9642-3F6864F8DC35}"

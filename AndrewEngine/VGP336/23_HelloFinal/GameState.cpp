@@ -2,6 +2,7 @@
 #include "Input/Inc/InputSystem.h"
 #include "AnimationChangeComponent.h"
 #include "AnimationChangeInputService.h"
+#include "CharacterControllerComponent.h"
 
 using namespace AndrewEngine::AEMath;
 using namespace AndrewEngine::Input;
@@ -14,6 +15,11 @@ namespace
         if (strcmp(componentName, "AnimationChangeComponent") == 0)
         {
             AnimationChangeComponent* animationChangeComponent = gameObject.AddComponent<AnimationChangeComponent>();
+            return true;
+        }
+        else if (strcmp(componentName, "CharacterControllerComponent") == 0)
+        {
+            CharacterControllerComponent* characterControllerComponent = gameObject.AddComponent<CharacterControllerComponent>();
             return true;
         }
         return false;

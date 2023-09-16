@@ -90,6 +90,8 @@ void GameWorld::DebugUI()
     {
         service->DebugUI();
     }
+    Physics::PhysicsWorld().Get()->DebugUI();
+
     ImGui::End();
 }
 

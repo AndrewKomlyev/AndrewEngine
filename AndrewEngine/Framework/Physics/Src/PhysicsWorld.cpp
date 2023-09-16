@@ -98,16 +98,18 @@ void PhysicsWorld::Update(float deltaTime)
 
 void PhysicsWorld::DebugUI()
 {
-    //ImGui::Checkbox("RenderPhysics##", &mRenderDebugUI);
-    //if (mRenderDebugUI)
-    //{
-    //    int debugMode = mDebugDrawer->getDebugMode();
-    //    bool isEnabled = (debugMode & btIDebugDraw::DBG_DrawWireframe) > 0;
-    //    if (ImGui::Checkbox("[DBG]DrawWireframe##", &isEnabled))
-    //    {
-    //        debugMode =(isEnabled)?debugMode|btIDebugDraw
-    //    }
-    //}
+    ImGui::Checkbox("RenderPhysics##", &mRenderDebugUI);
+    if (mRenderDebugUI)
+    {
+        int debugMode = mDebugDrawer->getDebugMode();
+        bool isEnabled = (debugMode & btIDebugDraw::DBG_DrawWireframe) > 0;
+        if (ImGui::Checkbox("[DBG]DrawWireframe##", &isEnabled))
+        {
+            debugMode = (isEnabled) ? debugMode | btIDebugDraw::DBG_DrawWireframe : 0;
+        }
+        mDebugDrawer->setDebugMode(debugMode);
+        mDynamicWorld->debugDrawWorld();
+    }
 }
 
 void AndrewEngine::Physics::PhysicsWorld::SetGravity(const AndrewEngine::AEMath::Vector3& gravity)

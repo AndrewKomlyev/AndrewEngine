@@ -24,6 +24,7 @@ namespace AndrewEngine::Input
         void Update();
 
         bool IsKeyDown(KeyCode key) const;
+        bool IsKeyUp(KeyCode key) const;
         bool IsKeyPressed(KeyCode key) const;
 
         bool IsMouseDown(MouseButton button) const;

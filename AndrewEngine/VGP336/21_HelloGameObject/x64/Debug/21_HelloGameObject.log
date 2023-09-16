@@ -1,15 +1,1 @@
-﻿  AnimationChangeComponent.cpp
-  AnimationChangeInputService.cpp
-  GameState.cpp
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\RenderService.h(23,38): warning C4114: same type qualifier used more than once
-  WinMain.cpp
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\RenderService.h(23,38): warning C4114: same type qualifier used more than once
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\App.h(32,21): warning C4477: 'snprintf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type '_Ty1'
-          with
-          [
-              _Ty1=const size_t
-          ]
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\App.h(32,21): message : consider using '%zd' in the format string
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\VGP336\21_HelloGameObject\WinMain.cpp(17): message : see reference to function template instantiation 'void AndrewEngine::App::AddState<GameState>(size_t)' being compiled
-  Generating Code...
-  21_HelloGameObject.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\21_HelloGameObject.exe
+﻿

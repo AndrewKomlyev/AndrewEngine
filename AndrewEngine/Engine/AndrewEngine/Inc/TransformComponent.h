@@ -15,5 +15,7 @@ namespace AndrewEngine
         void EditorUI() override;
 
         void Serialize(rapidjson::Document& doc, rapidjson::Value& value) override;
+
+
     };
 }

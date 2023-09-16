@@ -52,6 +52,30 @@ void RigidBody::SetVelocity(const AndrewEngine::AEMath::Vector3& velocity)
     mRigidBody->setLinearVelocity(ConvertTobtVector3(velocity));
 }
 
+void RigidBody::SetTurnVelocity(const AndrewEngine::AEMath::Vector3& turnVelocity)
+{
+    mRigidBody->setTurnVelocity(ConvertTobtVector3(turnVelocity));
+}
+
+void RigidBody::Walk(float distance)
+{
+    mRigidBody->activate(true);
+    auto& m = mRigidBody->getWorldTransform().getBasis();
+    auto& forward = m.getRow(2);
+    //AEMath::Vector3 forward = ConvertToVector3(m.getRow(1));
+    mRigidBody->setLinearVelocity(forward * distance);
+}
+
+void RigidBody::Strafe(float distance)
+{
+    mRigidBody->activate(true);
+    auto& m = mRigidBody->getWorldTransform().getBasis();
+    auto& forward = m.getRow(0);
+    //AEMath::Vector3 forward = ConvertToVector3(m.getRow(1));
+    mRigidBody->setLinearVelocity(forward * distance);
+}
+
+
 bool RigidBody::IsDynamic() const
 {
     return mMass > 0.0f;
@@ -59,7 +83,7 @@ bool RigidBody::IsDynamic() const
 
 void RigidBody::OnCollision(void* otherObject)
 {
-
+    //mRigidBody->setTurnVelocity
 
 }
 

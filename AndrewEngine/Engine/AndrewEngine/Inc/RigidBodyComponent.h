@@ -15,6 +15,11 @@ namespace AndrewEngine
 
         void SetMass(float mass);
         void SetPosition(const AEMath::Vector3& position);
+        void SetVelocity(const AEMath::Vector3& velocity);
+        void SetTurnVelocity(const AEMath::Vector3& velocity);
+
+        void Walk(float distance);
+        void Strafe(float distance);
     private:
 
         Physics::RigidBody mRigidBody;

@@ -5,7 +5,8 @@
 
 enum class CustomComponentId
 {
-    AnimationChangeComponentId = static_cast<uint32_t>(AndrewEngine::ComponentId::Count)
+    AnimationChangeComponentId = static_cast<uint32_t>(AndrewEngine::ComponentId::Count),
+    CharacterControllerComponentId
 };
 
 enum class CustomServiceId

@@ -56,6 +56,8 @@ namespace AndrewEngine
                     return static_cast<ComponentType*>(component.get());
                 }
             }
+
+            return nullptr;
         }
 
 

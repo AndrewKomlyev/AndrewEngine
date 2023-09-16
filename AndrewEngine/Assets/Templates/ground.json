@@ -22,8 +22,8 @@
         "ColliderComponent": {
             "Shape": {
                 "Type": "Hull",
-                "HalfExtents": [ 5, 1.0, 5 ],
-                "Origin": [ 0.0, -1.0, 0.0 ]
+                "HalfExtents": [ 500, 0.1, 500 ],
+                "Origin": [ 0.0, 0.0, 0.0 ]
             }
         },
         "RigidBodyComponent": {

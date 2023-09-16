@@ -1,11 +1,1 @@
-﻿  GameState.cpp
-  WinMain.cpp
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\App.h(29,21): warning C4477: 'snprintf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type '_Ty1'
-          with
-          [
-              _Ty1=const size_t
-          ]
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\App.h(29,21): message : consider using '%zd' in the format string
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\VGP330\08_HelloSimpleDraw\WinMain.cpp(21): message : see reference to function template instantiation 'void AndrewEngine::App::AddState<GameState>(size_t)' being compiled
-  Generating Code...
-  08_HelloSimpleDraw.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\08_HelloSimpleDraw.exe
+﻿

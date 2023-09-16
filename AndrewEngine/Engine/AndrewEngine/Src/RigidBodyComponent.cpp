@@ -30,3 +30,26 @@ void AndrewEngine::RigidBodyComponent::SetPosition(const AEMath::Vector3& positi
 {
     mRigidBody.SetPosition(position);
 }
+
+void RigidBodyComponent::SetVelocity(const AEMath::Vector3& velocity)
+{
+    mRigidBody.SetVelocity(velocity);
+
+}
+
+void RigidBodyComponent::SetTurnVelocity(const AEMath::Vector3& velocity)
+{
+    mRigidBody.SetTurnVelocity(velocity);
+}
+
+void AndrewEngine::RigidBodyComponent::Walk(float distance)
+{
+    mRigidBody.Walk(distance);
+}
+
+void AndrewEngine::RigidBodyComponent::Strafe(float distance)
+{
+    mRigidBody.Strafe(distance);
+}
+
+

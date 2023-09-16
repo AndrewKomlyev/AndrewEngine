@@ -236,6 +236,11 @@ bool InputSystem::IsKeyDown(KeyCode key) const
     return mCurrKeys[(int)key];
 }
 
+bool InputSystem::IsKeyUp(KeyCode key) const
+{
+    return !mCurrKeys[(int)key];
+}
+
 bool InputSystem::IsKeyPressed(KeyCode key) const
 {
     return mPressedKeys[(int)key];

@@ -80,9 +80,7 @@ void App::Run(const AppConfig& config)
         auto deltaTime = TimeUtil::GetDeltaTime();
         if (deltaTime < 0.5f)
         {
-#ifdef _IS_EDITOR
             PhysicsWorld::Get()->Update(deltaTime);
-#endif
             mCurrentState->Update(deltaTime);
         }
         auto graphicsSystem = GraphicsSystem::Get();
@@ -101,7 +99,7 @@ void App::Run(const AppConfig& config)
 #endif // !_IS_EDITOR
 
 
-        PhysicsWorld::Get()->DebugUI();
+        //PhysicsWorld::Get()->DebugUI();
         graphicsSystem->EndRender();
     }
     mCurrentState->Terminate();

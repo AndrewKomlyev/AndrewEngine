@@ -1,9 +1,1 @@
-﻿  GameState.cpp
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Physics\Inc\PhysicsWorld.h(36,27): error C2143: syntax error: missing ';' before '*'
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Physics\Inc\PhysicsWorld.h(36,27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Physics\Inc\PhysicsWorld.h(36,51): error C2238: unexpected token(s) preceding ';'
-  WinMain.cpp
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Physics\Inc\PhysicsWorld.h(36,27): error C2143: syntax error: missing ';' before '*'
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Physics\Inc\PhysicsWorld.h(36,27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Framework\Physics\Inc\PhysicsWorld.h(36,51): error C2238: unexpected token(s) preceding ';'
-  Generating Code...
+﻿

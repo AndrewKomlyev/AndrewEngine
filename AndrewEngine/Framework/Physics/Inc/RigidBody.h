@@ -23,6 +23,11 @@ namespace AndrewEngine::Physics
         void SetCollisionFilter(int filter);
         void SetPosition(const AndrewEngine::AEMath::Vector3& position);
         void SetVelocity(const AndrewEngine::AEMath::Vector3& velocity);
+        void SetTurnVelocity(const AndrewEngine::AEMath::Vector3& turnVelocity);
+
+        void Walk(float distance);
+        void Strafe(float distance);
+
 
         bool IsDynamic() const;
 

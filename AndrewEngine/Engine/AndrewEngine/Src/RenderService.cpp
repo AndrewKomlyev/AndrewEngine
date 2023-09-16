@@ -38,9 +38,14 @@ void RenderService::Render()
     const auto& camera = mCameraService->GetMain();
     mStandartEffect.SetCamera(camera);
 
+
     mStandartEffect.Begin();
     for (auto& entry : mRenderEntities)
     {
+        for (auto& rendObj :entry.renderGroup)
+        {
+            rendObj.transform = *entry.transformComponent;
+        }
         DrawRenderGroup(mStandartEffect, entry.renderGroup);
     }
     mStandartEffect.End();
@@ -77,7 +82,6 @@ void AndrewEngine::RenderService::SetDirectionLight(const const AEMath::Vector3&
 void AndrewEngine::RenderService::Register(const MeshComponent* meshComponent)
 {
     auto& entry = mRenderEntities.emplace_back();
-
     auto& gameObject = meshComponent->GetOwner();
     entry.meshComponent = meshComponent;
     entry.transformComponent = gameObject.GetComponent<TransformComponent>();

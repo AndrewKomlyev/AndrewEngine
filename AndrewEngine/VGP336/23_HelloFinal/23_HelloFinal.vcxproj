@@ -150,12 +150,14 @@
   <ItemGroup>
     <ClCompile Include="AnimationChangeComponent.cpp" />
     <ClCompile Include="AnimationChangeInputService.cpp" />
+    <ClCompile Include="CharacterControllerComponent.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationChangeComponent.h" />
     <ClInclude Include="AnimationChangeInputService.h" />
+    <ClInclude Include="CharacterControllerComponent.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="TypeIds.h" />
   </ItemGroup>

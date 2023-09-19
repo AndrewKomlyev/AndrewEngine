@@ -1,1 +1,21 @@
-﻿
+﻿  GameState.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\RenderService.h(23,38): warning C4114: same type qualifier used more than once
+  Particle.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\RenderService.h(23,38): warning C4114: same type qualifier used more than once
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\VGP334\19_ParticleSystem\Particle.cpp(16,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\VGP334\19_ParticleSystem\Particle.cpp(16,41): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\VGP334\19_ParticleSystem\Particle.cpp(18,131): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\VGP334\19_ParticleSystem\Particle.cpp(68,81): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  ParticleSystem.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\RenderService.h(23,38): warning C4114: same type qualifier used more than once
+  WinMain.cpp
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\RenderService.h(23,38): warning C4114: same type qualifier used more than once
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\App.h(32,21): warning C4477: 'snprintf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type '_Ty1'
+          with
+          [
+              _Ty1=const size_t
+          ]
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\Engine\AndrewEngine\Inc\App.h(32,21): message : consider using '%zd' in the format string
+C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\VGP334\19_ParticleSystem\WinMain.cpp(17): message : see reference to function template instantiation 'void AndrewEngine::App::AddState<GameState>(size_t)' being compiled
+  Generating Code...
+  19_ParticleSystem.vcxproj -> C:\Users\Andrey\Desktop\AndrewEngine\AndrewEngine\AndrewEngine\x64\Debug\19_ParticleSystem.exe
